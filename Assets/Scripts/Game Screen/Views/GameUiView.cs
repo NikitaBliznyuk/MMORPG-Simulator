@@ -27,13 +27,24 @@ namespace Game.View
 
         public void UpdateTopUi(UiInfo info, bool active)
         {
+            if (topUI == null)
+            {
+                Debug.LogWarning("There is no top ui on scene, try to switch scene or add one.");
+                return;
+            }
             topUI.SetActive(active);
             topUI.UpdateInfo(info);
         }
 
         public void UpdateHeroUI(UiInfo info, bool active)
         {
-            
+            if (heroUI == null)
+            {
+                Debug.LogWarning("There is no hero ui on scene, try to switch scene or add one.");
+                return;
+            }
+            heroUI.SetActive(active);
+            heroUI.UpdateInfo(info);
         }
     }
 
