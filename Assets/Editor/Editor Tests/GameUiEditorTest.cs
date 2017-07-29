@@ -19,7 +19,7 @@ public class GameUiEditorTest : EditorWindow
             {
                 gameUI.UpdateTopUi(new UiInfo {MaxHealth = 100, CurrentHealth = 40, Name = "JOHG SENA"}, true);
                 gameUI.UpdateHeroUI(
-                    new UiInfo {MaxHealth = 200, CurrentHealth = 176, MaxEnergy = 50, CurrentEnergy = 43}, true);
+                    new UiInfo {MaxHealth = 200, CurrentHealth = 54, MaxEnergy = 50, CurrentEnergy = 49}, true);
             }
             else
             {
