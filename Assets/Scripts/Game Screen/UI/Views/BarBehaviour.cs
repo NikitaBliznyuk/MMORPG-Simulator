@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.View
+namespace Game.UI.View
 {
     public class BarBehaviour : MonoBehaviour
     {
@@ -20,7 +20,7 @@ namespace Game.View
         {
             text.text = currentValue + "/" + maxValue;
 
-            float t = currentValue / (float) maxValue;
+            float t = maxValue > 0.0f ? currentValue / (float) maxValue : 0.0f;
             view.color = barGradient.Evaluate(t);
             
             MoveView(t);

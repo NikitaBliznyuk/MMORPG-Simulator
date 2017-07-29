@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-namespace Game.View
+namespace Game.UI.View
 {
     public class GameUiView : MonoBehaviour
     {
@@ -11,6 +12,8 @@ namespace Game.View
         
         private IUiBehaviour topUI;
         private IUiBehaviour heroUI;
+
+        private UiInfo currentObservableInfo;
 
         private void Awake()
         {
@@ -32,6 +35,7 @@ namespace Game.View
                 Debug.LogWarning("There is no top ui on scene, try to switch scene or add one.");
                 return;
             }
+            currentObservableInfo = active ? info : null;
             topUI.SetActive(active);
             topUI.UpdateInfo(info);
         }
@@ -46,9 +50,16 @@ namespace Game.View
             heroUI.SetActive(active);
             heroUI.UpdateInfo(info);
         }
+
+        private void Update()
+        {
+            if(currentObservableInfo != null)
+                UpdateTopUi(currentObservableInfo, true);
+        }
     }
 
-    public struct UiInfo
+    [Serializable]
+    public class UiInfo
     {
         public int MaxHealth;
         public int CurrentHealth;

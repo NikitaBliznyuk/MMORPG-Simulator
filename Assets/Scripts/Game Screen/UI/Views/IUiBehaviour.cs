@@ -1,4 +1,4 @@
-﻿namespace Game.View
+﻿namespace Game.UI.View
 {
     public interface IUiBehaviour
     {

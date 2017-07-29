@@ -604,6 +604,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 343446130}
+--- !u!1 &462589366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 462589367}
+  - component: {fileID: 462589368}
+  m_Layer: 0
+  m_Name: Controllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462589367
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462589366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &462589368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462589366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 807818902}
 --- !u!1 &575703673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1183,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1265272185}
-  m_Layer: 0
+  - component: {fileID: 1265272186}
+  m_Layer: 8
   m_Name: Boss (test)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,9 +1202,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1612193633}
+  - {fileID: 1524108874}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265272186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265272184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsInfo:
+    MaxHealth: 100
+    CurrentHealth: 87
+    MaxEnergy: 30
+    CurrentEnergy: 23
+    Name: BOSS
 --- !u!1 &1395290288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1272,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 181414228}
   energyBar: {fileID: 1163350647}
+--- !u!1 &1524108873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1524108874}
+  - component: {fileID: 1524108875}
+  m_Layer: 8
+  m_Name: Bounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524108874
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524108873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1265272185}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1524108875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524108873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.92, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1551033709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1612193633}
   - component: {fileID: 1612193634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}

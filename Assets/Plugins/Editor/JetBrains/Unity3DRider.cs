@@ -275,7 +275,7 @@ namespace Plugins.Editor.JetBrains
     public static void Log(LoggingLevel level, string initialText)
     {
       if (level < SelectedLoggingLevel) return;
-
+  
       var text = "[Rider] [" + level + "] " +  initialText;
       
       switch (level)

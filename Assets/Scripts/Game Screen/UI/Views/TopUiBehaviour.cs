@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-namespace Game.View
+namespace Game.UI.View
 {
-	public class HeroUiBehaviour : MonoBehaviour, IUiBehaviour
+	public class TopUiBehaviour : MonoBehaviour, IUiBehaviour
 	{
 		[Header("References")]
 		
+		[SerializeField] private Text nameText;
 		[SerializeField] private BarBehaviour healthBar;
-		[SerializeField] private BarBehaviour energyBar;
 
 		public void UpdateInfo(UiInfo info)
 		{
+			if(info == null) return;
+			
 			healthBar.UpdateBarInfo(info.MaxHealth, info.CurrentHealth);
-			energyBar.UpdateBarInfo(info.MaxEnergy, info.CurrentEnergy);
+			nameText.text = info.Name;
 		}
 
 		public void SetActive(bool active)

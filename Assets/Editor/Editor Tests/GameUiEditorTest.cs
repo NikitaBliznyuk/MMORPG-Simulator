@@ -1,4 +1,4 @@
-﻿using Game.View;
+﻿using Game.UI.View;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,10 +14,15 @@ public class GameUiEditorTest : EditorWindow
     {
         if (GUILayout.Button("Update UI Info"))
         {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning("Start game to execute this test.");
+                return;
+            }
             var gameUI = FindObjectOfType<GameUiView>();
             if (gameUI != null)
             {
-                gameUI.UpdateTopUi(new UiInfo {MaxHealth = 100, CurrentHealth = 40, Name = "JOHG SENA"}, true);
+                gameUI.UpdateTopUi(new UiInfo {MaxHealth = 100, CurrentHealth = 40, Name = "John Cena"}, true);
                 gameUI.UpdateHeroUI(
                     new UiInfo {MaxHealth = 200, CurrentHealth = 54, MaxEnergy = 50, CurrentEnergy = 49}, true);
             }
