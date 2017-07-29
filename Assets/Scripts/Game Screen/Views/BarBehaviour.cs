@@ -9,5 +9,14 @@ namespace Game.View
     {
         [SerializeField] private Image view;
         [SerializeField] private Text text;
+        [SerializeField] private Gradient barGradient;
+        
+        public void UpdateBarInfo(int maxValue, int currentValue)
+        {
+            text.text = currentValue + "/" + maxValue;
+
+            float t = currentValue / (float) maxValue;
+            view.color = barGradient.Evaluate(t);
+        }
     }
 }
