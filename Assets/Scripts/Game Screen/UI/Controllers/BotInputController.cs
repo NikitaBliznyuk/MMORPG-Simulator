@@ -4,15 +4,19 @@ using Game.Character;
 using UnityEngine;
 using CharacterInfo = Game.Character.CharacterInfo;
 
+// TODO REFACTOR THIS, MAKE INPUT CONTROLLER DO ONLY INPUTS
+
 public class BotInputController : MonoBehaviour, IInputController
 {
     private CharacterInfoController characterInfoController;
     
     public CharacterInfo CurrentObservableInfo { get; private set; }
+    public Vector3 NextPosition { get; private set; }
 
     private void Awake()
     {
         characterInfoController = GetComponent<CharacterInfoController>();
+        NextPosition = transform.position;
     }
 
     private void Start()

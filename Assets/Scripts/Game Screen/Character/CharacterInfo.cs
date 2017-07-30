@@ -10,7 +10,13 @@ namespace Game.Character
             get { return statsInfo; }
         }
 
+        public float MovementSpeed
+        {
+            get { return movementSpeed; }
+        }
+
         [SerializeField] private UiInfo statsInfo;
+        [SerializeField] private float movementSpeed;
     }
 }
 

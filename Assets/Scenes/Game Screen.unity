@@ -338,12 +338,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 128966337}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1475439963}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136030992
 GameObject:
@@ -405,7 +405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181414223
 GameObject:
@@ -602,7 +602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318223636
 GameObject:
@@ -1323,6 +1323,7 @@ GameObject:
   - component: {fileID: 780163281}
   - component: {fileID: 780163280}
   - component: {fileID: 780163283}
+  - component: {fileID: 780163284}
   m_Layer: 8
   m_Name: ALLY (test)
   m_TagString: Ally
@@ -1361,6 +1362,7 @@ MonoBehaviour:
     MaxEnergy: 40
     CurrentEnergy: 12
     Name: Test Ally
+  movementSpeed: 1
 --- !u!4 &780163282
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,7 +1376,7 @@ Transform:
   - {fileID: 503329108}
   - {fileID: 1154431889}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &780163283
 MonoBehaviour:
@@ -1385,6 +1387,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0e4d9fb06bbc47439db0bf7f4e8a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &780163284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 780163279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc209526bb79c3428bef4e51408ef18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &807818897
@@ -1476,7 +1489,7 @@ RectTransform:
   - {fileID: 932178085}
   - {fileID: 1395290289}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1909,6 +1922,7 @@ GameObject:
   - component: {fileID: 1265272185}
   - component: {fileID: 1265272186}
   - component: {fileID: 1265272187}
+  - component: {fileID: 1265272188}
   m_Layer: 8
   m_Name: Boss (test)
   m_TagString: Enemy
@@ -1929,7 +1943,7 @@ Transform:
   - {fileID: 1612193633}
   - {fileID: 1524108874}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1265272186
 MonoBehaviour:
@@ -1948,6 +1962,7 @@ MonoBehaviour:
     MaxEnergy: 30
     CurrentEnergy: 23
     Name: BOSS
+  movementSpeed: 3
 --- !u!114 &1265272187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1962,6 +1977,17 @@ MonoBehaviour:
   info: {fileID: 1265272186}
   allyTag: Enemy
   enemyTag: Ally
+--- !u!114 &1265272188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265272184}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e4d9fb06bbc47439db0bf7f4e8a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395290288
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2049,7 @@ GameObject:
   - component: {fileID: 1475439964}
   - component: {fileID: 1475439965}
   - component: {fileID: 1475439966}
+  - component: {fileID: 1475439967}
   m_Layer: 8
   m_Name: YOU (test)
   m_TagString: Ally
@@ -2042,8 +2069,9 @@ Transform:
   m_Children:
   - {fileID: 1679148001}
   - {fileID: 1706554273}
+  - {fileID: 128966342}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1475439964
 MonoBehaviour:
@@ -2062,6 +2090,7 @@ MonoBehaviour:
     MaxEnergy: 40
     CurrentEnergy: 12
     Name: LoveIsStuff
+  movementSpeed: 1.5
 --- !u!114 &1475439965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2088,6 +2117,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 807818902}
+--- !u!114 &1475439967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475439962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc209526bb79c3428bef4e51408ef18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1524108873
 GameObject:
   m_ObjectHideFlags: 0
