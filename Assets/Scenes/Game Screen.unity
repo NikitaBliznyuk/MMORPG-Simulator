@@ -800,47 +800,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 343446130}
---- !u!1 &462589366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 462589367}
-  - component: {fileID: 462589368}
-  m_Layer: 0
-  m_Name: Player Controllers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &462589367
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 462589366}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &462589368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 462589366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 807818902}
 --- !u!1 &503329107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1322,7 @@ GameObject:
   - component: {fileID: 780163282}
   - component: {fileID: 780163281}
   - component: {fileID: 780163280}
+  - component: {fileID: 780163283}
   m_Layer: 8
   m_Name: ALLY (test)
   m_TagString: Ally
@@ -1382,7 +1342,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 780163281}
-  clickControllerReference: {fileID: 0}
   allyTag: Ally
   enemyTag: Enemy
 --- !u!114 &780163281
@@ -1417,6 +1376,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780163283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 780163279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e4d9fb06bbc47439db0bf7f4e8a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &807818897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +1960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 1265272186}
-  clickControllerReference: {fileID: 0}
   allyTag: Enemy
   enemyTag: Ally
 --- !u!1 &1395290288
@@ -2053,6 +2022,7 @@ GameObject:
   - component: {fileID: 1475439963}
   - component: {fileID: 1475439964}
   - component: {fileID: 1475439965}
+  - component: {fileID: 1475439966}
   m_Layer: 8
   m_Name: YOU (test)
   m_TagString: Ally
@@ -2104,9 +2074,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 1475439964}
-  clickControllerReference: {fileID: 462589366}
   allyTag: Ally
   enemyTag: Enemy
+--- !u!114 &1475439966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475439962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 807818902}
 --- !u!1 &1524108873
 GameObject:
   m_ObjectHideFlags: 0

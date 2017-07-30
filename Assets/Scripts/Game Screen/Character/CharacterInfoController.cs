@@ -8,7 +8,6 @@ namespace Game.Character
         [Header("References")] 
         
         [SerializeField] private CharacterInfo info;
-        [SerializeField] private GameObject clickControllerReference;
 
         [Header("Settings")] 
         
@@ -30,8 +29,7 @@ namespace Game.Character
         private void Awake()
         {
             Abilities = new List<IAbility> {new HitAbility(), new HealAbility()};
-            if(clickControllerReference != null)
-                inputController = clickControllerReference.GetComponent<IInputController>();
+            inputController = GetComponent<IInputController>();
         }
 
         public void DealDamage(int damage)
@@ -56,7 +54,8 @@ namespace Game.Character
             CharacterInfoController target = inputController.CurrentObservableInfo != null
                 ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()
                 : null;
-            Abilities[index].Invoke(invoker, target);
+            if(Abilities[index].AbilityInfo.Avaliable)
+                Abilities[index].Invoke(invoker, target);
         }
     }
 }
