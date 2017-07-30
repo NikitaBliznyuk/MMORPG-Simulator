@@ -1,12 +1,14 @@
 ﻿using Game.UI.View;
 using UnityEngine;
-using CharacterInfo = Game.CharacterInfo;
+using CharacterInfo = Game.Character.CharacterInfo;
 
-public class ClickController : MonoBehaviour
+public class ClickController : MonoBehaviour, IInputController
 {
     [Header("References")]
     
     [SerializeField] private GameUiView view;
+
+    public CharacterInfo CurrentObservableInfo { get; private set; }
     
     private void Update()
     {
@@ -17,8 +19,8 @@ public class ClickController : MonoBehaviour
 
             if (Physics.Raycast(cameraRay, out hit, 10, LayerMask.GetMask("Clickable")))
             {
-                CharacterInfo info = hit.collider.GetComponentInParent<CharacterInfo>();
-                view.UpdateTopUi(info.StatsInfo, true);
+                CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfo>();
+                view.UpdateTopUi(CurrentObservableInfo.StatsInfo, true);
             }
         }
     }

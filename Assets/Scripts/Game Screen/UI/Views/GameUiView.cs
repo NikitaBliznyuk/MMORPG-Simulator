@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using CharacterInfo = Game.Character.CharacterInfo;
 
 namespace Game.UI.View
 {

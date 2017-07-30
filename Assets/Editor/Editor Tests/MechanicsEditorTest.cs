@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
-using CharacterController = Game.CharacterController;
+using CharacterController = Game.Character.CharacterInfoController;
 
 public class MechanicsEditorTest : EditorWindow {
 

@@ -1,7 +1,7 @@
 ﻿using Game.UI.View;
 using UnityEngine;
 
-namespace Game
+namespace Game.Character
 {
     public class CharacterInfo : MonoBehaviour
     {
