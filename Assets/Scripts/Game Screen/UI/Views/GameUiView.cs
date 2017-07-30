@@ -9,6 +9,7 @@ namespace Game.UI.View
         
         [SerializeField] private GameObject topUIReference;
         [SerializeField] private GameObject heroUIReference;
+        [SerializeField] private CharacterInfo playerInfo;
         
         private IUiBehaviour topUI;
         private IUiBehaviour heroUI;
@@ -40,21 +41,23 @@ namespace Game.UI.View
             topUI.UpdateInfo(info);
         }
 
-        public void UpdateHeroUI(UiInfo info, bool active)
+        private void UpdateHeroUI()
         {
             if (heroUI == null)
             {
                 Debug.LogWarning("There is no hero ui on scene, try to switch scene or add one.");
                 return;
             }
-            heroUI.SetActive(active);
-            heroUI.UpdateInfo(info);
+            
+            heroUI.UpdateInfo(playerInfo.StatsInfo);
         }
 
         private void Update()
         {
             if(currentObservableInfo != null)
                 UpdateTopUi(currentObservableInfo, true);
+            if(heroUI != null && playerInfo != null)
+                UpdateHeroUI();
         }
     }
 

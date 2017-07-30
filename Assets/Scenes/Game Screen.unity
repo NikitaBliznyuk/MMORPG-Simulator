@@ -631,7 +631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &462589368
 MonoBehaviour:
@@ -999,6 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topUIReference: {fileID: 932178084}
   heroUIReference: {fileID: 1395290288}
+  playerInfo: {fileID: 1475439964}
 --- !u!1 &932178084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1273,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 181414228}
   energyBar: {fileID: 1163350647}
+--- !u!1 &1475439962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1475439963}
+  - component: {fileID: 1475439964}
+  m_Layer: 0
+  m_Name: YOU (test)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475439963
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475439962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1475439964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475439962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsInfo:
+    MaxHealth: 100
+    CurrentHealth: 100
+    MaxEnergy: 40
+    CurrentEnergy: 12
+    Name: LoveIsStuff
 --- !u!1 &1524108873
 GameObject:
   m_ObjectHideFlags: 0

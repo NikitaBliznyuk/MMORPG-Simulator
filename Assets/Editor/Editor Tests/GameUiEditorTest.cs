@@ -23,8 +23,6 @@ public class GameUiEditorTest : EditorWindow
             if (gameUI != null)
             {
                 gameUI.UpdateTopUi(new UiInfo {MaxHealth = 100, CurrentHealth = 40, Name = "John Cena"}, true);
-                gameUI.UpdateHeroUI(
-                    new UiInfo {MaxHealth = 200, CurrentHealth = 54, MaxEnergy = 50, CurrentEnergy = 49}, true);
             }
             else
             {

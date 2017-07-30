@@ -18,6 +18,9 @@ namespace Game.UI.View
 
         public void UpdateBarInfo(int maxValue, int currentValue)
         {
+            maxValue = Mathf.Max(maxValue, 0);
+            currentValue = Mathf.Clamp(currentValue, 0, maxValue);
+            
             text.text = currentValue + "/" + maxValue;
 
             float t = maxValue > 0.0f ? currentValue / (float) maxValue : 0.0f;
