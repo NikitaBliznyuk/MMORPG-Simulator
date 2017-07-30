@@ -20,10 +20,6 @@ public class ClickController : MonoBehaviour
                 CharacterInfo info = hit.collider.GetComponentInParent<CharacterInfo>();
                 view.UpdateTopUi(info.StatsInfo, true);
             }
-            else
-            {
-                view.UpdateTopUi(new UiInfo(), false);
-            }
         }
     }
 

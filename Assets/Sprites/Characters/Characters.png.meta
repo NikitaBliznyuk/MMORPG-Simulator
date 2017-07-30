@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: d0a637656cd6560438c82a9de41322b4
-timeCreated: 1501320186
+timeCreated: 1501373560
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Enemy (test)
+    21300002: Healer
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -91,6 +92,20 @@ TextureImporter:
         y: 395
         width: 91
         height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Healer
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 409
+        width: 73
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
