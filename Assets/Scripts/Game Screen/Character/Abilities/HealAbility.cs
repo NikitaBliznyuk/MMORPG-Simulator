@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealAbility : IAbility
 {
-    private readonly int minHeal = 15;
-    private readonly int maxHeal = 25;
+    private readonly int minHeal = 20;
+    private readonly int maxHeal = 35;
 
     public AbilityInfo AbilityInfo
     {
@@ -17,17 +17,14 @@ public class HealAbility : IAbility
 
     private AbilityInfo abilityInfo;
     
-    public HealAbility()
+    public HealAbility(AbilityInfo info)
     {
-        abilityInfo.Name = "Heal";
-        abilityInfo.Description = "Heal one target on 15-25 health.";
-        abilityInfo.Cooldown = 1.5f;
-        abilityInfo.Avaliable = true;
+        abilityInfo = info;
     }
 
     public void Invoke(CharacterInfoController invoker, CharacterInfoController target)
     {
-        int healValue = Random.Range(minHeal, maxHeal + 1);
+        int healValue = Random.Range(minHeal + abilityInfo.BonusPower, maxHeal + abilityInfo.BonusPower + 1);
         
         if (target == null)
         {

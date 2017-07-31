@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Character
 {
     public class CharacterInfoController : MonoBehaviour
     {
+        public static CharacterInfoController PlayerInstance;
+        
         [Header("References")] 
         
         [SerializeField] private CharacterInfo info;
@@ -13,6 +16,8 @@ namespace Game.Character
         
         [SerializeField] private string allyTag = "Ally";
         [SerializeField] private string enemyTag = "Enemy";
+
+        [SerializeField] private List<AbilityInfo> infos;
 
         public List<IAbility> Abilities { get; private set; }
         public string AllyTag
@@ -28,8 +33,29 @@ namespace Game.Character
 
         private void Awake()
         {
-            Abilities = new List<IAbility> {new HitAbility(), new HealAbility()};
+            if (name == "Player")
+            {
+                PlayerInstance = this;
+            }
+            
+            LoadAbilities();
             inputController = GetComponent<IInputController>();
+        }
+
+        private void LoadAbilities()
+        {
+            // TODO REMOVE THIS WITH LOADING INFO FROM MENU
+            Abilities = new List<IAbility>();
+            foreach (var abilityInfo in infos)
+            {
+                Type abilityType = Type.GetType(abilityInfo.ClassName);
+                
+                if (abilityType != null)
+                {
+                    IAbility ability = (IAbility) Activator.CreateInstance(abilityType, abilityInfo);
+                    Abilities.Add(ability);
+                }
+            }
         }
 
         public void DealDamage(int damage)
@@ -50,6 +76,9 @@ namespace Game.Character
 
         public void InvokeAbility(int index)
         {
+            if(index > Abilities.Count - 1)
+                return;
+            
             CharacterInfoController invoker = this;
             CharacterInfoController target = inputController.CurrentObservableInfo != null
                 ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()

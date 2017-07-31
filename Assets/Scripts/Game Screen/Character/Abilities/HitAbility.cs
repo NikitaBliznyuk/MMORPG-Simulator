@@ -17,19 +17,16 @@ public class HitAbility : IAbility
 
 	private AbilityInfo abilityInfo;
     
-	public HitAbility()
+	public HitAbility(AbilityInfo info)
 	{
-		abilityInfo.Name = "Hit";
-		abilityInfo.Description = "Hit one target on 15-25 health.";
-		abilityInfo.Cooldown = 2.5f;
-		abilityInfo.Avaliable = true;
+		abilityInfo = info;
 	}
 
 	public void Invoke(CharacterInfoController invoker, CharacterInfoController target)
 	{
 		if (target != null && target.EnemyTag == invoker.AllyTag)
 		{
-			target.DealDamage(Random.Range(minDamage, maxDamage + 1));
+			target.DealDamage(Random.Range(minDamage + abilityInfo.BonusPower, maxDamage + abilityInfo.BonusPower + 1));
 			invoker.StartCoroutine(Cooldown(abilityInfo.Cooldown));
 		}
 	}

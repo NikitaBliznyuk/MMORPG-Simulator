@@ -33,7 +33,10 @@ public class BotInputController : MonoBehaviour, IInputController
     {
         while (CurrentObservableInfo.StatsInfo.CurrentHealth > 0)
         {
-            characterInfoController.InvokeAbility(0);
+            IAbility avaliableAbility = characterInfoController.Abilities.Find(ability =>
+                ability.AbilityInfo.Avaliable && ability.AbilityInfo.Name.Contains("Hit"));
+            if(avaliableAbility != null)
+                characterInfoController.InvokeAbility(characterInfoController.Abilities.IndexOf(avaliableAbility));
             yield return null;
         }
     }
