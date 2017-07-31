@@ -1,4 +1,5 @@
-﻿using Game.UI.View;
+﻿using System.Collections.Generic;
+using Game.UI.View;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CharacterInfo = Game.Character.CharacterInfo;
@@ -38,9 +39,18 @@ public class ClickController : MonoBehaviour, IInputController
 
     private bool IsClicking()
     {
-        if (EventSystem.current.IsPointerOverGameObject(-1))
-            return false;
-        return Input.GetMouseButtonDown(0);
+        return !IsPointerOverUIObject() && Input.GetMouseButtonDown(0);
+    }
+    
+    private bool IsPointerOverUIObject() {
+        PointerEventData eventDataCurrentPosition =
+            new PointerEventData(EventSystem.current)
+            {
+                position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
+            };
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
     private void GetNextPosition()
