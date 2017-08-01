@@ -16,5 +16,6 @@ public struct AbilityInfo
     public string Name;
     public string Description;
     public float Cooldown;
+    public int Cost;
     public bool Avaliable;
 }

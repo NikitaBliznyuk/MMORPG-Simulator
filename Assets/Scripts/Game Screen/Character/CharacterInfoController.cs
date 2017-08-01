@@ -56,12 +56,19 @@ namespace Game.Character
             if(index > Abilities.Length - 1)
                 return;
             
+            if(info.StatsInfo.CurrentEnergy < Abilities[index].AbilityInfo.Cost)
+                return;
+            
             CharacterInfoController invoker = this;
             CharacterInfoController target = inputController.CurrentObservableInfo != null
                 ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()
                 : null;
-            if(Abilities[index].AbilityInfo.Avaliable)
+            if (Abilities[index].AbilityInfo.Avaliable)
+            {
                 Abilities[index].Invoke(invoker, target);
+                info.StatsInfo.CurrentEnergy -= Abilities[index].AbilityInfo.Cost;
+                info.StatsInfo.CurrentEnergy = info.StatsInfo.CurrentEnergy >= 0 ? info.StatsInfo.CurrentEnergy : 0;
+            }
         }
     }
 }
