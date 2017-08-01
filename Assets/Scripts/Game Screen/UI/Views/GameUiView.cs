@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Character;
 using UnityEngine;
 using CharacterInfo = Game.Character.CharacterInfo;
 
@@ -10,10 +11,11 @@ namespace Game.UI.View
         
         [SerializeField] private GameObject topUIReference;
         [SerializeField] private GameObject heroUIReference;
-        [SerializeField] private CharacterInfo playerInfo;
         
         private IUiBehaviour topUI;
         private IUiBehaviour heroUI;
+
+        private CharacterInfo playerInfo;
 
         private UiInfo currentObservableInfo;
 
@@ -23,6 +25,8 @@ namespace Game.UI.View
                 topUI = topUIReference.GetComponent<IUiBehaviour>();
             if(heroUIReference != null)
                 heroUI = heroUIReference.GetComponent<IUiBehaviour>();
+            
+            playerInfo = CharacterInfoController.PlayerInstance.GetComponent<CharacterInfo>();
         }
 
         private void Start()

@@ -342,8 +342,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1475439963}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136030992
 GameObject:
@@ -405,7 +405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181414223
 GameObject:
@@ -602,7 +602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318223636
 GameObject:
@@ -679,18 +679,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 318223639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1475439965}
-        m_MethodName: InvokeAbility
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &318223639
@@ -946,18 +935,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 538117294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1475439965}
-        m_MethodName: InvokeAbility
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &538117294
@@ -1096,6 +1074,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 607781840}
+--- !u!1 &627966075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 627966076}
+  - component: {fileID: 627966077}
+  m_Layer: 0
+  m_Name: Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &627966076
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627966075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627966077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627966075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0dea8f67fa054a9ab2aa873858200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 114905689443386660, guid: bb4487e093f51e2469286f57ce2e953e,
+    type: 2}
 --- !u!1 &686837267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,7 +1350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &780163280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,19 +1365,6 @@ MonoBehaviour:
   info: {fileID: 780163281}
   allyTag: Ally
   enemyTag: Enemy
-  infos:
-  - ClassName: HealAbility
-    Name: Heal
-    Description: dasd
-    Cooldown: 1.5
-    Avaliable: 1
-    BonusPower: 0
-  - ClassName: HitAbility
-    Name: Hit
-    Description: asdasf
-    Cooldown: 2
-    Avaliable: 1
-    BonusPower: 10
 --- !u!114 &780163281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,7 +1396,7 @@ Transform:
   - {fileID: 503329108}
   - {fileID: 1154431889}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &780163283
 MonoBehaviour:
@@ -1502,7 +1509,7 @@ RectTransform:
   - {fileID: 932178085}
   - {fileID: 1395290289}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1522,7 +1529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topUIReference: {fileID: 932178084}
   heroUIReference: {fileID: 1395290288}
-  playerInfo: {fileID: 1475439964}
 --- !u!1 &815235957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1603,57 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815235957}
+--- !u!1001 &878268229
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663069924814698, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114949785301121036, guid: bb4487e093f51e2469286f57ce2e953e,
+        type: 2}
+      propertyPath: view
+      value: 
+      objectReference: {fileID: 807818902}
+    - target: {fileID: 1771167315980020, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &932178084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,7 +1999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1265272185
 Transform:
   m_ObjectHideFlags: 0
@@ -1956,7 +2013,7 @@ Transform:
   - {fileID: 1612193633}
   - {fileID: 1524108874}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1265272186
 MonoBehaviour:
@@ -1990,13 +2047,6 @@ MonoBehaviour:
   info: {fileID: 1265272186}
   allyTag: Enemy
   enemyTag: Ally
-  infos:
-  - ClassName: HitAbility
-    Name: Hit
-    Description: asdafs
-    Cooldown: 2.5
-    Avaliable: 1
-    BonusPower: 20
 --- !u!114 &1265272188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2076,7 +2126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1475439963
 Transform:
   m_ObjectHideFlags: 0
@@ -2089,9 +2139,8 @@ Transform:
   m_Children:
   - {fileID: 1679148001}
   - {fileID: 1706554273}
-  - {fileID: 128966342}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1475439964
 MonoBehaviour:
@@ -2125,19 +2174,6 @@ MonoBehaviour:
   info: {fileID: 1475439964}
   allyTag: Ally
   enemyTag: Enemy
-  infos:
-  - ClassName: HealAbility
-    Name: Heal
-    Description: bla bla
-    Cooldown: 1.5
-    Avaliable: 1
-    BonusPower: 0
-  - ClassName: HitAbility
-    Name: Hit
-    Description: 'bla bla #2'
-    Cooldown: 1
-    Avaliable: 1
-    BonusPower: 0
 --- !u!114 &1475439966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,7 +2185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 807818902}
 --- !u!114 &1475439967
 MonoBehaviour:
   m_ObjectHideFlags: 0

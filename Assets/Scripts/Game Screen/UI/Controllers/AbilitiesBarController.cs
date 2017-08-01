@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Game.Character;
+﻿using Game.Character;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +8,20 @@ public class AbilitiesBarController : MonoBehaviour
     
     private void Start()
     {
-        List<IAbility> abilities = CharacterInfoController.PlayerInstance.Abilities;
+        IAbility[] abilities = CharacterInfoController.PlayerInstance.Abilities;
         
         for (int i = 0; i < buttons.Length; i++)
         {
             Text text = buttons[i].GetComponentInChildren<Text>();
-            text.text = i < abilities.Count ? abilities[i].AbilityInfo.Name : "?";
+            if (i < abilities.Length)
+            {
+                int index = i;
+                buttons[i].onClick.AddListener(() =>
+                {
+                    CharacterInfoController.PlayerInstance.InvokeAbility(index);
+                });
+                text.text = abilities[i].AbilityInfo.Name;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using Game.Character;
 using UnityEngine;
@@ -33,10 +34,11 @@ public class BotInputController : MonoBehaviour, IInputController
     {
         while (CurrentObservableInfo.StatsInfo.CurrentHealth > 0)
         {
-            IAbility avaliableAbility = characterInfoController.Abilities.Find(ability =>
+            IAbility avaliableAbility = characterInfoController.Abilities.First(ability =>
                 ability.AbilityInfo.Avaliable && ability.AbilityInfo.Name.Contains("Hit"));
-            if(avaliableAbility != null)
-                characterInfoController.InvokeAbility(characterInfoController.Abilities.IndexOf(avaliableAbility));
+            if (avaliableAbility != null)
+                characterInfoController.InvokeAbility(
+                    Array.IndexOf(characterInfoController.Abilities, avaliableAbility));
             yield return null;
         }
     }

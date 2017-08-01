@@ -1,0 +1,26 @@
+HitAbility|
+{
+	"abilityInfo":
+	{
+		"Name":"Hit",
+		"Description":"Simple hit",
+		"Cooldown":1.0,"Avaliable":true
+	},
+	"hitInfo":
+	{
+		"MinDamage":10,
+		"MaxDamage":15
+	}
+}
+&HealAbility|{
+    "abilityInfo": {
+        "Name": "Heal",
+        "Description": "Simple heal",
+        "Cooldown": 1.5,
+        "Avaliable": true
+    },
+    "healInfo": {
+        "MinHeal": 25,
+        "MaxHeal": 40
+    }
+}&

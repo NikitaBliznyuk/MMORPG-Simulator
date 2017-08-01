@@ -2,34 +2,35 @@
 using Game.Character;
 using UnityEngine;
 
-public class HitAbility : IAbility
+public class HitAbility : IAbility, IHit
 {
-	private readonly int minDamage = 10;
-	private readonly int maxDamage = 15;
+	public AbilityInfo abilityInfo;
+	public HitInfo hitInfo;
+
+	public HitAbility(AbilityInfo abilityInfo, HitInfo hitInfo)
+	{
+		this.abilityInfo = abilityInfo;
+		this.hitInfo = hitInfo;
+		ClassName = GetType().FullName;
+	}
 
 	public string ClassName { get; private set; }
 
 	public AbilityInfo AbilityInfo
 	{
-		get
-		{
-			return abilityInfo;
-		}
+		get { return abilityInfo; }
 	}
 
-	private AbilityInfo abilityInfo;
-    
-	public HitAbility(AbilityInfo info)
+	public HitInfo HitInfo
 	{
-		abilityInfo = info;
-		ClassName = GetType().FullName;
+		get { return hitInfo; }
 	}
 
 	public void Invoke(CharacterInfoController invoker, CharacterInfoController target)
 	{
 		if (target != null && target.EnemyTag == invoker.AllyTag)
 		{
-			target.DealDamage(Random.Range(minDamage, maxDamage + 1));
+			target.DealDamage(Random.Range(hitInfo.MinDamage, HitInfo.MaxDamage + 1));
 			invoker.StartCoroutine(Cooldown(abilityInfo.Cooldown));
 		}
 	}

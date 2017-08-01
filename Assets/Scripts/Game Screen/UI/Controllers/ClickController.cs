@@ -6,16 +6,15 @@ using CharacterInfo = Game.Character.CharacterInfo;
 
 public class ClickController : MonoBehaviour, IInputController
 {
-    [Header("References")]
-    
-    [SerializeField] private GameUiView view;
-
     public CharacterInfo CurrentObservableInfo { get; private set; }
     public Vector3 NextPosition { get; private set; }
+    
+    private GameUiView view;
 
     private void Awake()
     {
         NextPosition = transform.position;
+        view = FindObjectOfType<GameUiView>();
     }
 
     private void Update()

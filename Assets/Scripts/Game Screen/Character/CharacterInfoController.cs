@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Character
@@ -17,9 +16,8 @@ namespace Game.Character
         [SerializeField] private string allyTag = "Ally";
         [SerializeField] private string enemyTag = "Enemy";
 
-        [SerializeField] private List<AbilityInfo> infos;
-
-        public List<IAbility> Abilities { get; private set; }
+        public IAbility[] Abilities { get; set; }
+        
         public string AllyTag
         {
             get { return allyTag; }
@@ -33,29 +31,8 @@ namespace Game.Character
 
         private void Awake()
         {
-            if (name == "Player")
-            {
-                PlayerInstance = this;
-            }
-            
-            LoadAbilities();
+            name = info.StatsInfo.Name;
             inputController = GetComponent<IInputController>();
-        }
-
-        private void LoadAbilities()
-        {
-            // TODO REMOVE THIS WITH LOADING INFO FROM MENU
-            Abilities = new List<IAbility>();
-            /*foreach (var abilityInfo in infos)
-            {
-                Type abilityType = Type.GetType(abilityInfo.ClassName);
-                
-                if (abilityType != null)
-                {
-                    IAbility ability = (IAbility) Activator.CreateInstance(abilityType, abilityInfo);
-                    Abilities.Add(ability);
-                }
-            }*/
         }
 
         public void DealDamage(int damage)
@@ -76,7 +53,7 @@ namespace Game.Character
 
         public void InvokeAbility(int index)
         {
-            if(index > Abilities.Count - 1)
+            if(index > Abilities.Length - 1)
                 return;
             
             CharacterInfoController invoker = this;

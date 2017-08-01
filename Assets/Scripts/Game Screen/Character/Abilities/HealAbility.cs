@@ -2,32 +2,33 @@
 using Game.Character;
 using UnityEngine;
 
-public class HealAbility : IAbility
+public class HealAbility : IAbility, IHeal
 {
-    private readonly int minHeal = 20;
-    private readonly int maxHeal = 35;
+    public AbilityInfo abilityInfo;
+    public HealInfo healInfo;
+
+    public HealAbility(AbilityInfo abilityInfo, HealInfo healInfo)
+    {
+        this.abilityInfo = abilityInfo;
+        this.healInfo = healInfo;
+        ClassName = GetType().FullName;
+    }
 
     public string ClassName { get; private set; }
 
     public AbilityInfo AbilityInfo
     {
-        get
-        {
-            return abilityInfo;
-        }
+        get { return abilityInfo; }
     }
 
-    private AbilityInfo abilityInfo;
-    
-    public HealAbility(AbilityInfo info)
+    public HealInfo HealInfo
     {
-        abilityInfo = info;
-        ClassName = GetType().FullName;
+        get { return healInfo; }
     }
 
     public void Invoke(CharacterInfoController invoker, CharacterInfoController target)
     {
-        int healValue = Random.Range(minHeal, maxHeal + 1);
+        int healValue = Random.Range(healInfo.MinHeal, HealInfo.MaxHeal + 1);
         
         if (target == null)
         {
