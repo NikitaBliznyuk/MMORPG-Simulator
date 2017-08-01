@@ -46,7 +46,7 @@ namespace Game.Character
         {
             // TODO REMOVE THIS WITH LOADING INFO FROM MENU
             Abilities = new List<IAbility>();
-            foreach (var abilityInfo in infos)
+            /*foreach (var abilityInfo in infos)
             {
                 Type abilityType = Type.GetType(abilityInfo.ClassName);
                 
@@ -55,7 +55,7 @@ namespace Game.Character
                     IAbility ability = (IAbility) Activator.CreateInstance(abilityType, abilityInfo);
                     Abilities.Add(ability);
                 }
-            }
+            }*/
         }
 
         public void DealDamage(int damage)

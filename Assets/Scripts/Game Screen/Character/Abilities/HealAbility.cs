@@ -7,6 +7,8 @@ public class HealAbility : IAbility
     private readonly int minHeal = 20;
     private readonly int maxHeal = 35;
 
+    public string ClassName { get; private set; }
+
     public AbilityInfo AbilityInfo
     {
         get
@@ -20,11 +22,12 @@ public class HealAbility : IAbility
     public HealAbility(AbilityInfo info)
     {
         abilityInfo = info;
+        ClassName = GetType().FullName;
     }
 
     public void Invoke(CharacterInfoController invoker, CharacterInfoController target)
     {
-        int healValue = Random.Range(minHeal + abilityInfo.BonusPower, maxHeal + abilityInfo.BonusPower + 1);
+        int healValue = Random.Range(minHeal, maxHeal + 1);
         
         if (target == null)
         {
