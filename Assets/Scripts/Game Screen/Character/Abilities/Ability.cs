@@ -19,7 +19,7 @@ public abstract class Ability : ScriptableObject
         get { return avaliable; }
     }
 
-    public abstract void Invoke(CharacterInfoController invoker, CharacterInfoController target);
+    public abstract bool Invoke(CharacterInfoController invoker, CharacterInfoController target);
     
     public IEnumerator Cooldown(float time)
     {

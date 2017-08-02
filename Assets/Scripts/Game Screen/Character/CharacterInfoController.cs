@@ -4,7 +4,7 @@ namespace Game.Character
 {
     public class CharacterInfoController : MonoBehaviour
     {
-        public CharacterInfo Info;
+        [SerializeField] private CharacterInfo info;
 
         [Header("Settings")] 
         
@@ -20,36 +20,42 @@ namespace Game.Character
             get { return enemyTag; }
         }
 
+        public CharacterInfo Info
+        {
+            get { return info; }
+            set { info = value; }
+        }
+
         private IInputController inputController;
 
         private void Start()
         {
-            name = Info.StatsInfo.Name;
+            name = info.StatsInfo.Name;
             inputController = GetComponent<IInputController>();
         }
 
         public void DealDamage(int damage)
         {
             damage = damage >= 0 ? damage : 0;
-            Info.StatsInfo.CurrentHealth -= damage;
-            Info.StatsInfo.CurrentHealth = Info.StatsInfo.CurrentHealth >= 0 ? Info.StatsInfo.CurrentHealth : 0;
+            info.StatsInfo.CurrentHealth -= damage;
+            info.StatsInfo.CurrentHealth = info.StatsInfo.CurrentHealth >= 0 ? info.StatsInfo.CurrentHealth : 0;
         }
 
         public void Heal(int value)
         {
             value = value >= 0 ? value : 0;
-            Info.StatsInfo.CurrentHealth += value;
-            Info.StatsInfo.CurrentHealth = Info.StatsInfo.CurrentHealth <= Info.StatsInfo.MaxHealth
-                ? Info.StatsInfo.CurrentHealth
-                : Info.StatsInfo.MaxHealth;
+            info.StatsInfo.CurrentHealth += value;
+            info.StatsInfo.CurrentHealth = info.StatsInfo.CurrentHealth <= info.StatsInfo.MaxHealth
+                ? info.StatsInfo.CurrentHealth
+                : info.StatsInfo.MaxHealth;
         }
 
         public void InvokeAbility(int index)
         {
-            if(index > Info.Abilities.Length - 1)
+            if(index > info.Abilities.Length - 1)
                 return;
             
-            if(Info.StatsInfo.CurrentEnergy < Info.Abilities[index].AbilityInfo.Cost)
+            if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
                 return;
             
             CharacterInfoController invoker = this;
@@ -59,9 +65,12 @@ namespace Game.Character
             
             if (Info.Abilities[index].Avaliable)
             {
-                Info.Abilities[index].Invoke(invoker, target);
-                Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
-                Info.StatsInfo.CurrentEnergy = Info.StatsInfo.CurrentEnergy >= 0 ? Info.StatsInfo.CurrentEnergy : 0;
+                bool successful = Info.Abilities[index].Invoke(invoker, target);
+                if (successful)
+                {
+                    Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
+                    Info.StatsInfo.CurrentEnergy = Info.StatsInfo.CurrentEnergy >= 0 ? Info.StatsInfo.CurrentEnergy : 0;
+                }
             }
         }
     }

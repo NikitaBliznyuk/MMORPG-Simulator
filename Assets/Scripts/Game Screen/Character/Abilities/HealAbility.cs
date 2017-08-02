@@ -11,7 +11,7 @@ public class HealAbility : Ability, IHeal
         get { return healInfo; }
     }
 
-    public override void Invoke(CharacterInfoController invoker, CharacterInfoController target)
+    public override bool Invoke(CharacterInfoController invoker, CharacterInfoController target)
     {
         int healValue = Random.Range(healInfo.MinHeal, HealInfo.MaxHeal + 1);
         
@@ -32,5 +32,7 @@ public class HealAbility : Ability, IHeal
         }
 
         invoker.StartCoroutine(Cooldown(AbilityInfo.Cooldown));
+
+        return true;
     }
 }

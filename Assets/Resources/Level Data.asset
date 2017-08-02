@@ -14,12 +14,13 @@ MonoBehaviour:
   Player:
     StatsInfo:
       MaxHealth: 75
-      CurrentHealth: 25
+      CurrentHealth: 75
       MaxEnergy: 60
       CurrentEnergy: 60
       Name: LoveIsStuff
     MovementSpeed: 1
     Abilities:
     - {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
+    - {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
   Allies: []
   Enemies: []
