@@ -1,14 +1,18 @@
-﻿using Game.Character;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AbilitiesBarController : MonoBehaviour
 {
     [SerializeField] private Button[] buttons;
-    
-    private void Start()
+
+    private void Awake()
     {
-        IAbility[] abilities = CharacterInfoController.PlayerInstance.Abilities;
+        Loader.DataUpdated += LoaderOnDataUpdated;
+    }
+
+    private void LoaderOnDataUpdated(LevelCurrentData data)
+    {
+        Ability[] abilities = data.PlayerReference.Info.Abilities;
         
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -18,9 +22,13 @@ public class AbilitiesBarController : MonoBehaviour
                 int index = i;
                 buttons[i].onClick.AddListener(() =>
                 {
-                    CharacterInfoController.PlayerInstance.InvokeAbility(index);
+                    data.PlayerReference.InvokeAbility(index);
                 });
                 text.text = abilities[i].AbilityInfo.Name;
+            }
+            else
+            {
+                text.text = "?";
             }
         }
     }

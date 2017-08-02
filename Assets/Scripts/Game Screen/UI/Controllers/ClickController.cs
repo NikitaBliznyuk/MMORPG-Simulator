@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Character;
 using Game.UI.View;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,7 +7,7 @@ using CharacterInfo = Game.Character.CharacterInfo;
 
 public class ClickController : MonoBehaviour, IInputController
 {
-    public CharacterInfo CurrentObservableInfo { get; private set; }
+    public CharacterInfoController CurrentObservableInfo { get; private set; }
     public Vector3 NextPosition { get; private set; }
     
     private GameUiView view;
@@ -26,8 +27,8 @@ public class ClickController : MonoBehaviour, IInputController
 
             if (Physics.Raycast(cameraRay, out hit, 10, LayerMask.GetMask("Clickable")))
             {
-                CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfo>();
-                view.UpdateTopUi(CurrentObservableInfo.StatsInfo, true);
+                CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
+                view.UpdateTopUi(CurrentObservableInfo.Info.StatsInfo, true);
             }
             else
             {

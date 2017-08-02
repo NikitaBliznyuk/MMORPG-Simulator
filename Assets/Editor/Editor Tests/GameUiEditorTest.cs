@@ -1,5 +1,4 @@
 ﻿using Game.UI.View;
-using TestNamespace;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,26 +28,6 @@ public class GameUiEditorTest : EditorWindow
             {
                 Debug.LogWarning("Coudn't find any game ui in scene. Try to switch scene or add game ui.");
             }
-        }
-        
-        // TODO REMOVE THIS TEST
-        if (GUILayout.Button("Test json"))
-        {
-            IAbility ability = new TestAbility(new AbilityInfo
-            {
-                Name = "Test",
-                Avaliable = true,
-                Cooldown = 0.5f,
-                Description = "Hello"
-            }, new HitInfo
-            {
-                MinDamage = 10,
-                MaxDamage = 15
-            });
-            string className = ability.ClassName;
-            string json = JsonUtility.ToJson(ability);
-            string result = className + "|" + json;
-            Debug.Log(result);
         }
     }
 }

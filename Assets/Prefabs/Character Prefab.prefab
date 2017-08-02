@@ -51,7 +51,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4663069924814698}
-  - component: {fileID: 114062657574263260}
   - component: {fileID: 114905689443386660}
   - component: {fileID: 114949785301121036}
   - component: {fileID: 114154907894216148}
@@ -115,24 +114,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.75, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114062657574263260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1771167315980020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statsInfo:
-    MaxHealth: 80
-    CurrentHealth: 80
-    MaxEnergy: 40
-    CurrentEnergy: 40
-    Name: LoveIsStuff
-  movementSpeed: 1.5
 --- !u!114 &114154907894216148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 114062657574263260}
+  Info:
+    StatsInfo:
+      MaxHealth: 0
+      CurrentHealth: 0
+      MaxEnergy: 0
+      CurrentEnergy: 0
+      Name: 
+    MovementSpeed: 0
   allyTag: Ally
   enemyTag: Enemy
 --- !u!114 &114949785301121036
@@ -169,7 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 0}
 --- !u!212 &212686518035484810
 SpriteRenderer:
   m_ObjectHideFlags: 1

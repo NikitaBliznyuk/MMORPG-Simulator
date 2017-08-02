@@ -1,20 +1,20 @@
-﻿using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
+﻿using Game.Character;
+using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
     private IInputController inputController;
-    private CharacterInfo info;
+    private CharacterInfoController infoController;
 
     private void Awake()
     {
         inputController = GetComponent<IInputController>();
-        info = GetComponent<CharacterInfo>();
+        infoController = GetComponent<CharacterInfoController>();
     }
 
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, inputController.NextPosition,
-            info.MovementSpeed * Time.deltaTime);
+            infoController.Info.MovementSpeed * Time.deltaTime);
     }
 }

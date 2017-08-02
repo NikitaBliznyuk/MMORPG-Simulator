@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
+﻿using Game.Character;
+using UnityEngine;
 
 public interface IInputController
 {
-    CharacterInfo CurrentObservableInfo { get; }
+    CharacterInfoController CurrentObservableInfo { get; }
     Vector3 NextPosition { get; }
 }

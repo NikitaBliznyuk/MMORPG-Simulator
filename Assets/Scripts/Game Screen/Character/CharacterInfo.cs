@@ -1,22 +1,14 @@
-﻿using Game.UI.View;
-using UnityEngine;
+﻿using System;
+using Game.UI.View;
 
 namespace Game.Character
 {
-    public class CharacterInfo : MonoBehaviour
+    [Serializable]
+    public class CharacterInfo
     {
-        public UiInfo StatsInfo
-        {
-            get { return statsInfo; }
-        }
-
-        public float MovementSpeed
-        {
-            get { return movementSpeed; }
-        }
-
-        [SerializeField] private UiInfo statsInfo;
-        [SerializeField] private float movementSpeed;
+        public UiInfo StatsInfo;
+        public float MovementSpeed;
+        public Ability[] Abilities;
     }
 }
 

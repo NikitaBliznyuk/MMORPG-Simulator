@@ -11,7 +11,7 @@ public class BotInputController : MonoBehaviour, IInputController
 {
     private CharacterInfoController characterInfoController;
     
-    public CharacterInfo CurrentObservableInfo { get; private set; }
+    public CharacterInfoController CurrentObservableInfo { get; private set; }
     public Vector3 NextPosition { get; private set; }
 
     private void Awake()
@@ -25,20 +25,20 @@ public class BotInputController : MonoBehaviour, IInputController
         CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.EnemyTag)
             .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
             .First()
-            .GetComponent<CharacterInfo>();
+            .GetComponent<CharacterInfoController>();
 
         StartCoroutine(TestCoroutine());
     }
 
     private IEnumerator TestCoroutine()
     {
-        while (CurrentObservableInfo.StatsInfo.CurrentHealth > 0)
+        while (CurrentObservableInfo.Info.StatsInfo.CurrentHealth > 0)
         {
-            IAbility avaliableAbility = characterInfoController.Abilities.First(ability =>
-                ability.AbilityInfo.Avaliable && ability.AbilityInfo.Name.Contains("Hit"));
+            Ability avaliableAbility = characterInfoController.Info.Abilities.First(ability =>
+                ability.Avaliable && ability.AbilityInfo.Name.Contains("Hit"));
             if (avaliableAbility != null)
                 characterInfoController.InvokeAbility(
-                    Array.IndexOf(characterInfoController.Abilities, avaliableAbility));
+                    Array.IndexOf(characterInfoController.Info.Abilities, avaliableAbility));
             yield return null;
         }
     }

@@ -2,7 +2,7 @@
 
 public interface IHeal
 {
-    HealInfo HealInfo { get; }
+     HealInfo HealInfo { get; }
 }
 
 [Serializable]

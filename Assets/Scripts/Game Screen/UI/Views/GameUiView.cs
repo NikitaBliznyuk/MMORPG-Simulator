@@ -15,7 +15,7 @@ namespace Game.UI.View
         private IUiBehaviour topUI;
         private IUiBehaviour heroUI;
 
-        private CharacterInfo playerInfo;
+        private CharacterInfoController playerInfo;
 
         private UiInfo currentObservableInfo;
 
@@ -26,7 +26,12 @@ namespace Game.UI.View
             if(heroUIReference != null)
                 heroUI = heroUIReference.GetComponent<IUiBehaviour>();
             
-            playerInfo = CharacterInfoController.PlayerInstance.GetComponent<CharacterInfo>();
+            Loader.DataUpdated += LoaderOnDataUpdated;
+        }
+
+        private void LoaderOnDataUpdated(LevelCurrentData data)
+        {
+            playerInfo = data.PlayerReference;
         }
 
         private void Start()
@@ -54,7 +59,7 @@ namespace Game.UI.View
                 return;
             }
             
-            heroUI.UpdateInfo(playerInfo.StatsInfo);
+            heroUI.UpdateInfo(playerInfo.Info.StatsInfo);
         }
 
         private void Update()

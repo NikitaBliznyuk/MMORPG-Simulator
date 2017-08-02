@@ -1340,7 +1340,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 780163282}
-  - component: {fileID: 780163281}
   - component: {fileID: 780163280}
   - component: {fileID: 780163283}
   - component: {fileID: 780163284}
@@ -1362,27 +1361,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 780163281}
+  Info:
+    StatsInfo:
+      MaxHealth: 0
+      CurrentHealth: 0
+      MaxEnergy: 0
+      CurrentEnergy: 0
+      Name: 
+    MovementSpeed: 0
   allyTag: Ally
   enemyTag: Enemy
---- !u!114 &780163281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 780163279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statsInfo:
-    MaxHealth: 120
-    CurrentHealth: 120
-    MaxEnergy: 30
-    CurrentEnergy: 30
-    Name: Test Ally
-  movementSpeed: 1
 --- !u!4 &780163282
 Transform:
   m_ObjectHideFlags: 0
@@ -1642,11 +1630,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 114949785301121036, guid: bb4487e093f51e2469286f57ce2e953e,
-        type: 2}
-      propertyPath: view
-      value: 
-      objectReference: {fileID: 807818902}
     - target: {fileID: 1771167315980020, guid: bb4487e093f51e2469286f57ce2e953e, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1990,7 +1973,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1265272185}
-  - component: {fileID: 1265272186}
   - component: {fileID: 1265272187}
   - component: {fileID: 1265272188}
   m_Layer: 8
@@ -2015,24 +1997,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1265272186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1265272184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statsInfo:
-    MaxHealth: 1000
-    CurrentHealth: 1000
-    MaxEnergy: 0
-    CurrentEnergy: 0
-    Name: BOSS
-  movementSpeed: 3
 --- !u!114 &1265272187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2044,7 +2008,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 1265272186}
+  Info:
+    StatsInfo:
+      MaxHealth: 0
+      CurrentHealth: 0
+      MaxEnergy: 0
+      CurrentEnergy: 0
+      Name: 
+    MovementSpeed: 0
   allyTag: Enemy
   enemyTag: Ally
 --- !u!114 &1265272188
@@ -2116,7 +2087,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1475439963}
-  - component: {fileID: 1475439964}
   - component: {fileID: 1475439965}
   - component: {fileID: 1475439966}
   - component: {fileID: 1475439967}
@@ -2142,24 +2112,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1475439964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1475439962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaaac7b468e21304594ce175d247807b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statsInfo:
-    MaxHealth: 80
-    CurrentHealth: 80
-    MaxEnergy: 40
-    CurrentEnergy: 40
-    Name: LoveIsStuff
-  movementSpeed: 1.5
 --- !u!114 &1475439965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,7 +2123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 1475439964}
+  Info:
+    StatsInfo:
+      MaxHealth: 0
+      CurrentHealth: 0
+      MaxEnergy: 0
+      CurrentEnergy: 0
+      Name: 
+    MovementSpeed: 0
   allyTag: Ally
   enemyTag: Enemy
 --- !u!114 &1475439966
