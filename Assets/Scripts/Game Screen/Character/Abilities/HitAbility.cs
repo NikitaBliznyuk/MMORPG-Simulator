@@ -16,7 +16,7 @@ public class HitAbility : Ability, IHit
 		if(target == null)
 			return false;
 		
-		if(target.EnemyTag == invoker.EnemyTag)
+		if(target.Info.EnemyTag == invoker.Info.EnemyTag)
 			return false;
 		
 		int hitValue = Random.Range(hitInfo.MinDamage, hitInfo.MaxDamage + 1);

@@ -6,7 +6,7 @@ public class CharacterMovementController : MonoBehaviour
     private IInputController inputController;
     private CharacterInfoController infoController;
 
-    private void Awake()
+    private void Start()
     {
         inputController = GetComponent<IInputController>();
         infoController = GetComponent<CharacterInfoController>();

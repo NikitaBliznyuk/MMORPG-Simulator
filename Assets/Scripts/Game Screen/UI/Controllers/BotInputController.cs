@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using Game.Character;
 using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
 
 // TODO REFACTOR THIS, MAKE INPUT CONTROLLER DO ONLY INPUTS
 
@@ -22,7 +21,7 @@ public class BotInputController : MonoBehaviour, IInputController
 
     private void Start()
     {
-        CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.EnemyTag)
+        CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.Info.EnemyTag)
             .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
             .First()
             .GetComponent<CharacterInfoController>();
@@ -34,11 +33,13 @@ public class BotInputController : MonoBehaviour, IInputController
     {
         while (CurrentObservableInfo.Info.StatsInfo.CurrentHealth > 0)
         {
-            Ability avaliableAbility = characterInfoController.Info.Abilities.First(ability =>
-                ability.Avaliable && ability.AbilityInfo.Name.Contains("Hit"));
+            Ability avaliableAbility = characterInfoController.Info.Abilities.First(ability => ability is IHit);
             if (avaliableAbility != null)
-                characterInfoController.InvokeAbility(
-                    Array.IndexOf(characterInfoController.Info.Abilities, avaliableAbility));
+            {
+                int abilityIndex = Array.IndexOf(characterInfoController.Info.Abilities, avaliableAbility);
+                Debug.Log(abilityIndex);
+                characterInfoController.InvokeAbility(abilityIndex);
+            }
             yield return null;
         }
     }

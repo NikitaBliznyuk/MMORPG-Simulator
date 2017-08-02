@@ -21,7 +21,7 @@ public class HealAbility : Ability, IHeal
         }
         else
         {
-            if (target.AllyTag == invoker.AllyTag)
+            if (target.Info.AllyTag == invoker.Info.AllyTag)
             {
                 target.Heal(healValue);
             }

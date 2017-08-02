@@ -1,5 +1,6 @@
 ﻿using Game.Character;
 using UnityEngine;
+using CharacterInfo = Game.Character.CharacterInfo;
 
 public class Loader : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Loader : MonoBehaviour
     private void Initialize(LevelData data)
     {
         CharacterInfoController player = CreatePlayer(data.Player);
+        CreateEnemies(data.Enemies);
         
         LevelCurrentData levelData = new LevelCurrentData
         {
@@ -42,11 +44,24 @@ public class Loader : MonoBehaviour
         UpdateData(levelData);
     }
 
-    private CharacterInfoController CreatePlayer(Game.Character.CharacterInfo info)
+    private CharacterInfoController CreatePlayer(CharacterInfo info)
     {
         CharacterInfoController player = Instantiate(characterPrefab);
+        player.gameObject.AddComponent<ClickController>();
         player.Info = info;
+        player.tag = info.AllyTag;
         return player;
+    }
+
+    private void CreateEnemies(CharacterInfo[] infos)
+    {
+        foreach (var info in infos)
+        {
+            CharacterInfoController enemy = Instantiate(characterPrefab);
+            enemy.gameObject.AddComponent<BotInputController>();
+            enemy.Info = info;
+            enemy.tag = info.AllyTag;
+        }
     }
 }
 

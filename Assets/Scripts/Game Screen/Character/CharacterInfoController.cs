@@ -6,20 +6,6 @@ namespace Game.Character
     {
         [SerializeField] private CharacterInfo info;
 
-        [Header("Settings")] 
-        
-        [SerializeField] private string allyTag = "Ally";
-        [SerializeField] private string enemyTag = "Enemy";
-        
-        public string AllyTag
-        {
-            get { return allyTag; }
-        }
-        public string EnemyTag
-        {
-            get { return enemyTag; }
-        }
-
         public CharacterInfo Info
         {
             get { return info; }

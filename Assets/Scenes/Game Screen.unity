@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Info:
+  info:
     StatsInfo:
       MaxHealth: 0
       CurrentHealth: 0
@@ -1369,6 +1369,7 @@ MonoBehaviour:
       CurrentEnergy: 0
       Name: 
     MovementSpeed: 0
+    Abilities: []
   allyTag: Ally
   enemyTag: Enemy
 --- !u!4 &780163282
@@ -2008,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Info:
+  info:
     StatsInfo:
       MaxHealth: 0
       CurrentHealth: 0
@@ -2016,6 +2017,7 @@ MonoBehaviour:
       CurrentEnergy: 0
       Name: 
     MovementSpeed: 0
+    Abilities: []
   allyTag: Enemy
   enemyTag: Ally
 --- !u!114 &1265272188
@@ -2123,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Info:
+  info:
     StatsInfo:
       MaxHealth: 0
       CurrentHealth: 0
@@ -2131,6 +2133,7 @@ MonoBehaviour:
       CurrentEnergy: 0
       Name: 
     MovementSpeed: 0
+    Abilities: []
   allyTag: Ally
   enemyTag: Enemy
 --- !u!114 &1475439966

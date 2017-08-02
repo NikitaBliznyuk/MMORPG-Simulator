@@ -3,7 +3,6 @@ using Game.Character;
 using Game.UI.View;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using CharacterInfo = Game.Character.CharacterInfo;
 
 public class ClickController : MonoBehaviour, IInputController
 {

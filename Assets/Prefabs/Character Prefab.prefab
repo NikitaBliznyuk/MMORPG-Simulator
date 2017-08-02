@@ -52,7 +52,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4663069924814698}
   - component: {fileID: 114905689443386660}
-  - component: {fileID: 114949785301121036}
   - component: {fileID: 114154907894216148}
   m_Layer: 8
   m_Name: Character Prefab
@@ -136,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df0029cc84b8d4ea16ccf4d8e9f945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Info:
+  info:
     StatsInfo:
       MaxHealth: 0
       CurrentHealth: 0
@@ -144,19 +143,9 @@ MonoBehaviour:
       CurrentEnergy: 0
       Name: 
     MovementSpeed: 0
+    Abilities: []
   allyTag: Ally
   enemyTag: Enemy
---- !u!114 &114949785301121036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1771167315980020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8b32bc774b8ec4e84b0bc9654c1aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212686518035484810
 SpriteRenderer:
   m_ObjectHideFlags: 1
