@@ -19,6 +19,10 @@ public class GameLoader : EditorWindow
         {
             data.Player.StatsInfo.CurrentHealth = data.Player.StatsInfo.MaxHealth;
             data.Player.StatsInfo.CurrentEnergy = data.Player.StatsInfo.MaxEnergy;
+            foreach (var playerAbility in data.Player.Abilities)
+            {
+                playerAbility.Avaliable = true;
+            }
 
             foreach (var enemy in data.Enemies)
             {

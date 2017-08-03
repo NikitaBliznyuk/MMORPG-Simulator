@@ -1,4 +1,5 @@
-﻿using Game.Character;
+﻿using System.Linq;
+using Game.Character;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Heal ability")]
@@ -21,7 +22,7 @@ public class HealAbility : Ability, IHeal
         }
         else
         {
-            if (target.Info.AllyTag == invoker.Info.AllyTag)
+            if (invoker.Info.AllyTags.Contains(target.Info.Tag))
             {
                 if (Vector3.Distance(invoker.transform.position, target.transform.position) <= AbilityInfo.CastDistance)
                 {

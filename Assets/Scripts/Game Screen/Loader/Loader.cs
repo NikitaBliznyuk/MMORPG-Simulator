@@ -49,7 +49,7 @@ public class Loader : MonoBehaviour
         CharacterInfoController player = Instantiate(characterPrefab);
         player.gameObject.AddComponent<ClickController>();
         player.Info = info;
-        player.tag = info.AllyTag;
+        player.tag = info.Tag; // Unnecessary. Just to see in inspector.
         return player;
     }
 
@@ -60,7 +60,7 @@ public class Loader : MonoBehaviour
             CharacterInfoController enemy = Instantiate(characterPrefab);
             enemy.gameObject.AddComponent<BotInputController>();
             enemy.Info = info;
-            enemy.tag = info.AllyTag;
+            enemy.tag = info.Tag; // Unnecessary. Just to see in inspector.
         }
     }
 }

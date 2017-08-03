@@ -22,7 +22,7 @@ public class BotInputController : MonoBehaviour, IInputController
     // TODO REMOVE AFTER TESTING
     private void Start()
     {
-        CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.Info.EnemyTag)
+        CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.Info.EnemyTags.First())
             .OrderBy(enemy => Vector3.Distance(transform.position, enemy.transform.position))
             .First()
             .GetComponent<CharacterInfoController>();

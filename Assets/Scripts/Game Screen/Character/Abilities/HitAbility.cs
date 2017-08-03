@@ -1,4 +1,5 @@
-﻿using Game.Character;
+﻿using System.Linq;
+using Game.Character;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Hit ability")]
@@ -16,10 +17,8 @@ public class HitAbility : Ability, IHit
 		if(target == null)
 			return false;
 		
-		if(target.Info.EnemyTag == invoker.Info.EnemyTag)
+		if(!invoker.Info.EnemyTags.Contains(target.Info.Tag))
 			return false;
-		
-		Debug.Log("Distance: " + Vector3.Distance(invoker.transform.position, target.transform.position));
 
 		if (Vector3.Distance(invoker.transform.position, target.transform.position) > AbilityInfo.CastDistance)
 			return false;

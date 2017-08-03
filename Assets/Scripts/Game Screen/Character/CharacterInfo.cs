@@ -9,8 +9,9 @@ namespace Game.Character
         public UiInfo StatsInfo;
         public float MovementSpeed;
         public Ability[] Abilities;
-        public string AllyTag;
-        public string EnemyTag;
+        public string Tag;
+        public string[] AllyTags;
+        public string[] EnemyTags;
     }
 }
 

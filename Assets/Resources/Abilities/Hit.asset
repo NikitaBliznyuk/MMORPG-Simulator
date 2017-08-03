@@ -16,7 +16,7 @@ MonoBehaviour:
     Description: Simple hit.
     Cooldown: 1
     Cost: 3
-    CastDistance: 1
+    CastDistance: 1.5
   hitInfo:
     MinDamage: 10
     MaxDamage: 15

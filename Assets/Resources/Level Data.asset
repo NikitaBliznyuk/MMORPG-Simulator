@@ -14,27 +14,33 @@ MonoBehaviour:
   Player:
     StatsInfo:
       MaxHealth: 75
-      CurrentHealth: 60
+      CurrentHealth: 64
       MaxEnergy: 60
-      CurrentEnergy: 60
+      CurrentEnergy: 5
       Name: LoveIsStuff
     MovementSpeed: 1
     Abilities:
     - {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
     - {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
     - {fileID: 11400000, guid: fcba9e41b7fe26a4ea3dc490fa9e5d72, type: 2}
-    AllyTag: Ally
-    EnemyTag: Enemy
+    Tag: Raid 0
+    AllyTags:
+    - Raid 0
+    EnemyTags:
+    - Boss
   Allies: []
   Enemies:
   - StatsInfo:
       MaxHealth: 450
-      CurrentHealth: 298
+      CurrentHealth: 299
       MaxEnergy: 0
       CurrentEnergy: 0
       Name: Boss
     MovementSpeed: 0.5
     Abilities:
     - {fileID: 11400000, guid: ae01a50a788fef449bd19ae5eae2cd24, type: 2}
-    AllyTag: Enemy
-    EnemyTag: Ally
+    Tag: Boss
+    AllyTags:
+    - Boss
+    EnemyTags:
+    - Raid 0

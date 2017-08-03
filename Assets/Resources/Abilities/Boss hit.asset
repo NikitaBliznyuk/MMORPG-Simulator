@@ -16,7 +16,7 @@ MonoBehaviour:
     Description: Boss hit.
     Cooldown: 2
     Cost: 0
-    CastDistance: 1
+    CastDistance: 2
   hitInfo:
     MinDamage: 1
     MaxDamage: 3
