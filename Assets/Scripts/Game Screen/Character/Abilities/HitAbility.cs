@@ -19,6 +19,11 @@ public class HitAbility : Ability, IHit
 		if(target.Info.EnemyTag == invoker.Info.EnemyTag)
 			return false;
 		
+		Debug.Log("Distance: " + Vector3.Distance(invoker.transform.position, target.transform.position));
+
+		if (Vector3.Distance(invoker.transform.position, target.transform.position) > AbilityInfo.CastDistance)
+			return false;
+		
 		int hitValue = Random.Range(hitInfo.MinDamage, hitInfo.MaxDamage + 1);
 		target.DealDamage(hitValue);
 

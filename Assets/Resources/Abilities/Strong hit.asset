@@ -16,6 +16,7 @@ MonoBehaviour:
     Description: Much stronger that just hit.
     Cooldown: 2.5
     Cost: 15
+    CastDistance: 1
   hitInfo:
     MinDamage: 30
     MaxDamage: 40

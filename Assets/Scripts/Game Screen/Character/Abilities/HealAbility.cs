@@ -23,7 +23,14 @@ public class HealAbility : Ability, IHeal
         {
             if (target.Info.AllyTag == invoker.Info.AllyTag)
             {
-                target.Heal(healValue);
+                if (Vector3.Distance(invoker.transform.position, target.transform.position) <= AbilityInfo.CastDistance)
+                {
+                    target.Heal(healValue);
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

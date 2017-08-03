@@ -16,7 +16,7 @@ MonoBehaviour:
     Description: Simple heal.
     Cooldown: 1.2
     Cost: 7
-  avaliable: 1
+    CastDistance: 5
   healInfo:
     MinHeal: 25
     MaxHeal: 40

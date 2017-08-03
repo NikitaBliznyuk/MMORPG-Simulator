@@ -37,4 +37,5 @@ public struct AbilityInfo
     public string Description;
     public float Cooldown;
     public int Cost;
+    public float CastDistance;
 }
