@@ -1,4 +1,5 @@
-﻿using Game.Character;
+﻿using System.Linq;
+using Game.Character;
 using UnityEngine;
 using CharacterInfo = Game.Character.CharacterInfo;
 
@@ -44,23 +45,25 @@ public class Loader : MonoBehaviour
         UpdateData(levelData);
     }
 
-    private CharacterInfoController CreatePlayer(CharacterInfo info)
+    private CharacterInfoController CreatePlayer(SpawnData info)
     {
         CharacterInfoController player = Instantiate(characterPrefab);
+        player.transform.position = info.SpawnPosition;
         player.gameObject.AddComponent<ClickController>();
-        player.Info = info;
-        player.tag = info.Tag; // Unnecessary. Just to see in inspector.
+        player.Info = info.CharacterInfo;
+        player.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
         return player;
     }
 
-    private void CreateEnemies(CharacterInfo[] infos)
+    private void CreateEnemies(SpawnData[] infos)
     {
         foreach (var info in infos)
         {
             CharacterInfoController enemy = Instantiate(characterPrefab);
+            enemy.transform.position = info.SpawnPosition;
             enemy.gameObject.AddComponent<BotInputController>();
-            enemy.Info = info;
-            enemy.tag = info.Tag; // Unnecessary. Just to see in inspector.
+            enemy.Info = info.CharacterInfo;
+            enemy.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
         }
     }
 }

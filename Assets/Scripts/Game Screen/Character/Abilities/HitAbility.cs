@@ -19,6 +19,7 @@ public class HitAbility : Ability, IHit
 		
 		if(!invoker.Info.EnemyTags.Contains(target.Info.Tag))
 			return false;
+		Debug.Log(invoker.Info.StatsInfo.Name);
 
 		if (Vector3.Distance(invoker.transform.position, target.transform.position) > AbilityInfo.CastDistance)
 			return false;

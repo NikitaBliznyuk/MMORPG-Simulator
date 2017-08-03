@@ -1,25 +1,33 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using CharacterInfo = Game.Character.CharacterInfo;
 
 [CreateAssetMenu(menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
-    [SerializeField] private CharacterInfo player;
-    [SerializeField] private CharacterInfo[] allies;
-    [SerializeField] private CharacterInfo[] enemies;
+    [SerializeField] private SpawnData player;
+    [SerializeField] private SpawnData[] allies;
+    [SerializeField] private SpawnData[] enemies;
 
-    public CharacterInfo Player
+    public SpawnData Player
     {
         get { return player; }
     }
 
-    public CharacterInfo[] Allies
+    public SpawnData[] Allies
     {
         get { return allies; }
     }
 
-    public CharacterInfo[] Enemies
+    public SpawnData[] Enemies
     {
         get { return enemies; }
     }
+}
+
+[Serializable]
+public struct SpawnData
+{
+    public CharacterInfo CharacterInfo;
+    public Vector2 SpawnPosition;
 }

@@ -17,18 +17,18 @@ public class GameLoader : EditorWindow
         
         if (GUILayout.Button("Load game"))
         {
-            data.Player.StatsInfo.CurrentHealth = data.Player.StatsInfo.MaxHealth;
-            data.Player.StatsInfo.CurrentEnergy = data.Player.StatsInfo.MaxEnergy;
-            foreach (var playerAbility in data.Player.Abilities)
+            data.Player.CharacterInfo.StatsInfo.CurrentHealth = data.Player.CharacterInfo.StatsInfo.MaxHealth;
+            data.Player.CharacterInfo.StatsInfo.CurrentEnergy = data.Player.CharacterInfo.StatsInfo.MaxEnergy;
+            foreach (var playerAbility in data.Player.CharacterInfo.Abilities)
             {
                 playerAbility.Avaliable = true;
             }
 
             foreach (var enemy in data.Enemies)
             {
-                enemy.StatsInfo.CurrentHealth = enemy.StatsInfo.MaxHealth;
-                enemy.StatsInfo.CurrentEnergy = enemy.StatsInfo.MaxEnergy;
-                foreach (var enemyAbility in enemy.Abilities)
+                enemy.CharacterInfo.StatsInfo.CurrentHealth = enemy.CharacterInfo.StatsInfo.MaxHealth;
+                enemy.CharacterInfo.StatsInfo.CurrentEnergy = enemy.CharacterInfo.StatsInfo.MaxEnergy;
+                foreach (var enemyAbility in enemy.CharacterInfo.Abilities)
                 {
                     enemyAbility.Avaliable = true;
                 }

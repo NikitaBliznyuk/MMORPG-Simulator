@@ -1363,15 +1363,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info:
     StatsInfo:
-      MaxHealth: 0
-      CurrentHealth: 0
-      MaxEnergy: 0
-      CurrentEnergy: 0
-      Name: 
+      maxHealth: 0
+      currentHealth: 0
+      healthRegen: 0
+      maxEnergy: 0
+      currentEnergy: 0
+      energyRegen: 0
+      name: 
     MovementSpeed: 0
     Abilities: []
-    AllyTag: 
-    EnemyTag: 
+    Tag: 
+    AllyTags: []
+    EnemyTags: []
 --- !u!4 &780163282
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1858,47 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+--- !u!1 &1166671468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1166671469}
+  - component: {fileID: 1166671470}
+  m_Layer: 0
+  m_Name: Level Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166671469
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1166671468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1355233398}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166671470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1166671468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61688a8477d5a2a479aeb7607ce4a602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: a133aaeebf1fa1a4aa74a6535089db6f, type: 2}
 --- !u!1 &1189192234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,15 +2055,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info:
     StatsInfo:
-      MaxHealth: 0
-      CurrentHealth: 0
-      MaxEnergy: 0
-      CurrentEnergy: 0
-      Name: 
+      maxHealth: 0
+      currentHealth: 0
+      healthRegen: 0
+      maxEnergy: 0
+      currentEnergy: 0
+      energyRegen: 0
+      name: 
     MovementSpeed: 0
     Abilities: []
-    AllyTag: 
-    EnemyTag: 
+    Tag: 
+    AllyTags: []
+    EnemyTags: []
 --- !u!114 &1265272188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,6 +2078,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e4d9fb06bbc47439db0bf7f4e8a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1355233397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1355233398}
+  m_Layer: 0
+  m_Name: TEST!!!!!!
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1355233398
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1355233397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1166671469}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395290288
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,15 +2203,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info:
     StatsInfo:
-      MaxHealth: 0
-      CurrentHealth: 0
-      MaxEnergy: 0
-      CurrentEnergy: 0
-      Name: 
+      maxHealth: 0
+      currentHealth: 0
+      healthRegen: 0
+      maxEnergy: 0
+      currentEnergy: 0
+      energyRegen: 0
+      name: 
     MovementSpeed: 0
     Abilities: []
-    AllyTag: 
-    EnemyTag: 
+    Tag: 
+    AllyTags: []
+    EnemyTags: []
 --- !u!114 &1475439966
 MonoBehaviour:
   m_ObjectHideFlags: 0
