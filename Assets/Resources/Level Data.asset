@@ -14,7 +14,7 @@ MonoBehaviour:
   Player:
     StatsInfo:
       MaxHealth: 75
-      CurrentHealth: 70
+      CurrentHealth: 60
       MaxEnergy: 60
       CurrentEnergy: 60
       Name: LoveIsStuff
@@ -29,7 +29,7 @@ MonoBehaviour:
   Enemies:
   - StatsInfo:
       MaxHealth: 450
-      CurrentHealth: 350
+      CurrentHealth: 298
       MaxEnergy: 0
       CurrentEnergy: 0
       Name: Boss

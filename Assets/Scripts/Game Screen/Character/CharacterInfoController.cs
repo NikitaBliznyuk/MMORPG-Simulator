@@ -36,13 +36,13 @@ namespace Game.Character
                 : info.StatsInfo.MaxHealth;
         }
 
-        public void InvokeAbility(int index)
+        public bool InvokeAbility(int index)
         {
             if(index > info.Abilities.Length - 1)
-                return;
+                return false;
             
             if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
-                return;
+                return false;
             
             CharacterInfoController invoker = this;
             CharacterInfoController target = inputController.CurrentObservableInfo != null
@@ -57,7 +57,11 @@ namespace Game.Character
                     Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
                     Info.StatsInfo.CurrentEnergy = Info.StatsInfo.CurrentEnergy >= 0 ? Info.StatsInfo.CurrentEnergy : 0;
                 }
+
+                return successful;
             }
+
+            return false;
         }
     }
 }

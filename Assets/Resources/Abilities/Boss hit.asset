@@ -17,5 +17,5 @@ MonoBehaviour:
     Cooldown: 2
     Cost: 0
   hitInfo:
-    MinDamage: 30
-    MaxDamage: 40
+    MinDamage: 1
+    MaxDamage: 3

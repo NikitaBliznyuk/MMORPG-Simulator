@@ -19,6 +19,7 @@ public class BotInputController : MonoBehaviour, IInputController
         NextPosition = transform.position;
     }
 
+    // TODO REMOVE AFTER TESTING
     private void Start()
     {
         CurrentObservableInfo = GameObject.FindGameObjectsWithTag(characterInfoController.Info.EnemyTag)
@@ -29,6 +30,7 @@ public class BotInputController : MonoBehaviour, IInputController
         StartCoroutine(TestCoroutine());
     }
 
+    // TODO REMOVE AFTER TESTING
     private IEnumerator TestCoroutine()
     {
         while (CurrentObservableInfo.Info.StatsInfo.CurrentHealth > 0)
@@ -37,7 +39,6 @@ public class BotInputController : MonoBehaviour, IInputController
             if (avaliableAbility != null)
             {
                 int abilityIndex = Array.IndexOf(characterInfoController.Info.Abilities, avaliableAbility);
-                Debug.Log(abilityIndex);
                 characterInfoController.InvokeAbility(abilityIndex);
             }
             yield return null;

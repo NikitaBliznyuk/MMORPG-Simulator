@@ -17,6 +17,7 @@ public abstract class Ability : ScriptableObject
     public bool Avaliable
     {
         get { return avaliable; }
+        set { avaliable = value; }
     }
 
     public abstract bool Invoke(CharacterInfoController invoker, CharacterInfoController target);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AbilitiesBarController : MonoBehaviour
@@ -22,7 +23,11 @@ public class AbilitiesBarController : MonoBehaviour
                 int index = i;
                 buttons[i].onClick.AddListener(() =>
                 {
-                    data.PlayerReference.InvokeAbility(index);
+                    if (data.PlayerReference.InvokeAbility(index))
+                    {
+                        buttons[index].interactable = false;
+                        StartCoroutine(ButtonCooldown(buttons[index], abilities[index].AbilityInfo.Cooldown));
+                    }
                 });
                 text.text = abilities[i].AbilityInfo.Name;
             }
@@ -31,5 +36,23 @@ public class AbilitiesBarController : MonoBehaviour
                 text.text = "?";
             }
         }
+    }
+
+    private IEnumerator ButtonCooldown(Button button, float duration)
+    {
+        float currentTime = 0.0f;
+        Image buttonImage = button.GetComponent<Image>();
+        buttonImage.fillAmount = 0.0f;
+
+        while (currentTime < duration)
+        {
+            buttonImage.fillAmount = currentTime / duration;
+            
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
+        buttonImage.fillAmount = 1.0f;
+        button.interactable = true;
     }
 }

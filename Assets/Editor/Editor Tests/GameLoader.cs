@@ -17,6 +17,19 @@ public class GameLoader : EditorWindow
         
         if (GUILayout.Button("Load game"))
         {
+            data.Player.StatsInfo.CurrentHealth = data.Player.StatsInfo.MaxHealth;
+            data.Player.StatsInfo.CurrentEnergy = data.Player.StatsInfo.MaxEnergy;
+
+            foreach (var enemy in data.Enemies)
+            {
+                enemy.StatsInfo.CurrentHealth = enemy.StatsInfo.MaxHealth;
+                enemy.StatsInfo.CurrentEnergy = enemy.StatsInfo.MaxEnergy;
+                foreach (var enemyAbility in enemy.Abilities)
+                {
+                    enemyAbility.Avaliable = true;
+                }
+            }
+            
             Loader.StartLevel(data);
         }
     }
