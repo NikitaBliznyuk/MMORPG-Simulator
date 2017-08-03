@@ -10,6 +10,7 @@ public class HitAbility : Ability, IHit
 	public HitInfo HitInfo
 	{
 		get { return hitInfo; }
+		set { hitInfo = value; }
 	}
 
 	public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)

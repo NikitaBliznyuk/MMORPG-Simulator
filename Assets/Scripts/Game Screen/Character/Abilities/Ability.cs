@@ -12,6 +12,7 @@ public abstract class Ability : ScriptableObject
     public AbilityInfo AbilityInfo
     {
         get { return abilityInfo; }
+        set { abilityInfo = value; }
     }
 
     public bool Avaliable
@@ -42,5 +43,5 @@ public struct AbilityInfo
 
 public enum AbilityInvokeErrorCode
 {
-    NO_ERROR, TOO_FAR, NOT_ENOUGH_MANA, NO_SUCH_ABILITY, NOT_AVALIABLE, WRONG_TARGET
+    NO_ERROR, TOO_FAR, NO_ENERGY, NO_SUCH_ABILITY, NOT_AVALIABLE, WRONG_TARGET
 }

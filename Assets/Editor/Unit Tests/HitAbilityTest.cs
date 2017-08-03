@@ -63,18 +63,52 @@ public class HitAbilityTest
 		Assert.AreEqual(AbilityInvokeErrorCode.NO_ERROR, code);
 	}
 
-	private CharacterInfoController GenerateCharacter(string allyTeam, string enemyTeam)
+	[Test]
+	public void InvokeTooFar()
+	{
+		CharacterInfoController character1 = GenerateCharacter("Raid 0", "Raid 1");
+		character1.transform.position = new Vector3(0.0f, -10.0f, 0.0f);
+		CharacterInfoController character2 = GenerateCharacter("Raid 1", "Raid 0");
+		character2.transform.position = new Vector3(0.0f, 10.0f, 0.0f);
+		
+		AbilityInvokeErrorCode code = character1.InvokeAbility(0, character2);
+		Assert.AreEqual(AbilityInvokeErrorCode.TOO_FAR, code);
+	}
+
+	[Test]
+	public void InvokeNoMana()
+	{
+		CharacterInfoController character1 = GenerateCharacter("Raid 0", "Raid 1", 100, 0);
+		CharacterInfoController character2 = GenerateCharacter("Raid 1", "Raid 0");
+		
+		AbilityInvokeErrorCode code = character1.InvokeAbility(0, character2);
+		Assert.AreEqual(AbilityInvokeErrorCode.NO_ENERGY, code);
+	}
+
+	private CharacterInfoController GenerateCharacter(string allyTeam, string enemyTeam, float currentHealth = 100,
+		float currentEnergy = 100)
 	{
 		GameObject o = new GameObject();
 		CharacterInfoController character = o.AddComponent<CharacterInfoController>();
 		character.Info = new CharacterInfo
 		{
-			Abilities = new Ability[] {ScriptableObject.CreateInstance<HitAbility>()},
+			Abilities = new Ability[] {GenerateHitAbility()},
 			AllyTags = new[] {allyTeam},
 			EnemyTags = new[] {enemyTeam},
 			Tag = allyTeam,
-			StatsInfo = new StatsInfo(100, 100, 2, 40, 40, 3, "Player 1")
+			StatsInfo = new StatsInfo(100, currentHealth, 2, 40, currentEnergy, 3, "Character")
 		};
 		return character;
+	}
+
+	private HitAbility GenerateHitAbility()
+	{
+		HitAbility hitAbility = ScriptableObject.CreateInstance<HitAbility>();
+
+		AbilityInfo abilityInfo = hitAbility.AbilityInfo;
+		abilityInfo.Cost = 10;
+		hitAbility.AbilityInfo = abilityInfo;
+        
+		return hitAbility;
 	}
 }

@@ -67,7 +67,7 @@ namespace Game.Character
                 return AbilityInvokeErrorCode.NO_SUCH_ABILITY;
             
             if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
-                return AbilityInvokeErrorCode.NOT_ENOUGH_MANA;
+                return AbilityInvokeErrorCode.NO_ENERGY;
             
             CharacterInfoController invoker = this;
             if (target == null)

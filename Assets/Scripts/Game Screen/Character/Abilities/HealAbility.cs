@@ -10,6 +10,7 @@ public class HealAbility : Ability, IHeal
     public HealInfo HealInfo
     {
         get { return healInfo; }
+        set { healInfo = value; }
     }
 
     public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
