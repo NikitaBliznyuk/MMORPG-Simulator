@@ -20,7 +20,7 @@ public abstract class Ability : ScriptableObject
         set { avaliable = value; }
     }
 
-    public abstract bool Invoke(CharacterInfoController invoker, CharacterInfoController target);
+    public abstract AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target);
     
     public IEnumerator Cooldown(float time)
     {
@@ -38,4 +38,9 @@ public struct AbilityInfo
     public float Cooldown;
     public int Cost;
     public float CastDistance;
+}
+
+public enum AbilityInvokeErrorCode
+{
+    NO_ERROR, TOO_FAR, NOT_ENOUGH_MANA, NO_SUCH_ABILITY, NOT_AVALIABLE, WRONG_TARGET
 }

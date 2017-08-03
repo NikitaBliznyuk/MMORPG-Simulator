@@ -12,7 +12,7 @@ public class HealAbility : Ability, IHeal
         get { return healInfo; }
     }
 
-    public override bool Invoke(CharacterInfoController invoker, CharacterInfoController target)
+    public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
     {
         int healValue = Random.Range(healInfo.MinHeal, HealInfo.MaxHeal + 1);
         
@@ -30,7 +30,7 @@ public class HealAbility : Ability, IHeal
                 }
                 else
                 {
-                    return false;
+                    return AbilityInvokeErrorCode.TOO_FAR;
                 }
             }
             else
@@ -41,6 +41,6 @@ public class HealAbility : Ability, IHeal
 
         invoker.StartCoroutine(Cooldown(AbilityInfo.Cooldown));
 
-        return true;
+        return AbilityInvokeErrorCode.NO_ERROR;
     }
 }

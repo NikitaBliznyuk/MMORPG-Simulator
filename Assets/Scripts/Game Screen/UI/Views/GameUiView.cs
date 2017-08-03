@@ -84,10 +84,22 @@ namespace Game.UI.View
         [SerializeField] private float maxEnergy;
         [SerializeField] private float currentEnergy;
         [SerializeField] private float energyRegen;
-        
+
         [Header("Other")]
         
         [SerializeField] private string name;
+
+        public StatsInfo(float maxHealth, float currentHealth, float healthRegen, float maxEnergy, float currentEnergy,
+            float energyRegen, string name)
+        {
+            this.maxHealth = maxHealth;
+            this.currentHealth = currentHealth;
+            this.healthRegen = healthRegen;
+            this.maxEnergy = maxEnergy;
+            this.currentEnergy = currentEnergy;
+            this.energyRegen = energyRegen;
+            this.name = name;
+        }
 
         public float MaxHealth
         {

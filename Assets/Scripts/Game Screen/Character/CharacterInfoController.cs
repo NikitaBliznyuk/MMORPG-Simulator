@@ -61,31 +61,35 @@ namespace Game.Character
             info.StatsInfo.CurrentHealth += value;
         }
 
-        public bool InvokeAbility(int index)
+        public AbilityInvokeErrorCode InvokeAbility(int index, CharacterInfoController target = null)
         {
             if(index > info.Abilities.Length - 1)
-                return false;
+                return AbilityInvokeErrorCode.NO_SUCH_ABILITY;
             
             if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
-                return false;
+                return AbilityInvokeErrorCode.NOT_ENOUGH_MANA;
             
             CharacterInfoController invoker = this;
-            CharacterInfoController target = inputController.CurrentObservableInfo != null
-                ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()
-                : null;
-            
+            if (target == null)
+            {
+                target = inputController != null && inputController.CurrentObservableInfo != null
+                    ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()
+                    : null;
+            }
+
             if (Info.Abilities[index].Avaliable)
             {
-                bool successful = Info.Abilities[index].Invoke(invoker, target);
-                if (successful)
+                AbilityInvokeErrorCode code = Info.Abilities[index].Invoke(invoker, target);
+                
+                if (code == AbilityInvokeErrorCode.NO_ERROR)
                 {
                     Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
                 }
 
-                return successful;
+                return code;
             }
 
-            return false;
+            return AbilityInvokeErrorCode.NOT_AVALIABLE;
         }
     }
 }

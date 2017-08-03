@@ -12,23 +12,22 @@ public class HitAbility : Ability, IHit
 		get { return hitInfo; }
 	}
 
-	public override bool Invoke(CharacterInfoController invoker, CharacterInfoController target)
+	public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
 	{
 		if(target == null)
-			return false;
+			return AbilityInvokeErrorCode.WRONG_TARGET;
 		
 		if(!invoker.Info.EnemyTags.Contains(target.Info.Tag))
-			return false;
-		Debug.Log(invoker.Info.StatsInfo.Name);
+			return AbilityInvokeErrorCode.WRONG_TARGET;
 
 		if (Vector3.Distance(invoker.transform.position, target.transform.position) > AbilityInfo.CastDistance)
-			return false;
+			return AbilityInvokeErrorCode.TOO_FAR;
 		
 		int hitValue = Random.Range(hitInfo.MinDamage, hitInfo.MaxDamage + 1);
 		target.DealDamage(hitValue);
 
 		invoker.StartCoroutine(Cooldown(AbilityInfo.Cooldown));
 
-		return true;
+		return AbilityInvokeErrorCode.NO_ERROR;
 	}
 }

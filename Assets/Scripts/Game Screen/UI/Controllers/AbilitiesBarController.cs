@@ -23,7 +23,9 @@ public class AbilitiesBarController : MonoBehaviour
                 int index = i;
                 buttons[i].onClick.AddListener(() =>
                 {
-                    if (data.PlayerReference.InvokeAbility(index))
+                    AbilityInvokeErrorCode code = data.PlayerReference.InvokeAbility(index);
+                    
+                    if (code == AbilityInvokeErrorCode.NO_ERROR)
                     {
                         buttons[index].interactable = false;
                         StartCoroutine(ButtonCooldown(buttons[index], abilities[index].AbilityInfo.Cooldown));
