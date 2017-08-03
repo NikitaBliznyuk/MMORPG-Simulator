@@ -10,11 +10,11 @@ namespace Game.UI.View
 		[SerializeField] private Text nameText;
 		[SerializeField] private BarBehaviour healthBar;
 
-		public void UpdateInfo(UiInfo info)
+		public void UpdateInfo(StatsInfo info)
 		{
 			if(info == null) return;
 			
-			healthBar.UpdateBarInfo(info.MaxHealth, info.CurrentHealth);
+			healthBar.UpdateBarInfo((int) info.MaxHealth, (int) info.CurrentHealth);
 			nameText.text = info.Name;
 		}
 

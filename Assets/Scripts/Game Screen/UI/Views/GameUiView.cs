@@ -1,7 +1,6 @@
 ﻿using System;
 using Game.Character;
 using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
 
 namespace Game.UI.View
 {
@@ -17,7 +16,7 @@ namespace Game.UI.View
 
         private CharacterInfoController playerInfo;
 
-        private UiInfo currentObservableInfo;
+        private StatsInfo currentObservableInfo;
 
         private void Awake()
         {
@@ -39,7 +38,7 @@ namespace Game.UI.View
             topUI.SetActive(false);
         }
 
-        public void UpdateTopUi(UiInfo info, bool active)
+        public void UpdateTopUi(StatsInfo info, bool active)
         {
             if (topUI == null)
             {
@@ -72,12 +71,62 @@ namespace Game.UI.View
     }
 
     [Serializable]
-    public class UiInfo
+    public class StatsInfo
     {
-        public int MaxHealth;
-        public int CurrentHealth;
-        public int MaxEnergy;
-        public int CurrentEnergy;
-        public string Name;
+        [Header("Health")]
+        
+        [SerializeField] private float maxHealth;
+        [SerializeField] private float currentHealth;
+        [SerializeField] private float healthRegen;
+        
+        [Header("Energy")]
+        
+        [SerializeField] private float maxEnergy;
+        [SerializeField] private float currentEnergy;
+        [SerializeField] private float energyRegen;
+        
+        [Header("Other")]
+        
+        [SerializeField] private string name;
+
+        public float MaxHealth
+        {
+            get { return maxHealth; }
+        }
+
+        public float CurrentHealth
+        {
+            get { return currentHealth; }
+            set
+            {
+                currentHealth = Mathf.Clamp(value, 0.0f, maxHealth);
+            }
+        }
+
+        public float HealthRegen
+        {
+            get { return healthRegen; }
+        }
+
+        public float MaxEnergy
+        {
+            get { return maxEnergy; }
+        }
+
+        public float CurrentEnergy
+        {
+            get { return currentEnergy; }
+            set { currentEnergy = Mathf.Clamp(value, 0.0f, maxEnergy); }
+        }
+
+        public float EnergyRegen
+        {
+            get { return energyRegen; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
     }
 }

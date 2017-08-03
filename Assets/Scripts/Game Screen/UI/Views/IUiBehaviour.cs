@@ -2,7 +2,7 @@
 {
     public interface IUiBehaviour
     {
-        void UpdateInfo(UiInfo info);
+        void UpdateInfo(StatsInfo info);
         void SetActive(bool active);
     }
 }

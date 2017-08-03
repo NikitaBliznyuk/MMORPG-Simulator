@@ -20,7 +20,7 @@ public class MechanicsEditorTest : EditorWindow {
 				return;
 			}
 
-			var player = GameObject.Find("LoveIsStuff").GetComponent<CharacterController>();
+			var player = GameObject.Find("<Player Name>").GetComponent<CharacterController>();
 			if (player != null)
 			{
 				player.DealDamage(15);

@@ -9,12 +9,12 @@ namespace Game.UI.View
 		[SerializeField] private BarBehaviour healthBar;
 		[SerializeField] private BarBehaviour energyBar;
 
-		public void UpdateInfo(UiInfo info)
+		public void UpdateInfo(StatsInfo info)
 		{
-			if(info == null) return;
-			
-			healthBar.UpdateBarInfo(info.MaxHealth, info.CurrentHealth);
-			energyBar.UpdateBarInfo(info.MaxEnergy, info.CurrentEnergy);
+			if (info == null) return;
+
+			healthBar.UpdateBarInfo((int) info.MaxHealth, (int) info.CurrentHealth);
+			energyBar.UpdateBarInfo((int) info.MaxEnergy, (int) info.CurrentEnergy);
 		}
 
 		public void SetActive(bool active)

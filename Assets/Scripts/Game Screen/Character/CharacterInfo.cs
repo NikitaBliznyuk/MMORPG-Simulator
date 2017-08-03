@@ -6,7 +6,7 @@ namespace Game.Character
     [Serializable]
     public class CharacterInfo
     {
-        public UiInfo StatsInfo;
+        public StatsInfo StatsInfo;
         public float MovementSpeed;
         public Ability[] Abilities;
         public string Tag;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Game.Character
 {
@@ -18,22 +19,46 @@ namespace Game.Character
         {
             name = info.StatsInfo.Name;
             inputController = GetComponent<IInputController>();
+            
+            StartCoroutine(StatRegeneration());
+        }
+
+        private IEnumerator StatRegeneration()
+        {
+            float currentTime = 0.0f;
+            float gap = 0.25f;
+
+            while (true) // TODO STOP CONDITION
+            {
+                if (currentTime >= gap)
+                {
+                    float healthIncreaseAmount = info.StatsInfo.HealthRegen * currentTime;
+                    float energyIncreaseAmount = info.StatsInfo.EnergyRegen * currentTime;
+
+                    info.StatsInfo.CurrentHealth += healthIncreaseAmount;
+                    info.StatsInfo.CurrentEnergy += energyIncreaseAmount;
+
+                    currentTime = 0.0f;
+                }
+                else
+                {
+                    currentTime += Time.deltaTime;
+                }
+                
+                yield return null;   
+            }
         }
 
         public void DealDamage(int damage)
         {
             damage = damage >= 0 ? damage : 0;
             info.StatsInfo.CurrentHealth -= damage;
-            info.StatsInfo.CurrentHealth = info.StatsInfo.CurrentHealth >= 0 ? info.StatsInfo.CurrentHealth : 0;
         }
 
         public void Heal(int value)
         {
             value = value >= 0 ? value : 0;
             info.StatsInfo.CurrentHealth += value;
-            info.StatsInfo.CurrentHealth = info.StatsInfo.CurrentHealth <= info.StatsInfo.MaxHealth
-                ? info.StatsInfo.CurrentHealth
-                : info.StatsInfo.MaxHealth;
         }
 
         public bool InvokeAbility(int index)
@@ -55,7 +80,6 @@ namespace Game.Character
                 if (successful)
                 {
                     Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
-                    Info.StatsInfo.CurrentEnergy = Info.StatsInfo.CurrentEnergy >= 0 ? Info.StatsInfo.CurrentEnergy : 0;
                 }
 
                 return successful;

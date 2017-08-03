@@ -13,11 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     StatsInfo:
-      MaxHealth: 120
-      CurrentHealth: 120
-      MaxEnergy: 80
-      CurrentEnergy: 80
-      Name: <Player Name>
+      maxHealth: 120
+      currentHealth: 118.61688
+      healthRegen: 3.5
+      maxEnergy: 80
+      currentEnergy: 61.32416
+      energyRegen: 4.5
+      name: <Player Name>
     MovementSpeed: 1
     Abilities:
     - {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
@@ -31,11 +33,13 @@ MonoBehaviour:
   allies: []
   enemies:
   - StatsInfo:
-      MaxHealth: 450
-      CurrentHealth: 450
-      MaxEnergy: 0
-      CurrentEnergy: 0
-      Name: <Boss name>
+      maxHealth: 450
+      currentHealth: 374.64838
+      healthRegen: 2
+      maxEnergy: 0
+      currentEnergy: 0
+      energyRegen: 0
+      name: <Boss Name>
     MovementSpeed: 0.6
     Abilities:
     - {fileID: 11400000, guid: ae01a50a788fef449bd19ae5eae2cd24, type: 2}
