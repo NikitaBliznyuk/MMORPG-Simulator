@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a7bf6adc52fd94ab906456109f4f82, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  Player:
+  player:
     StatsInfo:
-      MaxHealth: 75
-      CurrentHealth: 64
-      MaxEnergy: 60
-      CurrentEnergy: 5
-      Name: LoveIsStuff
+      MaxHealth: 120
+      CurrentHealth: 120
+      MaxEnergy: 80
+      CurrentEnergy: 80
+      Name: <Player Name>
     MovementSpeed: 1
     Abilities:
     - {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
@@ -28,15 +28,15 @@ MonoBehaviour:
     - Raid 0
     EnemyTags:
     - Boss
-  Allies: []
-  Enemies:
+  allies: []
+  enemies:
   - StatsInfo:
       MaxHealth: 450
-      CurrentHealth: 299
+      CurrentHealth: 450
       MaxEnergy: 0
       CurrentEnergy: 0
-      Name: Boss
-    MovementSpeed: 0.5
+      Name: <Boss name>
+    MovementSpeed: 0.6
     Abilities:
     - {fileID: 11400000, guid: ae01a50a788fef449bd19ae5eae2cd24, type: 2}
     Tag: Boss
