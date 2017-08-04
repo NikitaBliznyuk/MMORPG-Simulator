@@ -76,7 +76,7 @@ public class HitAbilityTest
 	}
 
 	[Test]
-	public void InvokeNoMana()
+	public void InvokeNoEnergy()
 	{
 		CharacterInfoController character1 = GenerateCharacter("Raid 0", "Raid 1", 100, 0);
 		CharacterInfoController character2 = GenerateCharacter("Raid 1", "Raid 0");
