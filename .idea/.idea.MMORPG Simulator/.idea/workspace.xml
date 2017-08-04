@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="988bbd29-7c1a-4303-a4c1-b9d8ff84a369" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG Simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG Simulator/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/HealAbility.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/HealAbility.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/HitAbility.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/HitAbility.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/CharacterInfoController.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/CharacterInfoController.cs" />
-    </list>
+    <list default="true" id="988bbd29-7c1a-4303-a4c1-b9d8ff84a369" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -667,12 +662,12 @@
       <workItem from="1501828046878" duration="3115000" />
       <workItem from="1501834507806" duration="54000" />
       <workItem from="1501834615820" duration="2879000" />
-      <workItem from="1501876982329" duration="11508000" />
+      <workItem from="1501876982329" duration="11829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79822000" />
+    <option name="totallyTimeSpent" value="80143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
