@@ -16,16 +16,10 @@ public class HitAbility : Ability, IHit
 	public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
 	{
 		if (target == null)
-		{
-			Debug.Log("NULL");
 			return AbilityInvokeErrorCode.WRONG_TARGET;
-		}
 
 		if (!invoker.Info.EnemyTags.Contains(target.Info.Tag))
-		{
-			Debug.Log("NOT CONTAINS");
 			return AbilityInvokeErrorCode.WRONG_TARGET;
-		}
 
 		if (Vector3.Distance(invoker.transform.position, target.transform.position) > AbilityInfo.CastDistance)
 			return AbilityInvokeErrorCode.TOO_FAR;

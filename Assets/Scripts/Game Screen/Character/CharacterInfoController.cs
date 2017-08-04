@@ -95,19 +95,12 @@ namespace Game.Character
                 target = inputController != null && inputController.CurrentObservableInfo != null
                     ? inputController.CurrentObservableInfo.GetComponent<CharacterInfoController>()
                     : null;
-
-                Debug.Log("Input controller: " + (inputController == null ? "NULL" : "NO NULL"));
-                Debug.Log("Current observable info: " +
-                          (inputController != null && inputController.CurrentObservableInfo == null
-                              ? "NULL"
-                              : "NO NULL"));
             }
 
             if (Info.Abilities[index].Avaliable)
             {
                 AbilityInvokeErrorCode code = Info.Abilities[index].Invoke(invoker, target);
 
-                Debug.Log(invoker.Info.StatsInfo.Name + " try visualize, " + code);
                 if (code == AbilityInvokeErrorCode.NO_ERROR)
                 {
                     Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;

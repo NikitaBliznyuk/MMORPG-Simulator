@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,24 @@ public class AbilitiesBarController : MonoBehaviour
                     {
                         buttons[index].interactable = false;
                         StartCoroutine(ButtonCooldown(buttons[index], abilities[index].AbilityInfo.Cooldown));
+                    }
+                    else
+                    {
+                        switch (code)
+                        {
+                            case AbilityInvokeErrorCode.TOO_FAR:
+                                InfoTextBehaviour.Instance.ShowMessage("Target is too far.");
+                                break;
+                            case AbilityInvokeErrorCode.NO_ENERGY:
+                                InfoTextBehaviour.Instance.ShowMessage("Not enough energy.");
+                                break;
+                            case AbilityInvokeErrorCode.NOT_AVALIABLE:
+                                InfoTextBehaviour.Instance.ShowMessage("Not avaliable yet.");
+                                break;
+                            case AbilityInvokeErrorCode.WRONG_TARGET:
+                                InfoTextBehaviour.Instance.ShowMessage("Wrong target.");
+                                break;
+                        }
                     }
                 });
                 text.text = abilities[i].AbilityInfo.Name;
