@@ -70,12 +70,9 @@ public class HealAbilityTest
     public void InvokeWrongAbilityIndex()
     {
         CharacterInfoController character1 = GenerateCharacter("Raid 0", "Raid 1");
-        int previousHealth = (int) character1.Info.StatsInfo.CurrentHealth;
 
         AbilityInvokeErrorCode code = character1.InvokeAbility(10, character1);
-        int afterHealingHealth = (int) character1.Info.StatsInfo.CurrentHealth;
-        
-        Assert.AreEqual(0, afterHealingHealth - previousHealth);
+        Assert.AreEqual(AbilityInvokeErrorCode.NO_SUCH_ABILITY, code);
     }
 
     private CharacterInfoController GenerateCharacter(string allyTeam, string enemyTeam, float currentHealth = 100,
