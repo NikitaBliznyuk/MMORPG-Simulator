@@ -21,6 +21,11 @@ namespace Game.Character
             get { return stateInfo; }
         }
 
+        public float Size
+        {
+            get { return view.size.x / 2.0f; }
+        }
+
         public Sprite Icon
         {
             set { view.sprite = value; }
