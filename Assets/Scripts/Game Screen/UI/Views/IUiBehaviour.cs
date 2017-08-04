@@ -1,4 +1,6 @@
-﻿namespace Game.UI.View
+﻿using Game.Character;
+
+namespace Game.UI.View
 {
     public interface IUiBehaviour
     {

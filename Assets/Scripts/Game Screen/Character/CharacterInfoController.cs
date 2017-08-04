@@ -6,11 +6,17 @@ namespace Game.Character
     public class CharacterInfoController : MonoBehaviour
     {
         [SerializeField] private CharacterInfo info;
+        [SerializeField] private SpriteRenderer view;
 
         public CharacterInfo Info
         {
             get { return info; }
             set { info = value; }
+        }
+
+        public Sprite Icon
+        {
+            set { view.sprite = value; }
         }
 
         private IInputController inputController;

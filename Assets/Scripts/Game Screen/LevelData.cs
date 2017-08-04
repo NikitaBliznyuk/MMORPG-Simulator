@@ -29,5 +29,6 @@ public class LevelData : ScriptableObject
 public struct SpawnData
 {
     public CharacterInfo CharacterInfo;
+    public Sprite Icon;
     public Vector2 SpawnPosition;
 }

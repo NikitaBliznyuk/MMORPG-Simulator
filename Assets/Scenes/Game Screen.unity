@@ -1375,6 +1375,7 @@ MonoBehaviour:
     Tag: 
     AllyTags: []
     EnemyTags: []
+  view: {fileID: 0}
 --- !u!4 &780163282
 Transform:
   m_ObjectHideFlags: 0
@@ -2067,6 +2068,7 @@ MonoBehaviour:
     Tag: 
     AllyTags: []
     EnemyTags: []
+  view: {fileID: 0}
 --- !u!114 &1265272188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2217,7 @@ MonoBehaviour:
     Tag: 
     AllyTags: []
     EnemyTags: []
+  view: {fileID: 0}
 --- !u!114 &1475439966
 MonoBehaviour:
   m_ObjectHideFlags: 0

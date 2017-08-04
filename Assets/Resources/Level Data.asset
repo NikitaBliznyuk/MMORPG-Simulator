@@ -31,6 +31,7 @@ MonoBehaviour:
       - Raid 0
       EnemyTags:
       - Boss
+    Icon: {fileID: 21300002, guid: d0a637656cd6560438c82a9de41322b4, type: 3}
     SpawnPosition: {x: 0, y: -2}
   allies: []
   enemies:
@@ -51,4 +52,5 @@ MonoBehaviour:
       - Boss
       EnemyTags:
       - Raid 0
+    Icon: {fileID: 21300000, guid: d0a637656cd6560438c82a9de41322b4, type: 3}
     SpawnPosition: {x: 0, y: 2}

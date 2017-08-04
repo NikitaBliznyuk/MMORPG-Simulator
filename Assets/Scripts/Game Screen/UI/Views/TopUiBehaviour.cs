@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Character;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.UI.View

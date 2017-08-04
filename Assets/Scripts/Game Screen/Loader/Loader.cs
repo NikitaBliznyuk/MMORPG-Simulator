@@ -51,6 +51,7 @@ public class Loader : MonoBehaviour
         player.transform.position = info.SpawnPosition;
         player.gameObject.AddComponent<ClickController>();
         player.Info = info.CharacterInfo;
+        player.Icon = info.Icon;
         player.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
         return player;
     }
@@ -63,6 +64,7 @@ public class Loader : MonoBehaviour
             enemy.transform.position = info.SpawnPosition;
             enemy.gameObject.AddComponent<BotInputController>();
             enemy.Info = info.CharacterInfo;
+            enemy.Icon = info.Icon;
             enemy.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
         }
     }
