@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game.Character
 {
+    // TODO REFACTOR THIS TO USE PROPERTIES
     [Serializable]
     public class CharacterInfo
     {

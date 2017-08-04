@@ -37,7 +37,7 @@ public class StatsInfoTest
     public void CurrentHealthBelow0()
     {
         CharacterInfoController character = GenerateCharacter("Raid 0", "Raid 1");
-
+        
         character.DealDamage(1000);
         float healthAfterHealing = character.Info.StatsInfo.CurrentHealth;
         

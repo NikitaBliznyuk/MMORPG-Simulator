@@ -8,10 +8,17 @@ namespace Game.Character
         [SerializeField] private CharacterInfo info;
         [SerializeField] private SpriteRenderer view;
 
+        private readonly CharacterState stateInfo = new CharacterState();
+
         public CharacterInfo Info
         {
             get { return info; }
             set { info = value; }
+        }
+
+        public CharacterState StateInfo
+        {
+            get { return stateInfo; }
         }
 
         public Sprite Icon
@@ -21,10 +28,14 @@ namespace Game.Character
 
         private IInputController inputController;
 
+        private void Awake()
+        {
+            inputController = GetComponent<IInputController>();
+        }
+
         private void Start()
         {
             name = info.StatsInfo.Name;
-            inputController = GetComponent<IInputController>();
             
             StartCoroutine(StatRegeneration());
         }
@@ -59,6 +70,11 @@ namespace Game.Character
         {
             damage = damage >= 0 ? damage : 0;
             info.StatsInfo.CurrentHealth -= damage;
+
+            if ((int) info.StatsInfo.CurrentHealth == 0)
+            {
+                StateInfo.CurrentState = CharacterState.StateName.DEAD;
+            }
         }
 
         public void Heal(int value)
