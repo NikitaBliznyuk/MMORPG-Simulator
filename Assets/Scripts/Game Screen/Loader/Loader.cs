@@ -8,6 +8,7 @@ public class Loader : MonoBehaviour
     [Header("References")]
     
     [SerializeField] private CharacterInfoController characterPrefab;
+    [SerializeField] private RangeVisualizer rangeVisualizerPrefab;
 
     public delegate void LevelStartHandler(LevelData data);
     public static event LevelStartHandler LevelStart;
@@ -53,6 +54,11 @@ public class Loader : MonoBehaviour
         player.Info = info.CharacterInfo;
         player.Icon = info.Icon;
         player.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
+
+        RangeVisualizer rangeVisualizer = Instantiate(rangeVisualizerPrefab, player.transform);
+        rangeVisualizer.name = rangeVisualizerPrefab.name; // Unnecessary. Just for beauty. :)
+        player.RangeVisualizer = rangeVisualizer;
+        
         return player;
     }
 

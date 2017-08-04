@@ -39,7 +39,7 @@ public class BotInputController : MonoBehaviour, IInputController
             if (avaliableAbility != null)
             {
                 int abilityIndex = Array.IndexOf(characterInfoController.Info.Abilities, avaliableAbility);
-                characterInfoController.InvokeAbility(abilityIndex);
+                characterInfoController.InvokeAbility(abilityIndex, CurrentObservableInfo);
             }
             yield return null;
         }
