@@ -7,6 +7,7 @@ namespace Game.Character
     {
         [SerializeField] private CharacterInfo info;
         [SerializeField] private SpriteRenderer view;
+        [SerializeField] private SpriteRenderer highlight;
 
         private readonly CharacterState stateInfo = new CharacterState();
 
@@ -21,9 +22,19 @@ namespace Game.Character
             get { return stateInfo; }
         }
 
+        public bool IsHighlighted
+        {
+            get { return highlight.enabled; }
+            set
+            {
+                highlight.size = new Vector2(Size * 2.0f + 0.3f, Size * 2.0f + 0.3f);
+                highlight.enabled = value;
+            }
+        }
+
         public float Size
         {
-            get { return view.size.x / 2.0f; }
+            get { return view.sprite.bounds.extents.x; }
         }
 
         public Sprite Icon
@@ -112,7 +123,7 @@ namespace Game.Character
                 }
                 else if (RangeVisualizer != null && code == AbilityInvokeErrorCode.TOO_FAR)
                 {
-                    RangeVisualizer.Visualize(Info.Abilities[index].AbilityInfo.CastDistance);
+                    RangeVisualizer.Visualize(Info.Abilities[index].AbilityInfo.CastDistance + Size);
                 }
 
                 return code;

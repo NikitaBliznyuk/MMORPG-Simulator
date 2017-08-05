@@ -26,7 +26,11 @@ public class ClickController : MonoBehaviour, IInputController
 
             if (Physics.Raycast(cameraRay, out hit, 10, LayerMask.GetMask("Clickable")))
             {
+                if(CurrentObservableInfo != null)
+                    CurrentObservableInfo.IsHighlighted = false;
+                
                 CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
+                CurrentObservableInfo.IsHighlighted = true;
                 view.UpdateTopUi(CurrentObservableInfo.Info.StatsInfo, true);
             }
             else

@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: d0a637656cd6560438c82a9de41322b4
-timeCreated: 1501373560
+timeCreated: 1501930300
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Enemy (test)
     21300002: Healer
+    21300004: Highlight
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -93,7 +94,7 @@ TextureImporter:
         width: 91
         height: 104
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -106,6 +107,20 @@ TextureImporter:
         y: 409
         width: 73
         height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Highlight
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 29
+        width: 115
+        height: 114
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
