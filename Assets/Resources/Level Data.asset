@@ -15,10 +15,10 @@ MonoBehaviour:
     CharacterInfo:
       StatsInfo:
         maxHealth: 120
-        currentHealth: 98.936584
+        currentHealth: 0
         healthRegen: 4
         maxEnergy: 80
-        currentEnergy: 80
+        currentEnergy: 48.041603
         energyRegen: 5
         name: <Player Name>
       MovementSpeed: 1
@@ -37,8 +37,8 @@ MonoBehaviour:
   enemies:
   - CharacterInfo:
       StatsInfo:
-        maxHealth: 450
-        currentHealth: 450
+        maxHealth: 150
+        currentHealth: 308.72992
         healthRegen: 2
         maxEnergy: 0
         currentEnergy: 0

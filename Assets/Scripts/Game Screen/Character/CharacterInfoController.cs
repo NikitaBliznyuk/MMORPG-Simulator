@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Game.Character
@@ -10,6 +11,7 @@ namespace Game.Character
         [SerializeField] private SpriteRenderer highlight;
 
         private readonly CharacterState stateInfo = new CharacterState();
+        private readonly Color deadColor = Color.gray;
 
         public CharacterInfo Info
         {
@@ -50,8 +52,17 @@ namespace Game.Character
         {
             name = info.StatsInfo.Name;
             inputController = GetComponent<IInputController>();
+            StateInfo.ChangeState += OnChangeState;
             
             StartCoroutine(StatRegeneration());
+        }
+
+        private void OnChangeState()
+        {
+            if (StateInfo.CurrentState == CharacterState.StateName.DEAD)
+            {
+                view.color = deadColor;
+            }
         }
 
         private IEnumerator StatRegeneration()
@@ -59,7 +70,7 @@ namespace Game.Character
             float currentTime = 0.0f;
             float gap = 0.25f;
 
-            while (true) // TODO STOP CONDITION
+            while (StateInfo.CurrentState != CharacterState.StateName.DEAD) // TODO STOP CONDITION
             {
                 if (currentTime >= gap)
                 {

@@ -15,7 +15,7 @@ public class HitAbility : Ability, IHit
 
 	public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
 	{
-		if (target == null)
+		if (target == null || target.StateInfo.CurrentState == CharacterState.StateName.DEAD)
 			return AbilityInvokeErrorCode.WRONG_TARGET;
 
 		if (!invoker.Info.EnemyTags.Contains(target.Info.Tag))

@@ -28,12 +28,20 @@ public class BotInputController : MonoBehaviour, IInputController
             .GetComponent<CharacterInfoController>();
 
         StartCoroutine(TestCoroutine());
+        
+        characterInfoController.StateInfo.ChangeState += OnChangeState;
+    }
+
+    private void OnChangeState()
+    {
+        if(characterInfoController.StateInfo.CurrentState == CharacterState.StateName.DEAD)
+            enabled = false;
     }
 
     // TODO REMOVE AFTER TESTING
     private IEnumerator TestCoroutine()
     {
-        while (CurrentObservableInfo.Info.StatsInfo.CurrentHealth > 0)
+        while (characterInfoController.StateInfo.CurrentState != CharacterState.StateName.DEAD)
         {
             Ability avaliableAbility = characterInfoController.Info.Abilities.First(ability => ability is IHit);
             if (avaliableAbility != null)
