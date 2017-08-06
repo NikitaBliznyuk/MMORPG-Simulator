@@ -34,7 +34,7 @@ namespace Game.Character
 
         public float Size
         {
-            get { return view.sprite.bounds.extents.x; }
+            get { return view != null ? view.sprite.bounds.extents.x : 0.0f; }
         }
 
         public Sprite Icon
@@ -80,21 +80,27 @@ namespace Game.Character
             }
         }
 
-        public void DealDamage(int damage)
+        public void DealDamage(int value)
         {
-            damage = damage >= 0 ? damage : 0;
-            info.StatsInfo.CurrentHealth -= damage;
+            value = value >= 0 ? value : 0;
+            info.StatsInfo.CurrentHealth -= value;
 
             if ((int) info.StatsInfo.CurrentHealth == 0)
             {
                 StateInfo.CurrentState = CharacterState.StateName.DEAD;
             }
+
+            if (PopupNumbersController.Instance != null)
+                PopupNumbersController.Instance.CreateText(transform.position, Color.red, "-" + value);
         }
 
         public void Heal(int value)
         {
             value = value >= 0 ? value : 0;
             info.StatsInfo.CurrentHealth += value;
+
+            if (PopupNumbersController.Instance != null)
+                PopupNumbersController.Instance.CreateText(transform.position, Color.green, "+" + value);
         }
 
         public AbilityInvokeErrorCode InvokeAbility(int index, CharacterInfoController target = null)
