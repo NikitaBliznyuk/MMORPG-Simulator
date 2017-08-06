@@ -26,7 +26,5 @@ public class PopupNumbersController : MonoBehaviour
         var popupText = TextPool.Count == 0 ? Instantiate(textPrefab, transform) : TextPool.Pop();
         
         popupText.Show(text, color, position);
-        
-        Debug.Log("Showing text: " + text);
     }
 }

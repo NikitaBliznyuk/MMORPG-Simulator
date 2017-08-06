@@ -37,7 +37,6 @@ public class Loader : MonoBehaviour
     private void Initialize(LevelData data)
     {
         CharacterInfoController player = CreatePlayer(data.Player);
-        CreateEnemies(data.Enemies);
         
         LevelCurrentData levelData = new LevelCurrentData
         {
@@ -49,7 +48,7 @@ public class Loader : MonoBehaviour
     private CharacterInfoController CreatePlayer(SpawnData info)
     {
         CharacterInfoController player = Instantiate(characterPrefab);
-        player.transform.position = info.SpawnPosition;
+        player.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
         player.gameObject.AddComponent<ClickController>();
         player.Info = info.CharacterInfo;
         player.Icon = info.Icon;
@@ -60,19 +59,6 @@ public class Loader : MonoBehaviour
         player.RangeVisualizer = rangeVisualizer;
         
         return player;
-    }
-
-    private void CreateEnemies(SpawnData[] infos)
-    {
-        foreach (var info in infos)
-        {
-            CharacterInfoController enemy = Instantiate(characterPrefab);
-            enemy.transform.position = info.SpawnPosition;
-            enemy.gameObject.AddComponent<BotInputController>();
-            enemy.Info = info.CharacterInfo;
-            enemy.Icon = info.Icon;
-            enemy.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
-        }
     }
 }
 

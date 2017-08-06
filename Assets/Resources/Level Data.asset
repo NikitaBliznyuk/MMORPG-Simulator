@@ -15,42 +15,21 @@ MonoBehaviour:
     CharacterInfo:
       StatsInfo:
         maxHealth: 120
-        currentHealth: 0
+        currentHealth: 120
         healthRegen: 4
         maxEnergy: 80
-        currentEnergy: 48.041603
+        currentEnergy: 80
         energyRegen: 5
         name: <Player Name>
       MovementSpeed: 1
       Abilities:
-      - {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
-      - {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
-      - {fileID: 11400000, guid: fcba9e41b7fe26a4ea3dc490fa9e5d72, type: 2}
+      - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
+      - ability: {fileID: 11400000, guid: fcba9e41b7fe26a4ea3dc490fa9e5d72, type: 2}
+      - ability: {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
       Tag: Raid 0
       AllyTags:
       - Raid 0
       EnemyTags:
       - Boss
     Icon: {fileID: 21300002, guid: d0a637656cd6560438c82a9de41322b4, type: 3}
-    SpawnPosition: {x: 0, y: -2}
   allies: []
-  enemies:
-  - CharacterInfo:
-      StatsInfo:
-        maxHealth: 150
-        currentHealth: 308.72992
-        healthRegen: 2
-        maxEnergy: 0
-        currentEnergy: 0
-        energyRegen: 0
-        name: <Boss Name>
-      MovementSpeed: 0
-      Abilities:
-      - {fileID: 11400000, guid: ae01a50a788fef449bd19ae5eae2cd24, type: 2}
-      Tag: Boss
-      AllyTags:
-      - Boss
-      EnemyTags:
-      - Raid 0
-    Icon: {fileID: 21300000, guid: d0a637656cd6560438c82a9de41322b4, type: 3}
-    SpawnPosition: {x: 0, y: 2}

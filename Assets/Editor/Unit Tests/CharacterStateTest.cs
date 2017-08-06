@@ -34,7 +34,7 @@ public class CharacterStateTest
         CharacterInfoController character = o.AddComponent<CharacterInfoController>();
         character.Info = new CharacterInfo
         {
-            Abilities = new Ability[] {},
+            Abilities = new AbilityContainer[] {},
             AllyTags = new[] {allyTeam},
             EnemyTags = new[] {enemyTeam},
             Tag = allyTeam,

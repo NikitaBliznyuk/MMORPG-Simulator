@@ -92,7 +92,7 @@ public class HitAbilityTest
 		CharacterInfoController character = o.AddComponent<CharacterInfoController>();
 		character.Info = new CharacterInfo
 		{
-			Abilities = new Ability[] {GenerateHitAbility()},
+			Abilities = new [] {GenerateHitAbility()},
 			AllyTags = new[] {allyTeam},
 			EnemyTags = new[] {enemyTeam},
 			Tag = allyTeam,
@@ -101,14 +101,16 @@ public class HitAbilityTest
 		return character;
 	}
 
-	private HitAbility GenerateHitAbility()
+	private AbilityContainer GenerateHitAbility()
 	{
 		HitAbility hitAbility = ScriptableObject.CreateInstance<HitAbility>();
 
 		AbilityInfo abilityInfo = hitAbility.AbilityInfo;
 		abilityInfo.Cost = 10;
 		hitAbility.AbilityInfo = abilityInfo;
+		
+		AbilityContainer container = new AbilityContainer(hitAbility);
         
-		return hitAbility;
+		return container;
 	}
 }

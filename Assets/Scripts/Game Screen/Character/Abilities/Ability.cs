@@ -6,8 +6,6 @@ using UnityEngine;
 public abstract class Ability : ScriptableObject
 {
     [SerializeField] private AbilityInfo abilityInfo;
-    
-    private bool avaliable = true;
 
     public AbilityInfo AbilityInfo
     {
@@ -15,20 +13,7 @@ public abstract class Ability : ScriptableObject
         set { abilityInfo = value; }
     }
 
-    public bool Avaliable
-    {
-        get { return avaliable; }
-        set { avaliable = value; }
-    }
-
     public abstract AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target);
-    
-    public IEnumerator Cooldown(float time)
-    {
-        avaliable = false;
-        yield return new WaitForSeconds(time);
-        avaliable = true;
-    }
 }
 
 [Serializable]

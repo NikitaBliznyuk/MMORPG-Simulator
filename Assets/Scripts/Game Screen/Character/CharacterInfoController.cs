@@ -119,7 +119,7 @@ namespace Game.Character
             if(index > info.Abilities.Length - 1)
                 return AbilityInvokeErrorCode.NO_SUCH_ABILITY;
             
-            if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
+            if(info.StatsInfo.CurrentEnergy < info.Abilities[index].Ability.AbilityInfo.Cost)
                 return AbilityInvokeErrorCode.NO_ENERGY;
             
             CharacterInfoController invoker = this;
@@ -136,11 +136,11 @@ namespace Game.Character
 
                 if (code == AbilityInvokeErrorCode.NO_ERROR)
                 {
-                    Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
+                    Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].Ability.AbilityInfo.Cost;
                 }
                 else if (RangeVisualizer != null && code == AbilityInvokeErrorCode.TOO_FAR)
                 {
-                    RangeVisualizer.Visualize(Info.Abilities[index].AbilityInfo.CastDistance + Size);
+                    RangeVisualizer.Visualize(Info.Abilities[index].Ability.AbilityInfo.CastDistance + Size);
                 }
 
                 return code;

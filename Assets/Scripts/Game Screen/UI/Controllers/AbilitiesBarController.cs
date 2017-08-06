@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Game.Character;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class AbilitiesBarController : MonoBehaviour
 
     private void LoaderOnDataUpdated(LevelCurrentData data)
     {
-        Ability[] abilities = data.PlayerReference.Info.Abilities;
+        AbilityContainer[] abilities = data.PlayerReference.Info.Abilities;
         
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -29,7 +30,7 @@ public class AbilitiesBarController : MonoBehaviour
                     if (code == AbilityInvokeErrorCode.NO_ERROR)
                     {
                         buttons[index].interactable = false;
-                        StartCoroutine(ButtonCooldown(buttons[index], abilities[index].AbilityInfo.Cooldown));
+                        StartCoroutine(ButtonCooldown(buttons[index], abilities[index].Ability.AbilityInfo.Cooldown));
                     }
                     else
                     {
@@ -50,7 +51,7 @@ public class AbilitiesBarController : MonoBehaviour
                         }
                     }
                 });
-                text.text = abilities[i].AbilityInfo.Name;
+                text.text = abilities[i].Ability.AbilityInfo.Name;
             }
             else
             {

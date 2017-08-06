@@ -14,16 +14,6 @@ namespace IngameTests
 			{
 				playerAbility.Avaliable = true;
 			}
-
-			foreach (var enemy in data.Enemies)
-			{
-				enemy.CharacterInfo.StatsInfo.CurrentHealth = enemy.CharacterInfo.StatsInfo.MaxHealth;
-				enemy.CharacterInfo.StatsInfo.CurrentEnergy = enemy.CharacterInfo.StatsInfo.MaxEnergy;
-				foreach (var enemyAbility in enemy.CharacterInfo.Abilities)
-				{
-					enemyAbility.Avaliable = true;
-				}
-			}
             
 			Loader.StartLevel(data);
 		}

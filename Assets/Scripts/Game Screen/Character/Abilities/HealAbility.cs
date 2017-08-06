@@ -41,8 +41,6 @@ public class HealAbility : Ability, IHeal
             }
         }
 
-        invoker.StartCoroutine(Cooldown(AbilityInfo.Cooldown));
-
         return AbilityInvokeErrorCode.NO_ERROR;
     }
 }
