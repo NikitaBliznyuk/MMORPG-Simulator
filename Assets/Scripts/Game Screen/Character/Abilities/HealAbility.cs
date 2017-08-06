@@ -17,7 +17,7 @@ public class HealAbility : Ability, IHeal
     {
         int healValue = Random.Range(healInfo.MinHeal, HealInfo.MaxHeal + 1);
         
-        if (target == null)
+        if (target == null || target.StateInfo.CurrentState == CharacterState.StateName.DEAD)
         {
             invoker.Heal(healValue);
         }

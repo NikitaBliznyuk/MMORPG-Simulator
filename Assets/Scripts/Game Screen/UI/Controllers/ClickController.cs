@@ -1,20 +1,28 @@
 ﻿using System.Collections.Generic;
 using Game.Character;
-using Game.UI.View;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ClickController : MonoBehaviour, IInputController
 {
-    public CharacterInfoController CurrentObservableInfo { get; private set; }
+    public CharacterInfoController CurrentObservableInfo
+    {
+        get { return currentObservableInfo; }
+        set
+        {
+            if(currentObservableInfo != null)
+                currentObservableInfo.IsHighlighted = false;
+            currentObservableInfo = value;
+        }
+    }
+
     public Vector3 NextPosition { get; private set; }
-    
-    private GameUiView view;
+
+    private CharacterInfoController currentObservableInfo;
 
     private void Awake()
     {
         NextPosition = transform.position;
-        view = FindObjectOfType<GameUiView>();
     }
 
     private void Update()
@@ -27,7 +35,7 @@ public class ClickController : MonoBehaviour, IInputController
             if (Physics.Raycast(cameraRay, out hit, 10, LayerMask.GetMask("Clickable")))
             {
                 CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
-                view.UpdateTopUi(CurrentObservableInfo.Info.StatsInfo, true);
+                CurrentObservableInfo.IsHighlighted = true;
             }
             else
             {

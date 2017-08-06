@@ -18,5 +18,5 @@ MonoBehaviour:
     Cost: 3
     CastDistance: 1.5
   hitInfo:
-    MinDamage: 10
-    MaxDamage: 15
+    MinDamage: 20
+    MaxDamage: 25

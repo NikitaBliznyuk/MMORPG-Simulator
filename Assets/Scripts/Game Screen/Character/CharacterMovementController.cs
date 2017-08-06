@@ -10,6 +10,14 @@ public class CharacterMovementController : MonoBehaviour
     {
         inputController = GetComponent<IInputController>();
         infoController = GetComponent<CharacterInfoController>();
+        
+        infoController.StateInfo.ChangeState += OnChangeState;
+    }
+
+    private void OnChangeState()
+    {
+        if (infoController.StateInfo.CurrentState == CharacterState.StateName.DEAD)
+            enabled = false;
     }
 
     private void Update()
