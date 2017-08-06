@@ -15,8 +15,7 @@ namespace Game.UI.View
         private IUiBehaviour heroUI;
 
         private CharacterInfoController playerInfo;
-
-        private StatsInfo currentObservableInfo;
+        private IInputController inputController;
 
         private void Awake()
         {
@@ -31,6 +30,7 @@ namespace Game.UI.View
         private void LoaderOnDataUpdated(LevelCurrentData data)
         {
             playerInfo = data.PlayerReference;
+            inputController = playerInfo.GetComponent<IInputController>();
         }
 
         private void Start()
@@ -38,16 +38,23 @@ namespace Game.UI.View
             topUI.SetActive(false);
         }
 
-        public void UpdateTopUi(StatsInfo info, bool active)
+        public void UpdateTopUi()
         {
             if (topUI == null)
             {
                 Debug.LogWarning("There is no top ui on scene, try to switch scene or add one.");
                 return;
             }
-            currentObservableInfo = active ? info : null;
+
+            bool active = inputController.CurrentObservableInfo != null;
+            
+            if (active)
+            {
+                StatsInfo info = inputController.CurrentObservableInfo.Info.StatsInfo;
+                topUI.UpdateInfo(info);
+            }
+            
             topUI.SetActive(active);
-            topUI.UpdateInfo(info);
         }
 
         private void UpdateHeroUI()
@@ -63,8 +70,8 @@ namespace Game.UI.View
 
         private void Update()
         {
-            if(currentObservableInfo != null)
-                UpdateTopUi(currentObservableInfo, true);
+            UpdateTopUi();
+            
             if(heroUI != null && playerInfo != null)
                 UpdateHeroUI();
         }

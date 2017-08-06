@@ -10,7 +10,7 @@ public class BotInputController : MonoBehaviour, IInputController
 {
     private CharacterInfoController characterInfoController;
     
-    public CharacterInfoController CurrentObservableInfo { get; private set; }
+    public CharacterInfoController CurrentObservableInfo { get; set; }
     public Vector3 NextPosition { get; private set; }
 
     private void Awake()

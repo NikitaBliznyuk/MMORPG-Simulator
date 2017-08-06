@@ -3,6 +3,6 @@ using UnityEngine;
 
 public interface IInputController
 {
-    CharacterInfoController CurrentObservableInfo { get; }
+    CharacterInfoController CurrentObservableInfo { get; set; }
     Vector3 NextPosition { get; }
 }
