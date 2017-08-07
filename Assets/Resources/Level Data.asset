@@ -32,4 +32,22 @@ MonoBehaviour:
       EnemyTags:
       - Boss
     Icon: {fileID: 21300002, guid: d0a637656cd6560438c82a9de41322b4, type: 3}
-  allies: []
+  allies:
+  - CharacterInfo:
+      StatsInfo:
+        maxHealth: 200
+        currentHealth: 200
+        healthRegen: 4
+        maxEnergy: 50
+        currentEnergy: 50
+        energyRegen: 2
+        name: TEST ALLY
+      MovementSpeed: 0.8
+      Abilities:
+      - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
+      Tag: Raid 0
+      AllyTags:
+      - Raid 0
+      EnemyTags:
+      - Boss
+    Icon: {fileID: 21300006, guid: d0a637656cd6560438c82a9de41322b4, type: 3}

@@ -2,7 +2,7 @@
 using Game.Character;
 using UnityEngine;
 
-public class BotStateMachine : MonoBehaviour, IInputController, IBaseStates
+public class BotStateMachine : MonoBehaviour, IInputController, IBossBaseStates
 {
     private CharacterInfoController characterInfoController;
     
