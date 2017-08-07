@@ -18,7 +18,7 @@ public class PopupTextBehaviour : MonoBehaviour
         textContainer = GetComponent<Text>();
     }
 
-    public void Show(string text, Color color, Vector2 position)
+    public void Show(string text, Color color, Vector3 position)
     {
         transform.position = position;
         textContainer.text = text;
@@ -41,7 +41,7 @@ public class PopupTextBehaviour : MonoBehaviour
             color = textContainer.color;
             color.a = alphaOnTime.Evaluate(t);
             textContainer.color = color;
-            transform.position += Vector3.up * ySpeedOnTime.Evaluate(t) * Time.deltaTime;
+            transform.position += Vector3.forward * ySpeedOnTime.Evaluate(t) * Time.deltaTime;
             
             currentTime += Time.deltaTime;
             yield return null;

@@ -15,14 +15,13 @@ public class ClickController : MonoBehaviour, IInputController
             currentObservableInfo = value;
         }
     }
-
-    public Vector3 NextPosition { get; private set; }
-
+    
     private CharacterInfoController currentObservableInfo;
+    private CharacterMovementController movementController;
 
-    private void Awake()
+    private void Start()
     {
-        NextPosition = transform.position;
+        movementController = GetComponent<CharacterMovementController>();
     }
 
     private void Update()
@@ -32,14 +31,15 @@ public class ClickController : MonoBehaviour, IInputController
             RaycastHit hit;
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(cameraRay, out hit, 10, LayerMask.GetMask("Clickable")))
+            if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Clickable")))
             {
                 CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
                 CurrentObservableInfo.IsHighlighted = true;
             }
-            else
+            else if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Ground")))
             {
-                GetNextPosition();
+                Debug.Log("Target: " + hit.point);
+                movementController.MoveToPoint(hit.point);
             }
         }
     }
@@ -58,11 +58,5 @@ public class ClickController : MonoBehaviour, IInputController
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
-    }
-
-    private void GetNextPosition()
-    {
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        NextPosition = new Vector3(newPosition.x, newPosition.y, NextPosition.z);
     }
 }

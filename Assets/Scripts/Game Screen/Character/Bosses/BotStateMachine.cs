@@ -5,10 +5,10 @@ using UnityEngine;
 public class BotStateMachine : MonoBehaviour, IInputController, IBossBaseStates
 {
     private CharacterInfoController characterInfoController;
+    private CharacterMovementController movementController;
     
     public CharacterInfoController CurrentObservableInfo { get; set; }
-    public Vector3 NextPosition { get; private set; }
-
+    
     [Header("Settings")]
     
     [SerializeField] private float aggroRange;
@@ -24,6 +24,13 @@ public class BotStateMachine : MonoBehaviour, IInputController, IBossBaseStates
 
     private void Awake()
     {
+        Loader.DataUpdated += OnDataUpdated;
+
+        CurrentState = Idle;
+    }
+
+    private void Start()
+    {
         characterInfoController = GetComponent<CharacterInfoController>();
         characterInfoController.StateInfo.ChangeState += OnChangeState;
 
@@ -31,12 +38,8 @@ public class BotStateMachine : MonoBehaviour, IInputController, IBossBaseStates
         {
             ability.Avaliable = true;
         }
-        
-        Loader.DataUpdated += OnDataUpdated;
-        
-        NextPosition = transform.position;
 
-        CurrentState = Idle;
+        movementController = GetComponent<CharacterMovementController>();
     }
 
     private void OnDataUpdated(LevelCurrentData data)
@@ -79,9 +82,11 @@ public class BotStateMachine : MonoBehaviour, IInputController, IBossBaseStates
     {
         AbilityInvokeErrorCode code = characterInfoController.InvokeAbility(simpleAttack, CurrentObservableInfo);
 
-        NextPosition = code == AbilityInvokeErrorCode.TOO_FAR
+        Vector3 nextPosition = code == AbilityInvokeErrorCode.TOO_FAR
             ? CurrentObservableInfo.transform.position
             : transform.position;
+        
+        movementController.MoveToPoint(nextPosition);
     }
 
     #endregion

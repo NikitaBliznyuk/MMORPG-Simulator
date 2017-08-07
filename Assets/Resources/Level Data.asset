@@ -35,16 +35,15 @@ MonoBehaviour:
   allies:
   - CharacterInfo:
       StatsInfo:
-        maxHealth: 200
-        currentHealth: 200
-        healthRegen: 4
-        maxEnergy: 50
-        currentEnergy: 50
-        energyRegen: 2
-        name: TEST ALLY
-      MovementSpeed: 0.8
-      Abilities:
-      - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
+        maxHealth: 100
+        currentHealth: 100
+        healthRegen: 2
+        maxEnergy: 30
+        currentEnergy: 30
+        energyRegen: 3
+        name: <Test ally>
+      MovementSpeed: 1
+      Abilities: []
       Tag: Raid 0
       AllyTags:
       - Raid 0

@@ -1,15 +1,20 @@
 ﻿using Game.Character;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovementController : MonoBehaviour
 {
-    private IInputController inputController;
     private CharacterInfoController infoController;
-
+    private NavMeshAgent navMeshAgent;
+    
     private void Start()
     {
-        inputController = GetComponent<IInputController>();
         infoController = GetComponent<CharacterInfoController>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.speed = infoController.Info.MovementSpeed;
         
         infoController.StateInfo.ChangeState += OnChangeState;
     }
@@ -17,12 +22,14 @@ public class CharacterMovementController : MonoBehaviour
     private void OnChangeState()
     {
         if (infoController.StateInfo.CurrentState == CharacterState.StateName.DEAD)
+        {
+            navMeshAgent.enabled = false;
             enabled = false;
+        }
     }
 
-    private void Update()
+    public void MoveToPoint(Vector3 point)
     {
-        transform.position = Vector3.MoveTowards(transform.position, inputController.NextPosition,
-            infoController.Info.MovementSpeed * Time.deltaTime);
+        navMeshAgent.SetDestination(point);
     }
 }

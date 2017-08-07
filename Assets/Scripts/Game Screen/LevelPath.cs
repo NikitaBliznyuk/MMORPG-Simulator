@@ -9,26 +9,15 @@ public class LevelPath : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField] private Vector3[] pathPoints;
+    [SerializeField] private Transform[] pathPoints;
 
-    public Vector3 NextPosition(Vector3 currentPosition)
+    public int PathCount
     {
-        float previousDistance = float.MaxValue;
-        int i = 0;
+        get { return pathPoints.Length; }
+    }
 
-        for (; i < pathPoints.Length; i++)
-        {
-            float currentDistance = Vector3.Distance(currentPosition, pathPoints[i]);
-            if (currentDistance < previousDistance)
-            {
-                previousDistance = currentDistance;
-            }
-            else
-            {
-                break;
-            }
-        }
-        
-        return pathPoints[i < pathPoints.Length ? i : pathPoints.Length - 1];
+    public Vector3 NextPosition(int index)
+    {
+        return pathPoints[index < pathPoints.Length ? index : pathPoints.Length - 1].position;
     }
 }

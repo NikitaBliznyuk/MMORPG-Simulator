@@ -2,10 +2,6 @@
 
 public class CameraController : MonoBehaviour
 {
-    [Header("Settings")] 
-    
-    [SerializeField] private float dampTime = 0.5f;
-    
     private Transform currentTarget;
     private Vector3 offset;
     
@@ -24,9 +20,7 @@ public class CameraController : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            Vector3 currentVelocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, currentTarget.transform.position + offset,
-                ref currentVelocity, dampTime);
+            transform.position = currentTarget.transform.position + offset;
         }
     }
 }
