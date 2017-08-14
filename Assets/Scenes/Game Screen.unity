@@ -478,7 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c3e223aca56fc4da6f43084eb7ebd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.1
 --- !u!1 &136030992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1901,7 @@ GameObject:
   - component: {fileID: 932178085}
   - component: {fileID: 932178086}
   m_Layer: 5
-  m_Name: Boss GUI
+  m_Name: Top GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
