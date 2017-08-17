@@ -16,17 +16,17 @@ public class StateController : MonoBehaviour {
 	
 	[SerializeField] private Transform[] wayPointList;
 	[SerializeField] private float aggroRange;
-	
-	private NavMeshAgent navMeshAgent;
+
 	private int nextWayPoint;
 
 	public CharacterInfoController InfoController { get; private set; }
 	public float AggroRange { get { return aggroRange; } }
 	public Transform ChaseTarget { get; set; }
+	public NavMeshAgent NavMeshAgent { get; private set; }
 
 	private void Awake () 
 	{
-		navMeshAgent = GetComponent<NavMeshAgent> ();
+		NavMeshAgent = GetComponent<NavMeshAgent> ();
 		InfoController = GetComponent<CharacterInfoController>();
 	}
 	private void Update()
