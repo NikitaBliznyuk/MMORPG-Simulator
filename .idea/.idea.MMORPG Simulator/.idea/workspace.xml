@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="988bbd29-7c1a-4303-a4c1-b9d8ff84a369" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/StateController.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/StateController.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions.meta" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Actions.meta" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Decisions.meta" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/States.meta" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Action.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Action.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Action.cs.meta" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Action.cs.meta" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Decigion.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Decision.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Decigion.cs.meta" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Decision.cs.meta" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/State.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs.meta" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/State.cs.meta" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Transition.cs" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Transition.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Transition.cs.meta" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Abstractions/Transition.cs.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG Simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG Simulator/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,51 +26,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Action.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Action.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="State.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <marker date="1502785253649" expanded="true" signature="270:335" ph="{...}" />
-                <marker date="1502785253649" expanded="true" signature="388:467" ph="{...}" />
-                <marker date="1502785253649" expanded="true" signature="428:464" ph="{...}" />
-                <marker date="1502785253649" expanded="true" signature="527:759" ph="{...}" />
-                <marker date="1502785253649" expanded="true" signature="579:756" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StateController.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/StateController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-              <folding>
-                <marker date="1502955150994" expanded="true" signature="6:74" ph="..." />
-                <marker date="1502955150994" expanded="true" signature="162:736" ph="{...}" />
-                <marker date="1502955150994" expanded="true" signature="434:488" ph="{...}" />
-                <marker date="1502955150994" expanded="true" signature="511:552" ph="{...}" />
-                <marker date="1502955150994" expanded="true" signature="601:696" ph="{...}" />
-                <marker date="1502955150994" expanded="true" signature="637:693" ph="{...}" />
-                <marker date="1502955150994" expanded="true" signature="725:734" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LevelPath.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LevelPath.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/LevelPath.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
@@ -113,18 +81,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Transition.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Transition.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1502175081114" expanded="true" signature="46:128" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CharacterInfoController.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/CharacterInfoController.cs">
           <provider selected="true" editor-type-id="text-editor">
@@ -160,18 +116,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Decigion.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Decigion.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1502175083875" expanded="true" signature="69:132" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -185,7 +129,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/LevelData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Unit Tests/StatsInfoTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/StateController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Unit Tests/HitAbilityTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/RangeVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Unit Tests/HealAbilityTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -195,7 +138,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Views/InfoTextBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/Unity3DRider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/Ability.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Decigion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/Interfaces/IHit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Controllers/PopupNumbersController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/Abilities/Interfaces/IHeal.cs" root0="FORCE_HIGHLIGHTING" />
@@ -204,7 +146,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/CharacterInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/LevelPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/CharacterInfoController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Editor Tests/MechanicsEditorTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Views/GameUiView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Views/IUiBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
@@ -217,11 +158,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/ClickController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/_TEST!!!!!!!/Test_LevelLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Controllers/IInputController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Action.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Camera/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DE713E92-6A1C-489D-A969-4BB7F33085F3/d5/927c671c/CharacterInfo.cs" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/UI/Views/PopupTextBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/Transition.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -458,7 +397,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111392000" />
+    <option name="totallyTimeSpent" value="111576000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -504,13 +443,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs</url>
-          <line>32</line>
-          <properties startOffset="758" endOffset="759" documentPath="$PROJECT_DIR$/Assets/Scripts/Game Screen/Character/State Machine/State.cs" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -763,9 +695,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502175083875" expanded="true" signature="69:132" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,9 +703,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502175081114" expanded="true" signature="46:128" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -783,13 +711,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <marker date="1502785253649" expanded="true" signature="270:335" ph="{...}" />
-            <marker date="1502785253649" expanded="true" signature="388:467" ph="{...}" />
-            <marker date="1502785253649" expanded="true" signature="428:464" ph="{...}" />
-            <marker date="1502785253649" expanded="true" signature="527:759" ph="{...}" />
-            <marker date="1502785253649" expanded="true" signature="579:756" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -830,22 +752,6 @@
             <marker date="1502061619733" expanded="true" signature="4195:4782" ph="{...}" />
             <marker date="1502061619733" expanded="true" signature="4364:4500" ph="{...}" />
             <marker date="1502061619733" expanded="true" signature="4592:4738" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/LevelPath.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <marker date="1502954274778" expanded="true" signature="58:753" ph="{...}" />
-            <marker date="1502954274778" expanded="true" signature="124:161" ph="{...}" />
-            <marker date="1502954274778" expanded="true" signature="239:293" ph="{...}" />
-            <marker date="1502954274778" expanded="true" signature="337:435" ph="{...}" />
-            <marker date="1502954274778" expanded="false" signature="441:751" ph="Editor only" />
-            <marker date="1502954274778" expanded="true" signature="501:735" ph="{...}" />
-            <marker date="1502954274778" expanded="true" signature="625:729" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -895,14 +801,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Game Screen/LevelPath.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
-            <marker date="1502955150994" expanded="true" signature="6:74" ph="..." />
-            <marker date="1502955150994" expanded="true" signature="162:736" ph="{...}" />
-            <marker date="1502955150994" expanded="true" signature="434:488" ph="{...}" />
-            <marker date="1502955150994" expanded="true" signature="511:552" ph="{...}" />
-            <marker date="1502955150994" expanded="true" signature="601:696" ph="{...}" />
-            <marker date="1502955150994" expanded="true" signature="637:693" ph="{...}" />
-            <marker date="1502955150994" expanded="true" signature="725:734" ph="{...}" />
+            <marker date="1502954274778" expanded="true" signature="58:753" ph="{...}" />
+            <marker date="1502954274778" expanded="true" signature="124:161" ph="{...}" />
+            <marker date="1502954274778" expanded="true" signature="239:293" ph="{...}" />
+            <marker date="1502954274778" expanded="true" signature="337:435" ph="{...}" />
+            <marker date="1502954274778" expanded="false" signature="441:751" ph="Editor only" />
+            <marker date="1502954274778" expanded="true" signature="501:735" ph="{...}" />
+            <marker date="1502954274778" expanded="true" signature="625:729" ph="{...}" />
           </folding>
         </state>
       </provider>
