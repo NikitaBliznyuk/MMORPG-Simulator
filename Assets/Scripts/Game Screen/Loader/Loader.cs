@@ -11,7 +11,7 @@ public class Loader : MonoBehaviour
     public delegate void LevelStartHandler(LevelData data);
     public static event LevelStartHandler LevelStart;
     public delegate void LevelEndHandler();
-    public static event LevelEndHandler LevelEnd;
+    //public static event LevelEndHandler LevelEnd;
     public delegate void DataUpdatedHandler(LevelCurrentData data);
     public static event DataUpdatedHandler DataUpdated;
 
@@ -40,11 +40,6 @@ public class Loader : MonoBehaviour
         {
             PlayerReference = player
         };
-
-        foreach (var ally in data.Allies)
-        {
-            CreateAlly(ally);
-        }
         
         UpdateData(levelData);
     }
@@ -63,18 +58,6 @@ public class Loader : MonoBehaviour
         player.RangeVisualizer = rangeVisualizer;
         
         return player;
-    }
-
-    private CharacterInfoController CreateAlly(SpawnData data)
-    {
-        CharacterInfoController ally = Instantiate(characterPrefab);
-        ally.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
-        ally.gameObject.AddComponent<Tank>();
-        ally.Info = data.CharacterInfo;
-        ally.Icon = data.Icon;
-        ally.tag = data.CharacterInfo.Tag; // Unnecessary.
-
-        return ally;
     }
 }
 

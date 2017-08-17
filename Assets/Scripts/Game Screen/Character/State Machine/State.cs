@@ -31,6 +31,4 @@ public class State : ScriptableObject
 			controller.TransitionToState(decisionSucceeded ? transition.trueState : transition.falseState);
 		}
 	}
-
-
 }

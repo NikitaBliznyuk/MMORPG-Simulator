@@ -9,7 +9,7 @@ public class LevelPath : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField] private Transform[] pathPoints;
+    [SerializeField] private Vector3[] pathPoints;
 
     public int PathCount
     {
@@ -18,6 +18,22 @@ public class LevelPath : MonoBehaviour
 
     public Vector3 NextPosition(int index)
     {
-        return pathPoints[index < pathPoints.Length ? index : pathPoints.Length - 1].position;
+        return pathPoints[index < pathPoints.Length ? index : pathPoints.Length - 1];
     }
+
+    #region Editor only
+
+    private void OnDrawGizmosSelected()
+    {
+        float radius = 0.5f;
+        Color color = Color.cyan;
+        
+        foreach (var pathPoint in pathPoints)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawSphere(pathPoint, radius);
+        }
+    }
+
+    #endregion
 }
