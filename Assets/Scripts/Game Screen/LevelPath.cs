@@ -31,7 +31,7 @@ public class LevelPath : MonoBehaviour
         foreach (var pathPoint in pathPoints)
         {
             Gizmos.color = color;
-            Gizmos.DrawSphere(pathPoint, radius);
+            Gizmos.DrawWireSphere(pathPoint, radius);
         }
     }
 

@@ -1,22 +1,33 @@
 ﻿using System.Collections.Generic;
+using Game.Character;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(CharacterInfoController))]
 public class StateController : MonoBehaviour {
 
+	[Header("References")]
+	
 	[SerializeField] private State currentState;
 	[SerializeField] private State remainState;
 	
-	[SerializeField] private List<Transform> wayPointList;
-
+	[Header("Settings")]
+	
+	[SerializeField] private Transform[] wayPointList;
+	[SerializeField] private float aggroRange;
+	
 	private NavMeshAgent navMeshAgent;
 	private int nextWayPoint;
-	private Transform chaseTarget;
+
+	public CharacterInfoController InfoController { get; private set; }
+	public float AggroRange { get { return aggroRange; } }
+	public Transform ChaseTarget { get; set; }
 
 	private void Awake () 
 	{
 		navMeshAgent = GetComponent<NavMeshAgent> ();
+		InfoController = GetComponent<CharacterInfoController>();
 	}
 	private void Update()
 	{
@@ -36,4 +47,14 @@ public class StateController : MonoBehaviour {
 	{
 		
 	}
+
+	#region Editor only
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = currentState.CurrentStateGizmoColor;
+		Gizmos.DrawWireSphere(transform.position, aggroRange);
+	}
+
+	#endregion
 }

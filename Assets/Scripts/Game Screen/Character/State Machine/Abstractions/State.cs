@@ -3,10 +3,14 @@
 [CreateAssetMenu (menuName = "PluggableAI/State")]
 public class State : ScriptableObject 
 {
+	[SerializeField] private Action[] actions;
+	[SerializeField] private Transition[] transitions;
+	[SerializeField] private Color currentStateGizmoColor = Color.gray;
 
-	public Action[] actions;
-	public Transition[] transitions;
-	public Color sceneGizmoColor = Color.grey;
+	public Color CurrentStateGizmoColor
+	{
+		get { return currentStateGizmoColor; }
+	}
 
 	public void UpdateState(StateController controller)
 	{
