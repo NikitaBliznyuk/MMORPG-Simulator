@@ -70,7 +70,7 @@ namespace Game.Character
             float currentTime = 0.0f;
             float gap = 0.25f;
 
-            while (StateInfo.CurrentState != CharacterState.StateName.DEAD) // TODO STOP CONDITION
+            while (StateInfo.CurrentState != CharacterState.StateName.DEAD)
             {
                 if (currentTime >= gap)
                 {

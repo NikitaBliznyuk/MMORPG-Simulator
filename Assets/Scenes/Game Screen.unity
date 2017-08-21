@@ -1880,6 +1880,7 @@ GameObject:
   - component: {fileID: 972414613}
   - component: {fileID: 972414612}
   - component: {fileID: 972414611}
+  - component: {fileID: 972414614}
   m_Layer: 8
   m_Name: Test boss 1
   m_TagString: Untagged
@@ -1913,9 +1914,9 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 1200
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.1
   m_BaseOffset: 0
@@ -1945,6 +1946,7 @@ MonoBehaviour:
     MovementSpeed: 0.6
     Abilities:
     - ability: {fileID: 11400000, guid: ae01a50a788fef449bd19ae5eae2cd24, type: 2}
+      avaliable: 1
     Tag: Boss
     AllyTags:
     - Boss
@@ -1952,6 +1954,22 @@ MonoBehaviour:
     - Raid 0
   view: {fileID: 42093379}
   highlight: {fileID: 342433612}
+--- !u!114 &972414614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972414610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7040786c80dcc4c8a2cb8166c315af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 11400000, guid: 7393bcc491cc7b641b693532a6c83f43, type: 2}
+  remainState: {fileID: 11400000, guid: af641d347ec8fbe40acd0ba4ebda0f8b, type: 2}
+  wayPointList: []
+  aggroRange: 2.5
+  simpleAttacksIndices: 00000000
 --- !u!1001 &1002918783
 Prefab:
   m_ObjectHideFlags: 0
