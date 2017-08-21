@@ -98,12 +98,15 @@ namespace Game.Character
             get { return ability; }
         }
         
-        private bool avaliable = true;
+        [SerializeField] private bool avaliable = true;
 
         public bool Avaliable
         {
             get { return avaliable; }
-            set { avaliable = value; }
+            set
+            {
+                avaliable = value;
+            }
         }
 
         public AbilityContainer(Ability ability)

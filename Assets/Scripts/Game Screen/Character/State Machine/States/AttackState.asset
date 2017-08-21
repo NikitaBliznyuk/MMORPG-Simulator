@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: ec3a7f68efcf9064d94c15b28a29eed3, type: 2}
+  - {fileID: 11400000, guid: 8e26211e96fc52f4fbbcde62710e34db, type: 2}
   transitions: []
   currentStateGizmoColor: {r: 1, g: 0, b: 0, a: 1}

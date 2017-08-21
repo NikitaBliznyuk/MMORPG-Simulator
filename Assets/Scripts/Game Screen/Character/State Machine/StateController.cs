@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Game.Character;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +18,10 @@ public class StateController : MonoBehaviour {
 	[SerializeField] private Transform[] wayPointList;
 	[SerializeField] private float aggroRange;
 
+	[Header("Abilities")] 
+	
+	[SerializeField] private int[] simpleAttacksIndices;
+
 	private int nextWayPoint;
 
 	public CharacterInfoController InfoController { get; private set; }
@@ -24,11 +29,28 @@ public class StateController : MonoBehaviour {
 	public Transform ChaseTarget { get; set; }
 	public NavMeshAgent NavMeshAgent { get; private set; }
 
+	#region Abilities getters
+
+	public int[] SimpleAttacksIndices
+	{
+		get { return simpleAttacksIndices; }
+	}
+
+	#endregion
+	
 	private void Awake () 
 	{
 		NavMeshAgent = GetComponent<NavMeshAgent> ();
 		InfoController = GetComponent<CharacterInfoController>();
+		
+		InfoController.StateInfo.ChangeState += StateInfoOnChangeState;
 	}
+
+	private void StateInfoOnChangeState()
+	{
+		enabled = InfoController.StateInfo.CurrentState != CharacterState.StateName.DEAD;
+	}
+
 	private void Update()
 	{
 		currentState.UpdateState (this);

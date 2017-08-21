@@ -38,7 +38,6 @@ public class ClickController : MonoBehaviour, IInputController
             }
             else if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Ground")))
             {
-                Debug.Log("Target: " + hit.point);
                 movementController.MoveToPoint(hit.point);
             }
         }
