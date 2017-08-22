@@ -16,9 +16,9 @@ public class LevelPath : MonoBehaviour
         get { return pathPoints.Length; }
     }
 
-    public Vector3 NextPosition(int index)
+    public Vector3[] Path
     {
-        return pathPoints[index < pathPoints.Length ? index : pathPoints.Length - 1];
+        get { return pathPoints; }
     }
 
     #region Editor only

@@ -6,6 +6,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(CharacterInfoController))]
 public class StateController : MonoBehaviour
 {
+	private enum WayType
+	{
+		Patrol,
+		Walking
+	}
+
 	[Header("References")]
 	[SerializeField]
 	[Tooltip("Current character state.")]
@@ -17,12 +23,16 @@ public class StateController : MonoBehaviour
 
 	[Header("Settings")]
 	[SerializeField]
-	[Tooltip("Positions in World Space. Character will move from one to another.")]
-	private Transform[] wayPointList;
-
-	[SerializeField]
 	[Tooltip("Range of aggro in World Space.")]
 	private float aggroRange;
+
+	[SerializeField]
+	[Tooltip("Patrol way points (if needed).")]
+	private Vector3[] wayPointList;
+
+	[SerializeField]
+	[Tooltip("Way, that used by characted to walk through. Walking means walk through level, patrol - patrol around.")]
+	private WayType wayType;
 
 	[Header("Abilities")]
 	[SerializeField]
@@ -32,7 +42,7 @@ public class StateController : MonoBehaviour
 	/// <summary>
 	/// Next way point in way point list.
 	/// </summary>
-	private int nextWayPoint;
+	private int nextWayPoint = -1;
 
 	/// <summary>
 	/// Reference to CharacterInfoController instance. It contains all character info (abilities, stats, etc.).
@@ -57,6 +67,36 @@ public class StateController : MonoBehaviour
 	/// </summary>
 	public NavMeshAgent NavMeshAgent { get; private set; }
 
+	/// <summary>
+	/// Reference to next way point. Set next destination to NavMesh agent.
+	/// </summary>
+	public int NextWayPoint
+	{
+		get { return nextWayPoint; }
+		set
+		{
+			nextWayPoint = wayType == WayType.Patrol
+				? value % WayPointList.Length
+				: Mathf.Min(value, WayPointList.Length - 1);
+			NavMeshAgent.destination = WayPointList[nextWayPoint];
+		}
+	}
+
+	/// <summary>
+	/// Way in the level. Every level has it's own path.
+	/// </summary>
+	private Vector3[] WayPointList
+	{
+		get
+		{
+			return wayType == WayType.Walking
+				? LevelPath.Instance.Path
+				: wayPointList.Length > 0
+					? wayPointList
+					: new[] {transform.position};
+		}
+	}
+
 	#region Abilities getters
 
 	/// <summary>
@@ -69,6 +109,8 @@ public class StateController : MonoBehaviour
 
 	#endregion
 
+	#region Unity functions
+
 	private void Awake()
 	{
 		NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -77,17 +119,19 @@ public class StateController : MonoBehaviour
 		InfoController.StateInfo.ChangeState += StateInfoOnChangeState;
 	}
 
+	private void Update()
+	{
+		currentState.UpdateState(this);
+	}
+
+	#endregion
+
 	/// <summary>
 	/// Executes, when character change internal state.
 	/// </summary>
 	private void StateInfoOnChangeState()
 	{
 		enabled = InfoController.StateInfo.CurrentState != CharacterState.StateName.DEAD;
-	}
-
-	private void Update()
-	{
-		currentState.UpdateState(this);
 	}
 
 	/// <summary>
@@ -117,6 +161,12 @@ public class StateController : MonoBehaviour
 	{
 		Gizmos.color = currentState.CurrentStateGizmoColor;
 		Gizmos.DrawWireSphere(transform.position, aggroRange);
+
+		Gizmos.color = Color.cyan;
+		foreach (var point in wayPointList)
+		{
+			Gizmos.DrawWireSphere(point, 0.5f);
+		}
 	}
 
 	#endregion

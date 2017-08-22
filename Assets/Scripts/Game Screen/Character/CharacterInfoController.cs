@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Game.Character
@@ -9,6 +8,9 @@ namespace Game.Character
         [SerializeField] private CharacterInfo info;
         [SerializeField] private SpriteRenderer view;
         [SerializeField] private SpriteRenderer highlight;
+
+        [SerializeField]
+        private RangeVisualizer rangeVisualizer;
 
         private readonly CharacterState stateInfo = new CharacterState();
         private readonly Color deadColor = Color.gray;
@@ -44,7 +46,10 @@ namespace Game.Character
             set { view.sprite = value; }
         }
 
-        public RangeVisualizer RangeVisualizer { get; set; }
+        public RangeVisualizer RangeVisualizer
+        {
+            get { return rangeVisualizer; }
+        }
 
         private IInputController inputController;
 
