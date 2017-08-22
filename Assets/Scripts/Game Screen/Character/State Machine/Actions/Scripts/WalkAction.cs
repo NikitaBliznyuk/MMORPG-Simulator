@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu (menuName = "PluggableAI/Actions/Walk")]
-public class WalkAction : Action 
+public class WalkAction : Action
 {
     public override void Act(StateController controller)
     {

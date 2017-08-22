@@ -24,8 +24,11 @@ MonoBehaviour:
       MovementSpeed: 1
       Abilities:
       - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
+        avaliable: 1
       - ability: {fileID: 11400000, guid: fcba9e41b7fe26a4ea3dc490fa9e5d72, type: 2}
+        avaliable: 1
       - ability: {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
+        avaliable: 1
       Tag: Raid 0
       AllyTags:
       - Raid 0
@@ -43,7 +46,9 @@ MonoBehaviour:
         energyRegen: 3
         name: <Test ally>
       MovementSpeed: 1
-      Abilities: []
+      Abilities:
+      - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
+        avaliable: 1
       Tag: Raid 0
       AllyTags:
       - Raid 0

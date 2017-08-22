@@ -42,7 +42,7 @@ public class StateController : MonoBehaviour
 	/// <summary>
 	/// Next way point in way point list.
 	/// </summary>
-	private int nextWayPoint;
+	private int nextWayPoint = -1;
 
 	/// <summary>
 	/// Reference to CharacterInfoController instance. It contains all character info (abilities, stats, etc.).

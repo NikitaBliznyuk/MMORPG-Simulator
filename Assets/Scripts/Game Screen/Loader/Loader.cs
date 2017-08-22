@@ -8,6 +8,10 @@ public class Loader : MonoBehaviour
     [SerializeField]
     [Tooltip("Character prefab, that contains player info.")]
     private CharacterInfoController playerPrefab;
+    
+    [SerializeField]
+    [Tooltip("Character prefab, that contains ally info.")]
+    private CharacterInfoController allyPrefab;
 
     /// <summary>
     /// Delegate for level start event.
@@ -76,6 +80,11 @@ public class Loader : MonoBehaviour
             PlayerReference = player
         };
 
+        foreach (var ally in data.Allies)
+        {
+            CreateAlly(ally);
+        }
+
         UpdateData(levelData);
     }
 
@@ -99,9 +108,11 @@ public class Loader : MonoBehaviour
 
     private CharacterInfoController CreateAlly(SpawnData data)
     {
-        CharacterInfoController ally = Instantiate(playerPrefab);
+        CharacterInfoController ally = Instantiate(allyPrefab);
 
         ally.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
+        ally.Info = data.CharacterInfo;
+        ally.Icon = data.Icon;
         
         return ally;
     }
