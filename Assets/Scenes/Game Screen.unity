@@ -1967,8 +1967,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 7393bcc491cc7b641b693532a6c83f43, type: 2}
   remainState: {fileID: 11400000, guid: af641d347ec8fbe40acd0ba4ebda0f8b, type: 2}
-  wayPointList: []
   aggroRange: 2.5
+  wayPointList: []
+  wayType: 0
   simpleAttacksIndices: 00000000
 --- !u!1001 &1002918783
 Prefab:
