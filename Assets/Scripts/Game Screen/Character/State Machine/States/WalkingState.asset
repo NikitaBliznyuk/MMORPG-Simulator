@@ -13,5 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: e7b50d68b0102614482046ffd1ad1e60, type: 2}
-  transitions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: 7472cc22844f23a44839fbf667021d6b, type: 2}
+    trueState: {fileID: 11400000, guid: d9488f056adde824683baa1493ca27df, type: 2}
+    falseState: {fileID: 11400000, guid: af641d347ec8fbe40acd0ba4ebda0f8b, type: 2}
   currentStateGizmoColor: {r: 0.07586192, g: 0, b: 1, a: 1}
