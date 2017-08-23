@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using CharacterController = Game.Character.CharacterInfoController;
+using CharacterController = GameScreen.Character.CharacterInfoController;
 
 public class MechanicsEditorTest : EditorWindow {
 

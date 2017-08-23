@@ -1,9 +1,10 @@
-﻿using System;
-using Game.Character;
+﻿using GameScreen.Character;
+using GameScreen.Loader;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.UI.View
+namespace GameScreen.UI.View
 {
 	public class TopUiBehaviour : MonoBehaviour, IUiBehaviour
 	{
@@ -15,7 +16,7 @@ namespace Game.UI.View
 
 		private void Awake()
 		{
-			Loader.DataUpdated += OnDataUpdated;
+			Loader.Loader.DataUpdated += OnDataUpdated;
 		}
 
 		private void OnDataUpdated(LevelCurrentData data)

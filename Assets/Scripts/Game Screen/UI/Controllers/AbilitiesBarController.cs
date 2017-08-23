@@ -1,79 +1,87 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using GameScreen.Character;
+using GameScreen.Character.Abilities;
+using GameScreen.Loader;
+using GameScreen.UI.View;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbilitiesBarController : MonoBehaviour
+namespace GameScreen.UI.Controllers
 {
-    [SerializeField] private Button[] buttons;
-
-    private void Awake()
+    public class AbilitiesBarController : MonoBehaviour
     {
-        Loader.DataUpdated += LoaderOnDataUpdated;
-    }
+        [SerializeField]
+        private Button[] buttons;
 
-    private void LoaderOnDataUpdated(LevelCurrentData data)
-    {
-        Ability[] abilities = data.PlayerReference.Info.Abilities;
-        
-        for (int i = 0; i < buttons.Length; i++)
+        private void Awake()
         {
-            Text text = buttons[i].GetComponentInChildren<Text>();
-            if (i < abilities.Length)
+            Loader.Loader.DataUpdated += LoaderOnDataUpdated;
+        }
+
+        private void LoaderOnDataUpdated(LevelCurrentData data)
+        {
+            AbilityContainer[] abilities = data.PlayerReference.Info.Abilities;
+
+            for (int i = 0; i < buttons.Length; i++)
             {
-                int index = i;
-                buttons[i].onClick.AddListener(() =>
+                Text text = buttons[i].GetComponentInChildren<Text>();
+                if (i < abilities.Length)
                 {
-                    AbilityInvokeErrorCode code = data.PlayerReference.InvokeAbility(index);
-                    
-                    if (code == AbilityInvokeErrorCode.NO_ERROR)
+                    int index = i;
+                    buttons[i].onClick.AddListener(() =>
                     {
-                        buttons[index].interactable = false;
-                        StartCoroutine(ButtonCooldown(buttons[index], abilities[index].AbilityInfo.Cooldown));
-                    }
-                    else
-                    {
-                        switch (code)
+                        AbilityInvokeErrorCode code = data.PlayerReference.InvokeAbility(index);
+
+                        if (code == AbilityInvokeErrorCode.NO_ERROR)
                         {
-                            case AbilityInvokeErrorCode.TOO_FAR:
-                                InfoTextBehaviour.Instance.ShowMessage("Target is too far.");
-                                break;
-                            case AbilityInvokeErrorCode.NO_ENERGY:
-                                InfoTextBehaviour.Instance.ShowMessage("Not enough energy.");
-                                break;
-                            case AbilityInvokeErrorCode.NOT_AVALIABLE:
-                                InfoTextBehaviour.Instance.ShowMessage("Not avaliable yet.");
-                                break;
-                            case AbilityInvokeErrorCode.WRONG_TARGET:
-                                InfoTextBehaviour.Instance.ShowMessage("Wrong target.");
-                                break;
+                            buttons[index].interactable = false;
+                            StartCoroutine(
+                                ButtonCooldown(buttons[index], abilities[index].Ability.AbilityInfo.Cooldown));
                         }
-                    }
-                });
-                text.text = abilities[i].AbilityInfo.Name;
-            }
-            else
-            {
-                text.text = "?";
+                        else
+                        {
+                            switch (code)
+                            {
+                                case AbilityInvokeErrorCode.TOO_FAR:
+                                    InfoTextBehaviour.Instance.ShowMessage("Target is too far.");
+                                    break;
+                                case AbilityInvokeErrorCode.NO_ENERGY:
+                                    InfoTextBehaviour.Instance.ShowMessage("Not enough energy.");
+                                    break;
+                                case AbilityInvokeErrorCode.NOT_AVALIABLE:
+                                    InfoTextBehaviour.Instance.ShowMessage("Not avaliable yet.");
+                                    break;
+                                case AbilityInvokeErrorCode.WRONG_TARGET:
+                                    InfoTextBehaviour.Instance.ShowMessage("Wrong target.");
+                                    break;
+                            }
+                        }
+                    });
+                    text.text = abilities[i].Ability.AbilityInfo.Name;
+                }
+                else
+                {
+                    text.text = "?";
+                }
             }
         }
-    }
 
-    private IEnumerator ButtonCooldown(Button button, float duration)
-    {
-        float currentTime = 0.0f;
-        Image buttonImage = button.GetComponent<Image>();
-        buttonImage.fillAmount = 0.0f;
-
-        while (currentTime < duration)
+        private IEnumerator ButtonCooldown(Button button, float duration)
         {
-            buttonImage.fillAmount = currentTime / duration;
-            
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
+            float currentTime = 0.0f;
+            Image buttonImage = button.GetComponent<Image>();
+            buttonImage.fillAmount = 0.0f;
 
-        buttonImage.fillAmount = 1.0f;
-        button.interactable = true;
+            while (currentTime < duration)
+            {
+                buttonImage.fillAmount = currentTime / duration;
+
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+
+            buttonImage.fillAmount = 1.0f;
+            button.interactable = true;
+        }
     }
 }

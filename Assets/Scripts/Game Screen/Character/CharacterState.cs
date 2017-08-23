@@ -1,27 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CharacterState
+﻿namespace GameScreen.Character
 {
-    public delegate void ChangeStateHandler();
-    public event ChangeStateHandler ChangeState;
-    
-    public enum StateName
+    public class CharacterState
     {
-        DEFAULT, DEAD
-    }
+        public delegate void ChangeStateHandler();
 
-    private StateName currentState = StateName.DEFAULT;
-    
-    public StateName CurrentState
-    {
-        get { return currentState; }
-        set
+        public event ChangeStateHandler ChangeState;
+
+        public enum StateName
         {
-            currentState = value;
-            if (ChangeState != null)
-                ChangeState();
+            DEFAULT,
+            DEAD
+        }
+
+        private StateName currentState = StateName.DEFAULT;
+
+        public StateName CurrentState
+        {
+            get { return currentState; }
+            set
+            {
+                currentState = value;
+                if (ChangeState != null)
+                    ChangeState();
+            }
         }
     }
 }

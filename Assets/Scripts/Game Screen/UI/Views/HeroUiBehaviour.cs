@@ -1,7 +1,7 @@
-﻿using Game.Character;
+﻿using GameScreen.Character;
 using UnityEngine;
 
-namespace Game.UI.View
+namespace GameScreen.UI.View
 {
 	public class HeroUiBehaviour : MonoBehaviour, IUiBehaviour
 	{

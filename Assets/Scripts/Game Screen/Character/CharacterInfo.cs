@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
+using GameScreen.Character.Abilities;
 using UnityEngine;
 
-namespace Game.Character
+namespace GameScreen.Character
 {
     // TODO REFACTOR THIS TO USE PROPERTIES
     [Serializable]
@@ -9,7 +11,7 @@ namespace Game.Character
     {
         public StatsInfo StatsInfo;
         public float MovementSpeed;
-        public Ability[] Abilities;
+        public AbilityContainer[] Abilities;
         public string Tag;
         public string[] AllyTags;
         public string[] EnemyTags;
@@ -84,6 +86,51 @@ namespace Game.Character
         public string Name
         {
             get { return name; }
+        }
+    }
+
+    [Serializable]
+    public class AbilityContainer
+    {
+        [SerializeField] private Ability ability;
+
+        public Ability Ability
+        {
+            get { return ability; }
+        }
+        
+        [SerializeField] private bool avaliable = true;
+
+        public bool Avaliable
+        {
+            get { return avaliable; }
+            set
+            {
+                avaliable = value;
+            }
+        }
+
+        public AbilityContainer(Ability ability)
+        {
+            this.ability = ability;
+        }
+
+        public AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
+        {
+            AbilityInvokeErrorCode code = ability.Invoke(invoker, target);
+            if (code == AbilityInvokeErrorCode.NO_ERROR)
+            {
+                invoker.StartCoroutine(Cooldown(ability.AbilityInfo.Cooldown));
+            }
+
+            return code;
+        }
+        
+        public IEnumerator Cooldown(float time)
+        {
+            avaliable = false;
+            yield return new WaitForSeconds(time);
+            avaliable = true;
         }
     }
 }

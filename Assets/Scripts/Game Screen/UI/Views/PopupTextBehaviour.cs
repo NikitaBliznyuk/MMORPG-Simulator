@@ -1,57 +1,66 @@
 ﻿using System.Collections;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
-public class PopupTextBehaviour : MonoBehaviour
+namespace GameScreen.UI.View
 {
-    [Header("Settings")] 
-    
-    [SerializeField] private AnimationCurve alphaOnTime;
-    [SerializeField] private AnimationCurve ySpeedOnTime;
-    [SerializeField] private float duration;
-
-    private Text textContainer;
-
-    private void Awake()
+    [RequireComponent(typeof(Text))]
+    public class PopupTextBehaviour : MonoBehaviour
     {
-        textContainer = GetComponent<Text>();
-    }
+        [Header("Settings")]
 
-    public void Show(string text, Color color, Vector2 position)
-    {
-        transform.position = position;
-        textContainer.text = text;
-        textContainer.color = color;
-        
-        StartCoroutine(Animation());
-    }
+        [SerializeField]
+        private AnimationCurve alphaOnTime;
 
-    private IEnumerator Animation()
-    {
-        float currentTime = 0.0f;
-        Color color = textContainer.color;
-        color.a = 1.0f;
-        textContainer.color = color;
+        [SerializeField]
+        private AnimationCurve ySpeedOnTime;
 
-        while (currentTime < duration)
+        [SerializeField]
+        private float duration;
+
+        private Text textContainer;
+
+        private void Awake()
         {
-            float t = currentTime / duration;
-            
-            color = textContainer.color;
-            color.a = alphaOnTime.Evaluate(t);
-            textContainer.color = color;
-            transform.position += Vector3.up * ySpeedOnTime.Evaluate(t) * Time.deltaTime;
-            
-            currentTime += Time.deltaTime;
-            yield return null;
+            textContainer = GetComponent<Text>();
         }
 
-        color = textContainer.color;
-        color.a = 0.0f;
-        textContainer.color = color;
+        public void Show(string text, Color color, Vector3 position)
+        {
+            transform.position = position;
+            textContainer.text = text;
+            textContainer.color = color;
 
-        transform.SetParent(PopupNumbersController.Instance.transform);
-        PopupNumbersController.Instance.TextPool.Push(this);
+            StartCoroutine(Animation());
+        }
+
+        private IEnumerator Animation()
+        {
+            float currentTime = 0.0f;
+            Color color = textContainer.color;
+            color.a = 1.0f;
+            textContainer.color = color;
+
+            while (currentTime < duration)
+            {
+                float t = currentTime / duration;
+
+                color = textContainer.color;
+                color.a = alphaOnTime.Evaluate(t);
+                textContainer.color = color;
+                transform.position += Vector3.forward * ySpeedOnTime.Evaluate(t) * Time.deltaTime;
+
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+
+            color = textContainer.color;
+            color.a = 0.0f;
+            textContainer.color = color;
+
+            transform.SetParent(PopupNumbersController.Instance.transform);
+            PopupNumbersController.Instance.TextPool.Push(this);
+        }
     }
 }

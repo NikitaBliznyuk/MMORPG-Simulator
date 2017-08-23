@@ -1,28 +1,37 @@
-﻿using Game.Character;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
-public class CharacterMovementController : MonoBehaviour
+namespace GameScreen.Character
 {
-    private IInputController inputController;
-    private CharacterInfoController infoController;
-
-    private void Start()
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class CharacterMovementController : MonoBehaviour
     {
-        inputController = GetComponent<IInputController>();
-        infoController = GetComponent<CharacterInfoController>();
-        
-        infoController.StateInfo.ChangeState += OnChangeState;
-    }
+        private CharacterInfoController infoController;
+        private NavMeshAgent navMeshAgent;
 
-    private void OnChangeState()
-    {
-        if (infoController.StateInfo.CurrentState == CharacterState.StateName.DEAD)
-            enabled = false;
-    }
+        private void Start()
+        {
+            infoController = GetComponent<CharacterInfoController>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
 
-    private void Update()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, inputController.NextPosition,
-            infoController.Info.MovementSpeed * Time.deltaTime);
+            navMeshAgent.updateRotation = false;
+            navMeshAgent.speed = infoController.Info.MovementSpeed;
+
+            infoController.StateInfo.ChangeState += OnChangeState;
+        }
+
+        private void OnChangeState()
+        {
+            if (infoController.StateInfo.CurrentState == CharacterState.StateName.DEAD)
+            {
+                navMeshAgent.enabled = false;
+                enabled = false;
+            }
+        }
+
+        public void MoveToPoint(Vector3 point)
+        {
+            navMeshAgent.SetDestination(point);
+        }
     }
 }

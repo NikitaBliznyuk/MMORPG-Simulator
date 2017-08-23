@@ -1,47 +1,42 @@
 ﻿using System;
-using System.Collections;
-using Game.Character;
 using UnityEngine;
 
-public abstract class Ability : ScriptableObject
+namespace GameScreen.Character.Abilities
 {
-    [SerializeField] private AbilityInfo abilityInfo;
-    
-    private bool avaliable = true;
-
-    public AbilityInfo AbilityInfo
+    /// <summary>
+    /// Generic class for all abilities.
+    /// </summary>
+    public abstract class Ability : ScriptableObject
     {
-        get { return abilityInfo; }
-        set { abilityInfo = value; }
+        [SerializeField]
+        private AbilityInfo abilityInfo;
+
+        public AbilityInfo AbilityInfo
+        {
+            get { return abilityInfo; }
+            set { abilityInfo = value; }
+        }
+
+        public abstract AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target);
     }
 
-    public bool Avaliable
+    [Serializable]
+    public struct AbilityInfo
     {
-        get { return avaliable; }
-        set { avaliable = value; }
+        public string Name;
+        public string Description;
+        public float Cooldown;
+        public int Cost;
+        public float CastDistance;
     }
 
-    public abstract AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target);
-    
-    public IEnumerator Cooldown(float time)
+    public enum AbilityInvokeErrorCode
     {
-        avaliable = false;
-        yield return new WaitForSeconds(time);
-        avaliable = true;
+        NO_ERROR,
+        TOO_FAR,
+        NO_ENERGY,
+        NO_SUCH_ABILITY,
+        NOT_AVALIABLE,
+        WRONG_TARGET
     }
-}
-
-[Serializable]
-public struct AbilityInfo
-{
-    public string Name;
-    public string Description;
-    public float Cooldown;
-    public int Cost;
-    public float CastDistance;
-}
-
-public enum AbilityInvokeErrorCode
-{
-    NO_ERROR, TOO_FAR, NO_ENERGY, NO_SUCH_ABILITY, NOT_AVALIABLE, WRONG_TARGET
 }

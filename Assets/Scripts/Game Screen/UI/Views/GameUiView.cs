@@ -1,8 +1,9 @@
-﻿using System;
-using Game.Character;
+﻿using GameScreen.Character;
+using GameScreen.Loader;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 
-namespace Game.UI.View
+namespace GameScreen.UI.View
 {
     public class GameUiView : MonoBehaviour
     {
@@ -24,7 +25,7 @@ namespace Game.UI.View
             if(heroUIReference != null)
                 heroUI = heroUIReference.GetComponent<IUiBehaviour>();
             
-            Loader.DataUpdated += LoaderOnDataUpdated;
+            Loader.Loader.DataUpdated += LoaderOnDataUpdated;
         }
 
         private void LoaderOnDataUpdated(LevelCurrentData data)

@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using GameScreen.Character.Abilities;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 
-namespace Game.Character
+namespace GameScreen.Character
 {
     public class CharacterInfoController : MonoBehaviour
     {
         [SerializeField] private CharacterInfo info;
         [SerializeField] private SpriteRenderer view;
         [SerializeField] private SpriteRenderer highlight;
+
+        [SerializeField]
+        private RangeVisualizer rangeVisualizer;
 
         private readonly CharacterState stateInfo = new CharacterState();
         private readonly Color deadColor = Color.gray;
@@ -44,7 +48,10 @@ namespace Game.Character
             set { view.sprite = value; }
         }
 
-        public RangeVisualizer RangeVisualizer { get; set; }
+        public RangeVisualizer RangeVisualizer
+        {
+            get { return rangeVisualizer; }
+        }
 
         private IInputController inputController;
 
@@ -70,7 +77,7 @@ namespace Game.Character
             float currentTime = 0.0f;
             float gap = 0.25f;
 
-            while (StateInfo.CurrentState != CharacterState.StateName.DEAD) // TODO STOP CONDITION
+            while (StateInfo.CurrentState != CharacterState.StateName.DEAD)
             {
                 if (currentTime >= gap)
                 {
@@ -119,7 +126,7 @@ namespace Game.Character
             if(index > info.Abilities.Length - 1)
                 return AbilityInvokeErrorCode.NO_SUCH_ABILITY;
             
-            if(info.StatsInfo.CurrentEnergy < info.Abilities[index].AbilityInfo.Cost)
+            if(info.StatsInfo.CurrentEnergy < info.Abilities[index].Ability.AbilityInfo.Cost)
                 return AbilityInvokeErrorCode.NO_ENERGY;
             
             CharacterInfoController invoker = this;
@@ -136,11 +143,11 @@ namespace Game.Character
 
                 if (code == AbilityInvokeErrorCode.NO_ERROR)
                 {
-                    Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].AbilityInfo.Cost;
+                    Info.StatsInfo.CurrentEnergy -= Info.Abilities[index].Ability.AbilityInfo.Cost;
                 }
                 else if (RangeVisualizer != null && code == AbilityInvokeErrorCode.TOO_FAR)
                 {
-                    RangeVisualizer.Visualize(Info.Abilities[index].AbilityInfo.CastDistance + Size);
+                    RangeVisualizer.Visualize(Info.Abilities[index].Ability.AbilityInfo.CastDistance + Size);
                 }
 
                 return code;

@@ -1,32 +1,34 @@
 ﻿using System.Collections.Generic;
+using GameScreen.UI.View;
 using UnityEngine;
 
-public class PopupNumbersController : MonoBehaviour
+namespace GameScreen.UI.Controllers
 {
-    #region Singletone
-
-    public static PopupNumbersController Instance;
-
-    private void Awake()
+    public class PopupNumbersController : MonoBehaviour
     {
-        Instance = this;
-        TextPool = new Stack<PopupTextBehaviour>();
-    }
+        #region Singletone
 
-    #endregion
+        public static PopupNumbersController Instance;
 
-    [Header("References")]
-    
-    [SerializeField] private PopupTextBehaviour textPrefab;
+        private void Awake()
+        {
+            Instance = this;
+            TextPool = new Stack<PopupTextBehaviour>();
+        }
 
-    public Stack<PopupTextBehaviour> TextPool { get; private set; }
+        #endregion
 
-    public void CreateText(Vector3 position, Color color, string text)
-    {
-        var popupText = TextPool.Count == 0 ? Instantiate(textPrefab, transform) : TextPool.Pop();
-        
-        popupText.Show(text, color, position);
-        
-        Debug.Log("Showing text: " + text);
+        [Header("References")]
+        [SerializeField]
+        private PopupTextBehaviour textPrefab;
+
+        public Stack<PopupTextBehaviour> TextPool { get; private set; }
+
+        public void CreateText(Vector3 position, Color color, string text)
+        {
+            var popupText = TextPool.Count == 0 ? Instantiate(textPrefab, transform) : TextPool.Pop();
+
+            popupText.Show(text, color, position);
+        }
     }
 }

@@ -1,82 +1,133 @@
-﻿using System.Linq;
-using Game.Character;
+﻿using GameScreen.Character;
+using GameScreen.Level;
 using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
 
-public class Loader : MonoBehaviour
+namespace GameScreen.Loader
 {
-    [Header("References")]
-    
-    [SerializeField] private CharacterInfoController characterPrefab;
-    [SerializeField] private RangeVisualizer rangeVisualizerPrefab;
-
-    public delegate void LevelStartHandler(LevelData data);
-    public static event LevelStartHandler LevelStart;
-    public delegate void LevelEndHandler();
-    public static event LevelEndHandler LevelEnd;
-    public delegate void DataUpdatedHandler(LevelCurrentData data);
-    public static event DataUpdatedHandler DataUpdated;
-
-    private void Awake()
+    public class Loader : MonoBehaviour
     {
-        LevelStart += Initialize;
-    }
+        [Header("References")]
+        [SerializeField]
+        [Tooltip("Character prefab, that contains player info.")]
+        private CharacterInfoController playerPrefab;
 
-    public static void StartLevel(LevelData data)
-    {
-        if (LevelStart != null)
-            LevelStart(data);
-    }
+        [SerializeField]
+        [Tooltip("Character prefab, that contains ally info.")]
+        private CharacterInfoController allyPrefab;
 
-    public static void UpdateData(LevelCurrentData data)
-    {
-        if (DataUpdated != null)
-            DataUpdated(data);
-    }
+        /// <summary>
+        /// Delegate for level start event.
+        /// </summary>
+        /// <param name="data">Data that need to be loaded.</param>
+        public delegate void LevelStartHandler(LevelData data);
 
-    private void Initialize(LevelData data)
-    {
-        CharacterInfoController player = CreatePlayer(data.Player);
-        CreateEnemies(data.Enemies);
-        
-        LevelCurrentData levelData = new LevelCurrentData
+        /// <summary>
+        /// Level start event.
+        /// </summary>
+        public static event LevelStartHandler LevelStart;
+
+        /// <summary>
+        /// Delegate for level ending.
+        /// </summary>
+        public delegate void LevelEndHandler();
+
+        //public static event LevelEndHandler LevelEnd;
+
+        /// <summary>
+        /// Delegate for data update event.
+        /// </summary>
+        /// <param name="data">Current level data.</param>
+        public delegate void DataUpdatedHandler(LevelCurrentData data);
+
+        /// <summary>
+        /// Data update event.
+        /// </summary>
+        public static event DataUpdatedHandler DataUpdated;
+
+        private void Awake()
         {
-            PlayerReference = player
-        };
-        UpdateData(levelData);
-    }
+            LevelStart += Initialize;
+        }
 
-    private CharacterInfoController CreatePlayer(SpawnData info)
-    {
-        CharacterInfoController player = Instantiate(characterPrefab);
-        player.transform.position = info.SpawnPosition;
-        player.gameObject.AddComponent<ClickController>();
-        player.Info = info.CharacterInfo;
-        player.Icon = info.Icon;
-        player.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
-
-        RangeVisualizer rangeVisualizer = Instantiate(rangeVisualizerPrefab, player.transform);
-        rangeVisualizer.name = rangeVisualizerPrefab.name; // Unnecessary. Just for beauty. :)
-        player.RangeVisualizer = rangeVisualizer;
-        
-        return player;
-    }
-
-    private void CreateEnemies(SpawnData[] infos)
-    {
-        foreach (var info in infos)
+        /// <summary>
+        /// Static function, that invoke LevelStart event.
+        /// </summary>
+        /// <param name="data">Data that need to be loaded.</param>
+        public static void StartLevel(LevelData data)
         {
-            CharacterInfoController enemy = Instantiate(characterPrefab);
-            enemy.transform.position = info.SpawnPosition;
-            enemy.gameObject.AddComponent<BotInputController>();
-            enemy.Info = info.CharacterInfo;
-            enemy.Icon = info.Icon;
-            enemy.tag = info.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
+            if (LevelStart != null)
+                LevelStart(data);
+        }
+
+        /// <summary>
+        /// Static function, that invoke DateUpdated event.
+        /// </summary>
+        /// <param name="data">Data that needed to be updated.</param>
+        public static void UpdateData(LevelCurrentData data)
+        {
+            if (DataUpdated != null)
+                DataUpdated(data);
+        }
+
+        /// <summary>
+        /// Level initialization.
+        /// </summary>
+        /// <param name="data">Initialization data.</param>
+        private void Initialize(LevelData data)
+        {
+            CharacterInfoController player = CreatePlayer(data.Player);
+
+            LevelCurrentData levelData = new LevelCurrentData
+            {
+                PlayerReference = player
+            };
+
+            foreach (var ally in data.Allies)
+            {
+                CreateAlly(ally);
+            }
+
+            UpdateData(levelData);
+        }
+
+        /// <summary>
+        /// Get player reference.
+        /// </summary>
+        /// <param name="data">Player data.</param>
+        /// <returns>Reference to instantiated player.</returns>
+        private CharacterInfoController CreatePlayer(SpawnData data)
+        {
+            CharacterInfoController player = Instantiate(playerPrefab);
+
+            player.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
+            player.gameObject.AddComponent<ClickController>();
+            player.Info = data.CharacterInfo;
+            player.Icon = data.Icon;
+            player.tag = data.CharacterInfo.Tag; // Unnecessary. Just to see in inspector.
+
+            return player;
+        }
+
+        private CharacterInfoController CreateAlly(SpawnData data)
+        {
+            CharacterInfoController ally = Instantiate(allyPrefab);
+
+            ally.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
+            ally.Info = data.CharacterInfo;
+            ally.Icon = data.Icon;
+
+            return ally;
         }
     }
-}
 
-public class LevelCurrentData
-{
-    public CharacterInfoController PlayerReference;
+    /// <summary>
+    /// Data about current level.
+    /// </summary>
+    public class LevelCurrentData
+    {
+        /// <summary>
+        /// Reference to player on scene. Can only be 1 player in scene.
+        /// </summary>
+        public CharacterInfoController PlayerReference;
+    }
 }

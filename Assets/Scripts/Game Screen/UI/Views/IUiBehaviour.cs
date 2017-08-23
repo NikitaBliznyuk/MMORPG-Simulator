@@ -1,6 +1,6 @@
-﻿using Game.Character;
+﻿using GameScreen.Character;
 
-namespace Game.UI.View
+namespace GameScreen.UI.View
 {
     public interface IUiBehaviour
     {

@@ -1,11 +1,7 @@
-﻿using UnityEngine;
-using UnityEditor;
-using UnityEngine.TestTools;
+﻿using GameScreen.Character;
+using UnityEngine;
 using NUnit.Framework;
-using System.Collections;
-using Game.Character;
-using Game.UI.View;
-using CharacterInfo = Game.Character.CharacterInfo;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class StatsInfoTest 
 {
@@ -51,7 +47,7 @@ public class StatsInfoTest
         CharacterInfoController character = o.AddComponent<CharacterInfoController>();
         character.Info = new CharacterInfo
         {
-            Abilities = new Ability[] {},
+            Abilities = new AbilityContainer[] {},
             AllyTags = new[] {allyTeam},
             EnemyTags = new[] {enemyTeam},
             Tag = allyTeam,

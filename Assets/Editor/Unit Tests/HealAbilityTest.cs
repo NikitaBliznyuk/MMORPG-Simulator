@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using GameScreen.Character;
+using UnityEngine;
 using NUnit.Framework;
-using Game.Character;
-using Game.UI.View;
-using CharacterInfo = Game.Character.CharacterInfo;
+using GameScreen.Character.Abilities;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class HealAbilityTest 
 {
@@ -82,7 +82,7 @@ public class HealAbilityTest
         CharacterInfoController character = o.AddComponent<CharacterInfoController>();
         character.Info = new CharacterInfo
         {
-            Abilities = new Ability[] {GenerateHealAbility()},
+            Abilities = new [] {GenerateHealAbility()},
             AllyTags = new[] {allyTeam},
             EnemyTags = new[] {enemyTeam},
             Tag = allyTeam,
@@ -91,7 +91,7 @@ public class HealAbilityTest
         return character;
     }
 
-    private HealAbility GenerateHealAbility()
+    private AbilityContainer GenerateHealAbility()
     {
         HealAbility healAbility = ScriptableObject.CreateInstance<HealAbility>();
 
@@ -99,6 +99,8 @@ public class HealAbilityTest
         abilityInfo.Cost = 10;
         healAbility.AbilityInfo = abilityInfo;
         
-        return healAbility;
+        AbilityContainer container = new AbilityContainer(healAbility);
+        
+        return container;
     }
 }

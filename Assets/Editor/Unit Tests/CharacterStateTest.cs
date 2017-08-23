@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using Game.Character;
-using CharacterInfo = Game.Character.CharacterInfo;
+using GameScreen.Character;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class CharacterStateTest 
 {
@@ -34,7 +34,7 @@ public class CharacterStateTest
         CharacterInfoController character = o.AddComponent<CharacterInfoController>();
         character.Info = new CharacterInfo
         {
-            Abilities = new Ability[] {},
+            Abilities = new AbilityContainer[] {},
             AllyTags = new[] {allyTeam},
             EnemyTags = new[] {enemyTeam},
             Tag = allyTeam,
