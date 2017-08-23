@@ -3,9 +3,13 @@ using System.Collections;
 using Game.Character;
 using UnityEngine;
 
+/// <summary>
+/// Generic class for all abilities.
+/// </summary>
 public abstract class Ability : ScriptableObject
 {
-    [SerializeField] private AbilityInfo abilityInfo;
+    [SerializeField]
+    private AbilityInfo abilityInfo;
 
     public AbilityInfo AbilityInfo
     {
@@ -28,5 +32,10 @@ public struct AbilityInfo
 
 public enum AbilityInvokeErrorCode
 {
-    NO_ERROR, TOO_FAR, NO_ENERGY, NO_SUCH_ABILITY, NOT_AVALIABLE, WRONG_TARGET
+    NO_ERROR,
+    TOO_FAR,
+    NO_ENERGY,
+    NO_SUCH_ABILITY,
+    NOT_AVALIABLE,
+    WRONG_TARGET
 }
