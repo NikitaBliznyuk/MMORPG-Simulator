@@ -1,61 +1,65 @@
 ﻿using System.Collections.Generic;
-using Game.Character;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClickController : MonoBehaviour, IInputController
+namespace GameScreen.Character
 {
-    public CharacterInfoController CurrentObservableInfo
+    public class ClickController : MonoBehaviour, IInputController
     {
-        get { return currentObservableInfo; }
-        set
+        public CharacterInfoController CurrentObservableInfo
         {
-            if(currentObservableInfo != null)
-                currentObservableInfo.IsHighlighted = false;
-            currentObservableInfo = value;
-        }
-    }
-    
-    private CharacterInfoController currentObservableInfo;
-    private CharacterMovementController movementController;
-
-    private void Start()
-    {
-        movementController = GetComponent<CharacterMovementController>();
-    }
-
-    private void Update()
-    {
-        if (IsClicking())
-        {
-            RaycastHit hit;
-            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Clickable")))
+            get { return currentObservableInfo; }
+            set
             {
-                CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
-                CurrentObservableInfo.IsHighlighted = true;
-            }
-            else if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Ground")))
-            {
-                movementController.MoveToPoint(hit.point);
+                if (currentObservableInfo != null)
+                    currentObservableInfo.IsHighlighted = false;
+                currentObservableInfo = value;
             }
         }
-    }
 
-    private bool IsClicking()
-    {
-        return !IsPointerOverUIObject() && Input.GetMouseButtonDown(0);
-    }
-    
-    private bool IsPointerOverUIObject() {
-        PointerEventData eventDataCurrentPosition =
-            new PointerEventData(EventSystem.current)
+        private CharacterInfoController currentObservableInfo;
+        private CharacterMovementController movementController;
+
+        private void Start()
+        {
+            movementController = GetComponent<CharacterMovementController>();
+        }
+
+        private void Update()
+        {
+            if (IsClicking())
             {
-                position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
-            };
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+                RaycastHit hit;
+                Ray cameraRay = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Clickable")))
+                {
+                    CurrentObservableInfo = hit.collider.GetComponentInParent<CharacterInfoController>();
+                    CurrentObservableInfo.IsHighlighted = true;
+                }
+                else if (Physics.Raycast(cameraRay, out hit, 20, LayerMask.GetMask("Ground")))
+                {
+                    movementController.MoveToPoint(hit.point);
+                }
+            }
+        }
+
+        private bool IsClicking()
+        {
+            return !IsPointerOverUIObject() && Input.GetMouseButtonDown(0);
+        }
+
+        private bool IsPointerOverUIObject()
+        {
+            PointerEventData eventDataCurrentPosition =
+                new PointerEventData(EventSystem.current)
+                {
+                    position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
+                };
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using GameScreen.Level;
+using GameScreen.Loader;
+using UnityEditor;
 using UnityEngine;
 
 public class GameLoader : EditorWindow

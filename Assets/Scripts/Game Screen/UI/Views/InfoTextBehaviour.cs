@@ -2,75 +2,82 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoTextBehaviour : MonoBehaviour
+namespace GameScreen.UI.View
 {
-    public static InfoTextBehaviour Instance;
-
-    [Header("References")]
-    
-    [SerializeField] private Text infoText;
-
-    [Header("Settings")]
-    
-    [SerializeField] private float fadeDuration;
-    [SerializeField] private float messageDuration;
-
-    private Coroutine currentAnimation;
-
-    private void Awake()
+    public class InfoTextBehaviour : MonoBehaviour
     {
-        Instance = this;
+        public static InfoTextBehaviour Instance;
 
-        Color color = infoText.color;
-        color.a = 0.0f;
-        infoText.color = color;
-    }
+        [Header("References")]
 
-    public void ShowMessage(string text)
-    {
-        if(currentAnimation != null)
-            StopCoroutine(currentAnimation);
+        [SerializeField]
+        private Text infoText;
 
-        infoText.text = text;
-        
-        currentAnimation = StartCoroutine(Animation());
-    }
+        [Header("Settings")]
 
-    private IEnumerator Animation()
-    {
-        Color color = infoText.color;
-        float currentTime = color.a * fadeDuration;
+        [SerializeField]
+        private float fadeDuration;
 
-        while (currentTime < fadeDuration)
+        [SerializeField]
+        private float messageDuration;
+
+        private Coroutine currentAnimation;
+
+        private void Awake()
         {
+            Instance = this;
+
+            Color color = infoText.color;
+            color.a = 0.0f;
+            infoText.color = color;
+        }
+
+        public void ShowMessage(string text)
+        {
+            if (currentAnimation != null)
+                StopCoroutine(currentAnimation);
+
+            infoText.text = text;
+
+            currentAnimation = StartCoroutine(Animation());
+        }
+
+        private IEnumerator Animation()
+        {
+            Color color = infoText.color;
+            float currentTime = color.a * fadeDuration;
+
+            while (currentTime < fadeDuration)
+            {
+                color = infoText.color;
+                color.a = currentTime / fadeDuration;
+                infoText.color = color;
+
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+
             color = infoText.color;
-            color.a = currentTime / fadeDuration;
+            color.a = 1.0f;
             infoText.color = color;
 
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
-        
-        color = infoText.color;
-        color.a = 1.0f;
-        infoText.color = color;
-        
-        yield return new WaitForSeconds(messageDuration);
+            yield return new WaitForSeconds(messageDuration);
 
-        currentTime = 0.0f;
-        
-        while (currentTime < fadeDuration)
-        {
+            currentTime = 0.0f;
+
+            while (currentTime < fadeDuration)
+            {
+                color = infoText.color;
+                color.a = 1.0f - currentTime / fadeDuration;
+                infoText.color = color;
+
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+
             color = infoText.color;
-            color.a = 1.0f - currentTime / fadeDuration;
+            color.a = 0.0f;
             infoText.color = color;
-
-            currentTime += Time.deltaTime;
-            yield return null;
         }
-        
-        color = infoText.color;
-        color.a = 0.0f;
-        infoText.color = color;
     }
 }

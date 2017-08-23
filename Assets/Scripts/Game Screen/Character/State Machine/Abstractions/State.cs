@@ -1,38 +1,46 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/State")]
-public class State : ScriptableObject 
+namespace GameScreen.Character.StateMachine
 {
-	[SerializeField] private Action[] actions;
-	[SerializeField] private Transition[] transitions;
-	[SerializeField] private Color currentStateGizmoColor = Color.gray;
-
-	public Color CurrentStateGizmoColor
+	[CreateAssetMenu(menuName = "PluggableAI/State")]
+	public class State : ScriptableObject
 	{
-		get { return currentStateGizmoColor; }
-	}
+		[SerializeField]
+		private Action[] actions;
 
-	public void UpdateState(StateController controller)
-	{
-		DoActions (controller);
-		CheckTransitions (controller);
-	}
+		[SerializeField]
+		private Transition[] transitions;
 
-	private void DoActions(StateController controller)
-	{
-		foreach (Action action in actions)
+		[SerializeField]
+		private Color currentStateGizmoColor = Color.gray;
+
+		public Color CurrentStateGizmoColor
 		{
-			action.Act (controller);
+			get { return currentStateGizmoColor; }
 		}
-	}
 
-	private void CheckTransitions(StateController controller)
-	{
-		foreach (Transition transition in transitions)
+		public void UpdateState(StateController controller)
 		{
-			bool decisionSucceeded = transition.decision.Decide (controller);
+			DoActions(controller);
+			CheckTransitions(controller);
+		}
 
-			controller.TransitionToState(decisionSucceeded ? transition.trueState : transition.falseState);
+		private void DoActions(StateController controller)
+		{
+			foreach (Action action in actions)
+			{
+				action.Act(controller);
+			}
+		}
+
+		private void CheckTransitions(StateController controller)
+		{
+			foreach (Transition transition in transitions)
+			{
+				bool decisionSucceeded = transition.decision.Decide(controller);
+
+				controller.TransitionToState(decisionSucceeded ? transition.trueState : transition.falseState);
+			}
 		}
 	}
 }

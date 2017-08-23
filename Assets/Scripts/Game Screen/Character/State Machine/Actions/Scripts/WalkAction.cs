@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Actions/Walk")]
-public class WalkAction : Action
+namespace GameScreen.Character.StateMachine
 {
-    public override void Act(StateController controller)
+    [CreateAssetMenu(menuName = "PluggableAI/Actions/Walk")]
+    public class WalkAction : Action
     {
-        Walk(controller);
-    }
-
-    private void Walk(StateController controller)
-    {
-        if (controller.NavMeshAgent.remainingDistance < controller.NavMeshAgent.stoppingDistance)
+        public override void Act(StateController controller)
         {
-            controller.NextWayPoint++;
+            Walk(controller);
+        }
+
+        private void Walk(StateController controller)
+        {
+            if (controller.NavMeshAgent.remainingDistance < controller.NavMeshAgent.stoppingDistance)
+            {
+                controller.NextWayPoint++;
+            }
         }
     }
 }

@@ -1,7 +1,10 @@
-﻿[System.Serializable]
-public class Transition 
+﻿namespace GameScreen.Character.StateMachine
 {
-	public Decision decision;
-	public State trueState;
-	public State falseState;
+	[System.Serializable]
+	public class Transition
+	{
+		public Decision decision;
+		public State trueState;
+		public State falseState;
+	}
 }

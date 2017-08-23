@@ -1,44 +1,48 @@
-﻿using UnityEngine;
+﻿using GameScreen.Loader;
+using UnityEngine;
 
-/// <summary>
-/// Class is used to folow target.
-/// </summary>
-public class CameraController : MonoBehaviour
+namespace GameScreen.Camera
 {
     /// <summary>
-    /// Current target, that camera follows.
+    /// Class is used to folow target.
     /// </summary>
-    private Transform currentTarget;
-
-    /// <summary>
-    /// Offset from target.
-    /// </summary>
-    private Vector3 offset;
-
-    #region Unity functions
-
-    private void Awake()
+    public class CameraController : MonoBehaviour
     {
-        Loader.DataUpdated += LoaderOnDataUpdated;
-    }
+        /// <summary>
+        /// Current target, that camera follows.
+        /// </summary>
+        private Transform currentTarget;
 
-    private void LateUpdate()
-    {
-        if (currentTarget != null)
+        /// <summary>
+        /// Offset from target.
+        /// </summary>
+        private Vector3 offset;
+
+        #region Unity functions
+
+        private void Awake()
         {
-            transform.position = currentTarget.transform.position + offset;
+            Loader.Loader.DataUpdated += LoaderOnDataUpdated;
         }
-    }
 
-    #endregion
+        private void LateUpdate()
+        {
+            if (currentTarget != null)
+            {
+                transform.position = currentTarget.transform.position + offset;
+            }
+        }
 
-    /// <summary>
-    /// Triggers when data updated from loader.
-    /// </summary>
-    /// <param name="data">Current level data.</param>
-    private void LoaderOnDataUpdated(LevelCurrentData data)
-    {
-        offset = transform.position - data.PlayerReference.transform.position;
-        currentTarget = data.PlayerReference.transform;
+        #endregion
+
+        /// <summary>
+        /// Triggers when data updated from loader.
+        /// </summary>
+        /// <param name="data">Current level data.</param>
+        private void LoaderOnDataUpdated(LevelCurrentData data)
+        {
+            offset = transform.position - data.PlayerReference.transform.position;
+            currentTarget = data.PlayerReference.transform;
+        }
     }
 }

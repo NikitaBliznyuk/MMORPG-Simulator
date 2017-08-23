@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.UI.View
+namespace GameScreen.UI.View
 {
     public class BarBehaviour : MonoBehaviour
     {

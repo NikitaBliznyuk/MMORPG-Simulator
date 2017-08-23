@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using GameScreen.Character;
+using UnityEngine;
 using NUnit.Framework;
-using Game.Character;
-using Game.UI.View;
-using CharacterInfo = Game.Character.CharacterInfo;
+using GameScreen.Character.Abilities;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class HealAbilityTest 
 {

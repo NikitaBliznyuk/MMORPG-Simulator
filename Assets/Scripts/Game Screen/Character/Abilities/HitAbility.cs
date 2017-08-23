@@ -1,33 +1,36 @@
 ﻿using System.Linq;
-using Game.Character;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Abilities/Hit ability")]
-public class HitAbility : Ability, IHit
+namespace GameScreen.Character.Abilities
 {
-	[SerializeField] private HitInfo hitInfo;
-
-	public HitInfo HitInfo
+	[CreateAssetMenu(menuName = "Abilities/Hit ability")]
+	public class HitAbility : Ability, IHit
 	{
-		get { return hitInfo; }
-		set { hitInfo = value; }
-	}
+		[SerializeField]
+		private HitInfo hitInfo;
 
-	public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
-	{
-		if (target == null || target.StateInfo.CurrentState == CharacterState.StateName.DEAD)
-			return AbilityInvokeErrorCode.WRONG_TARGET;
+		public HitInfo HitInfo
+		{
+			get { return hitInfo; }
+			set { hitInfo = value; }
+		}
 
-		if (!invoker.Info.EnemyTags.Contains(target.Info.Tag))
-			return AbilityInvokeErrorCode.WRONG_TARGET;
+		public override AbilityInvokeErrorCode Invoke(CharacterInfoController invoker, CharacterInfoController target)
+		{
+			if (target == null || target.StateInfo.CurrentState == CharacterState.StateName.DEAD)
+				return AbilityInvokeErrorCode.WRONG_TARGET;
 
-		if (Vector3.Distance(invoker.transform.position, target.transform.position) - (invoker.Size + target.Size) >
-		    AbilityInfo.CastDistance)
-			return AbilityInvokeErrorCode.TOO_FAR;
-		
-		int hitValue = Random.Range(hitInfo.MinDamage, hitInfo.MaxDamage + 1);
-		target.DealDamage(hitValue);
+			if (!invoker.Info.EnemyTags.Contains(target.Info.Tag))
+				return AbilityInvokeErrorCode.WRONG_TARGET;
 
-		return AbilityInvokeErrorCode.NO_ERROR;
+			if (Vector3.Distance(invoker.transform.position, target.transform.position) - (invoker.Size + target.Size) >
+			    AbilityInfo.CastDistance)
+				return AbilityInvokeErrorCode.TOO_FAR;
+
+			int hitValue = Random.Range(hitInfo.MinDamage, hitInfo.MaxDamage + 1);
+			target.DealDamage(hitValue);
+
+			return AbilityInvokeErrorCode.NO_ERROR;
+		}
 	}
 }

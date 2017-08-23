@@ -1,7 +1,9 @@
-﻿using Game.Character;
-using UnityEngine;
+﻿using GameScreen.Character;
 
-public interface IInputController
+namespace GameScreen.UI.Controllers
 {
-    CharacterInfoController CurrentObservableInfo { get; set; }
+    public interface IInputController
+    {
+        CharacterInfoController CurrentObservableInfo { get; set; }
+    }
 }

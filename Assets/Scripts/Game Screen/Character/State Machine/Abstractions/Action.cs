@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public abstract class Action : ScriptableObject 
+namespace GameScreen.Character.StateMachine
 {
-    public abstract void Act (StateController controller);
+    public abstract class Action : ScriptableObject 
+    {
+        public abstract void Act (StateController controller);
+    }
 }

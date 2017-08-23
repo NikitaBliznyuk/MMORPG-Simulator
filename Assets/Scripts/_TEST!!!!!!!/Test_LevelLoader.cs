@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using GameScreen.Level;
+using GameScreen.Loader;
+using UnityEngine;
 
 namespace IngameTests
 {

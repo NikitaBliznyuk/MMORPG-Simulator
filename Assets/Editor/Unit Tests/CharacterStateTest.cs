@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
-using Game.Character;
-using CharacterInfo = Game.Character.CharacterInfo;
+using GameScreen.Character;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class CharacterStateTest 
 {

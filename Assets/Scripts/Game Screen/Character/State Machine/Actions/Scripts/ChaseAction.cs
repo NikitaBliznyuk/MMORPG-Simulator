@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Actions/Chase")]
-public class ChaseAction : Action 
+namespace GameScreen.Character.StateMachine
 {
-	public override void Act (StateController controller)
+	[CreateAssetMenu(menuName = "PluggableAI/Actions/Chase")]
+	public class ChaseAction : Action
 	{
-		Chase (controller); 
-	}
+		public override void Act(StateController controller)
+		{
+			Chase(controller);
+		}
 
-	private void Chase(StateController controller)
-	{
-		controller.NavMeshAgent.destination = controller.ChaseTarget.position;
+		private void Chase(StateController controller)
+		{
+			controller.NavMeshAgent.destination = controller.ChaseTarget.position;
+		}
 	}
 }

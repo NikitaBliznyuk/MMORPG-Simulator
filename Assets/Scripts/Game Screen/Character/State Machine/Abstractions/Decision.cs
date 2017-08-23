@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public abstract class Decision : ScriptableObject
+namespace GameScreen.Character.StateMachine
 {
-	public abstract bool Decide (StateController controller);
+	public abstract class Decision : ScriptableObject
+	{
+		public abstract bool Decide(StateController controller);
+	}
 }

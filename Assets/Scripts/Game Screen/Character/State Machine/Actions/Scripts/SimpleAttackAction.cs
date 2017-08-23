@@ -1,24 +1,27 @@
-﻿using Game.Character;
+﻿using GameScreen.Character.Abilities;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Actions/Simple attack")]
-public class SimpleAttackAction : Action 
+namespace GameScreen.Character.StateMachine
 {
-	public override void Act(StateController controller)
+	[CreateAssetMenu(menuName = "PluggableAI/Actions/Simple attack")]
+	public class SimpleAttackAction : Action
 	{
-		Attack(controller);
-	}
-
-	private void Attack(StateController controller)
-	{
-		foreach (var attacksIndex in controller.SimpleAttacksIndices)
+		public override void Act(StateController controller)
 		{
-			AbilityInvokeErrorCode code = controller.InfoController.InvokeAbility(attacksIndex,
-				controller.ChaseTarget.GetComponent<CharacterInfoController>());
-			
-			if (code == AbilityInvokeErrorCode.NO_ERROR)
+			Attack(controller);
+		}
+
+		private void Attack(StateController controller)
+		{
+			foreach (var attacksIndex in controller.SimpleAttacksIndices)
 			{
-				break;
+				AbilityInvokeErrorCode code = controller.InfoController.InvokeAbility(attacksIndex,
+					controller.ChaseTarget.GetComponent<CharacterInfoController>());
+
+				if (code == AbilityInvokeErrorCode.NO_ERROR)
+				{
+					break;
+				}
 			}
 		}
 	}

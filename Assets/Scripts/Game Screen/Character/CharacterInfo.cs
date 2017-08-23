@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using GameScreen.Character.Abilities;
 using UnityEngine;
 
-namespace Game.Character
+namespace GameScreen.Character
 {
     // TODO REFACTOR THIS TO USE PROPERTIES
     [Serializable]

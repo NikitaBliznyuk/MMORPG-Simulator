@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Game.Character;
-using Game.UI.View;
+using GameScreen.Character;
+using GameScreen.Character.Abilities;
 using UnityEngine;
-using CharacterInfo = Game.Character.CharacterInfo;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 public class HitAbilityTest
 {

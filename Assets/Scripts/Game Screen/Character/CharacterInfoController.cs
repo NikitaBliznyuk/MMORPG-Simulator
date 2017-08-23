@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using GameScreen.Character.Abilities;
+using GameScreen.UI.Controllers;
 using UnityEngine;
 
-namespace Game.Character
+namespace GameScreen.Character
 {
     public class CharacterInfoController : MonoBehaviour
     {

@@ -39,7 +39,7 @@ MonoBehaviour:
   - CharacterInfo:
       StatsInfo:
         maxHealth: 100
-        currentHealth: 0.9490566
+        currentHealth: 0
         healthRegen: 2
         maxEnergy: 30
         currentEnergy: 30

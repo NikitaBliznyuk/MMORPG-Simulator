@@ -1,22 +1,25 @@
 ﻿using System;
 
-/// <summary>
-/// Interface for hit abilities.
-/// </summary>
-public interface IHit
+namespace GameScreen.Character.Abilities
 {
     /// <summary>
-    /// Reference to hit info.
+    /// Interface for hit abilities.
     /// </summary>
-    HitInfo HitInfo { get; }
-}
+    public interface IHit
+    {
+        /// <summary>
+        /// Reference to hit info.
+        /// </summary>
+        HitInfo HitInfo { get; }
+    }
 
-/// <summary>
-/// Contains main hit ability info.
-/// </summary>
-[Serializable]
-public struct HitInfo
-{
-    public int MinDamage;
-    public int MaxDamage;
+    /// <summary>
+    /// Contains main hit ability info.
+    /// </summary>
+    [Serializable]
+    public struct HitInfo
+    {
+        public int MinDamage;
+        public int MaxDamage;
+    }
 }
