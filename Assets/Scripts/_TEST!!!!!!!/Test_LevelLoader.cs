@@ -1,6 +1,7 @@
 ﻿using GameScreen.Level;
 using GameScreen.Loader;
 using UnityEngine;
+using CharacterInfo = GameScreen.Character.CharacterInfo;
 
 namespace IngameTests
 {
@@ -10,14 +11,25 @@ namespace IngameTests
 
 		private void Start()
 		{
-			data.Player.CharacterInfo.StatsInfo.CurrentHealth = data.Player.CharacterInfo.StatsInfo.MaxHealth;
-			data.Player.CharacterInfo.StatsInfo.CurrentEnergy = data.Player.CharacterInfo.StatsInfo.MaxEnergy;
-			foreach (var playerAbility in data.Player.CharacterInfo.Abilities)
+			ResetStats(data.Player.CharacterInfo);
+			
+			foreach (var ally in data.Allies)
 			{
-				playerAbility.Avaliable = true;
+				ResetStats(ally.CharacterInfo);
 			}
             
 			Loader.StartLevel(data);
+		}
+
+		private void ResetStats(CharacterInfo info)
+		{
+			info.StatsInfo.CurrentHealth = info.StatsInfo.MaxHealth;
+			info.StatsInfo.CurrentEnergy = info.StatsInfo.MaxEnergy;
+			
+			foreach (var ability in info.Abilities)
+			{
+				ability.Avaliable = true;
+			}
 		}
 	}
 }

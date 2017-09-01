@@ -108,7 +108,7 @@ namespace GameScreen.Loader
             return player;
         }
 
-        private CharacterInfoController CreateAlly(SpawnData data)
+        private void CreateAlly(SpawnData data)
         {
             CharacterInfoController ally = Instantiate(allyPrefab);
 
@@ -116,7 +116,7 @@ namespace GameScreen.Loader
             ally.Info = data.CharacterInfo;
             ally.Icon = data.Icon;
 
-            return ally;
+            //return ally;
         }
     }
 
