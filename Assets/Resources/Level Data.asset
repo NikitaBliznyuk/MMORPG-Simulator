@@ -18,15 +18,15 @@ MonoBehaviour:
         currentHealth: 120
         healthRegen: 4
         maxEnergy: 80
-        currentEnergy: 80
-        energyRegen: 5
+        currentEnergy: 70.34078
+        energyRegen: 0
         name: <Player Name>
       MovementSpeed: 1
       Abilities:
       - ability: {fileID: 11400000, guid: 467117da0c0d426498ef127e12bbcd32, type: 2}
         avaliable: 1
       - ability: {fileID: 11400000, guid: fcba9e41b7fe26a4ea3dc490fa9e5d72, type: 2}
-        avaliable: 1
+        avaliable: 0
       - ability: {fileID: 11400000, guid: e2fceacd833832c48b01391566d2a042, type: 2}
         avaliable: 1
       Tag: Raid 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   - CharacterInfo:
       StatsInfo:
         maxHealth: 100
-        currentHealth: 0
+        currentHealth: 100
         healthRegen: 2
         maxEnergy: 30
         currentEnergy: 30

@@ -8,26 +8,55 @@ using UnityEngine.UI;
 
 namespace GameScreen.UI.Controllers
 {
+    /// <summary>
+    /// Controlls all buttons, that asign to it.
+    /// </summary>
     public class AbilitiesBarController : MonoBehaviour
     {
         [SerializeField]
+        [Tooltip("Ability buttons")]
         private Button[] buttons;
+
+        /// <summary>
+        /// Current level data reference.
+        /// </summary>
+        private LevelCurrentData currentData;
 
         private void Awake()
         {
             Loader.Loader.DataUpdated += LoaderOnDataUpdated;
         }
 
+        private void Update()
+        {
+            if(currentData == null)
+                return;
+            
+            for (int i = 0; i < currentData.PlayerReference.Info.Abilities.Length; i++)
+            {
+                bool enoughMana = currentData.PlayerReference.Info.StatsInfo.CurrentEnergy >
+                                  currentData.PlayerReference.Info.Abilities[i].Ability.AbilityInfo.Cost;
+
+                buttons[i].GetComponent<Image>().color = enoughMana ? Color.white : Color.blue;
+            }
+        }
+
+        /// <summary>
+        /// Invoked by Loader.DataUpdated event.
+        /// </summary>
+        /// <param name="data">Current level data.</param>
         private void LoaderOnDataUpdated(LevelCurrentData data)
         {
+            currentData = data;
+            
             AbilityContainer[] abilities = data.PlayerReference.Info.Abilities;
 
             for (int i = 0; i < buttons.Length; i++)
             {
                 Text text = buttons[i].GetComponentInChildren<Text>();
+                int index = i;
                 if (i < abilities.Length)
                 {
-                    int index = i;
                     buttons[i].onClick.AddListener(() =>
                     {
                         AbilityInvokeErrorCode code = data.PlayerReference.InvokeAbility(index);
@@ -66,6 +95,12 @@ namespace GameScreen.UI.Controllers
             }
         }
 
+        /// <summary>
+        /// Cooldown coroutine.
+        /// </summary>
+        /// <param name="button">Button, that need to be cooldown.</param>
+        /// <param name="duration">Cooldown duration.</param>
+        /// <returns></returns>
         private IEnumerator ButtonCooldown(Button button, float duration)
         {
             float currentTime = 0.0f;

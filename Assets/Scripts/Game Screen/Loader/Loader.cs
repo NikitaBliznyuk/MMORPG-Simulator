@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace GameScreen.Loader
 {
+    /// <summary>
+    /// Raise start level and end level events. Creates instances of player and his allies.
+    /// </summary>
     public class Loader : MonoBehaviour
     {
         [Header("References")]
@@ -115,8 +118,6 @@ namespace GameScreen.Loader
             ally.transform.position = Vector3.zero; // TODO MAKE ENTER POINT IN DUNGEON
             ally.Info = data.CharacterInfo;
             ally.Icon = data.Icon;
-
-            //return ally;
         }
     }
 
